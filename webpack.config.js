@@ -39,6 +39,10 @@ module.exports = {
             template: './src/index.ejs'
         }),
         new ExtractTextPlugin('styles.css')
-    ]
+    ],
+    devServer: {
+        port: 1000,
+        headers: { 'Access-Control-Allow-Origin': '*' }
+    }
 };
 

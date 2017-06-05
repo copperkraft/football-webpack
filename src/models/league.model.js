@@ -2,14 +2,6 @@
  * Created by uladzimir.yakushkin on 31-May-17.
  */
 const ko = require('knockout');
-
-let leagueAliaces = {
-    "English Premier League": 'PL',
-    "German 1. Bundesliga": "BL1",
-    "Spanish Primera": "PD",
-    "Italian Serie A": "SA",
-    "French League 1": "FL1"
-};
 let leagueIds = ko.observable({
     "English Premier League": 426,
     "German 1. Bundesliga": 430,
@@ -18,26 +10,6 @@ let leagueIds = ko.observable({
     "French League 1": 434
 });
 
-(function () {
-    let xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() {
-        if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
-        {
-            let competitions = JSON.parse(xmlHttp.responseText);
-            for (let title in leagueAliaces) {
-                if (leagueAliaces.hasOwnProperty(title)) {
-                    leagueIds()[title] = competitions.filter(
-                        competition => competition.league === leagueAliaces[title]
-                    )[0].id;
-                }
-            }
-        }
-    };
-    xmlHttp.open("GET", 'http://api.football-data.org/v1/competitions/', true);
-    xmlHttp.setRequestHeader("x-auth-token", 'ea247d3972de4c13b075ae1b61b88d72');
-    xmlHttp.setRequestHeader("X-Response-Control", 'minified');
-    xmlHttp.send(null);
-})();
 
 
 module.exports = {
@@ -58,8 +30,7 @@ module.exports = {
             }
         };
 
-        xmlHttp.open("GET", `http://api.football-data.org/v1/competitions/${leagueIds()[leagueTitle]}/leagueTable`, true);
-        xmlHttp.setRequestHeader("x-auth-token", 'ea247d3972de4c13b075ae1b61b88d72');
+        xmlHttp.open("GET", `http://localhost:3000/table/${leagueIds()[leagueTitle]}`, true);
         xmlHttp.send(null);
         return response;
     },
@@ -73,10 +44,8 @@ module.exports = {
             }
         };
 
-        xmlHttp.open("GET", `http://api.football-data.org/v1/competitions/${leagueIds()[leagueTitle]}/teams`, true);
-        xmlHttp.setRequestHeader("x-auth-token", 'ea247d3972de4c13b075ae1b61b88d72');
-        xmlHttp.setRequestHeader("x-response-control", 'minified');
+        xmlHttp.open("GET", `http://localhost:3000/teams/${leagueIds()[leagueTitle]}`, true);
         xmlHttp.send(null);
         return response;
     }
-}
+};
