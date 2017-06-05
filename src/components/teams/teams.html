@@ -1,0 +1,41 @@
+<div class="league">
+    <h1 class="league__title"><span data-bind="text: selectedLeagueName()"></span> teams</h1>
+    <select class="select" data-bind="options: leagues(), value: selectedLeagueName"></select>
+
+    <ul class="team-list team-list--favorite" data-bind="foreach: favorites, visible: favorites().length">
+        <li class="team-list__element">
+            <button class="favorite-button"
+                    data-bind="click: data => $component.toggleState($data),
+                    css: {'favorite-button--selected': $component.favorites().some(item => item === $data)}">
+                &#128465
+            </button>
+            <div class="team-list__name">
+                <span data-bind="text: $data"></span>
+            </div>
+        </li>
+    </ul>
+    <div data-bind="with: selectedLeagueTeams()">
+        <ul class="team-list" data-bind="foreach: teams">
+            <li class="team-list__element">
+                <button class="favorite-button"
+                        data-bind="click: data => $component.toggleState(name),
+                        css: {'favorite-button--selected': $component.favorites().some(item => item === name)}">
+                    &#9733
+                </button>
+                <div class="team-list__image-container">
+                    <img class="team-list__image" data-bind="attr: {src: crestUrl}">
+                </div>
+                <div class="team-list__name">
+                    <span data-bind="text: name"></span>
+                </div>
+                <div data-bind="visible: shortName" class="team-list__shortname">
+                    short name: <span data-bind="text: shortName"></span>
+                </div>
+                <div class="team-list__value" data-bind="visible: squadMarketValue">
+                    squad Market Value: <span data-bind="text: squadMarketValue"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>

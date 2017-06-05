@@ -1,0 +1,32 @@
+<div class="league">
+    <h1 class="league__title"><span data-bind="text: selectedLeagueName()"></span> table</h1>
+    <select class="select" data-bind="options: leagues(), value: selectedLeagueName"></select>
+    <table class="league-table" data-bind="with: selectedLeague()">
+        <thead >
+        <tr class="league-table__head">
+            <th class="league-table__head-item">Position</th>
+            <th class="league-table__head-item">Team</th>
+            <th class="league-table__head-item">G</th>
+            <th class="league-table__head-item">W</th>
+            <th class="league-table__head-item">D</th>
+            <th class="league-table__head-item">L</th>
+            <th class="league-table__head-item">GS</th>
+            <th class="league-table__head-item">GC</th>
+            <th class="league-table__head-item">P</th>
+        </tr>
+        </thead>
+        <tbody data-bind="foreach: standing">
+        <tr class="league-table__row">
+            <td class="league-table__item" data-bind="text: position"></td>
+            <td class="league-table__item" data-bind="text: teamName"></td>
+            <td class="league-table__item" data-bind="text: playedGames"></td>
+            <td class="league-table__item" data-bind="text: wins"></td>
+            <td class="league-table__item" data-bind="text: draws"></td>
+            <td class="league-table__item" data-bind="text: losses"></td>
+            <td class="league-table__item" data-bind="text: goals"></td>
+            <td class="league-table__item" data-bind="text: goalsAgainst"></td>
+            <td class="league-table__item" data-bind="text: points"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

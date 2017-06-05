@@ -1,0 +1,39 @@
+.team-list {
+    display: inline-block;
+
+    width: 400px;
+
+    border: 1px solid #888888;
+    border-radius: 1em;
+
+    .team-list__element {
+        padding: 1em;
+
+        border-bottom: 1px solid #888888;
+
+        &:after {
+            display: table;
+            clear: both;
+
+            content: '';
+        }
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+    .team-list__name {
+        font-size: 20px;
+
+        color: #888888;
+    }
+    .team-list__image {
+        float: left;
+
+        width: 5em;
+        margin-right: 1em;
+    }
+
+    &--favorite {
+        float: right;
+    }
+}

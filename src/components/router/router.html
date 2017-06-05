@@ -1,0 +1,10 @@
+<header class="header">
+    <div class="header__logo">Football stats</div>
+    <nav class="header__navigation">
+        <a class="header__link" href="#league" data-bind="css: {'header__link--selected': page()==='league'}">league table</a>
+        <a class="header__link"  href="#teams" data-bind="css: {'header__link--selected': page()==='teams'}">teams</a>
+    </nav>
+</header>
+<div data-bind="component: page">
+
+</div>
