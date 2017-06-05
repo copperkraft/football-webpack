@@ -4,7 +4,7 @@
 
 const template = require('./teams.html');
 const ko = require('knockout');
-const leagueModel = require('../../models/league.model');
+const leagueModel = require('models/league.model');
 
 
 function TeamsViewModel() {

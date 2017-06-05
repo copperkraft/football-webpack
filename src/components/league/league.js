@@ -1,9 +1,9 @@
 /**
  * Created by uladzimir.yakushkin on 31-May-17.
  */
-const template = require('./league.html');
+const template = require('components/league/league.html');
 const ko = require('knockout');
-const leagueModel = require('../../models/league.model');
+const leagueModel = require('models/league.model');
 
 
 function LeagueViewModel() {

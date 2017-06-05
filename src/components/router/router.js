@@ -1,7 +1,7 @@
 /**
  * Created by uladzimir.yakushkin on 31-May-17.
  */
-const template = require('./router.html');
+const template = require('components/router/router.html');
 const ko = require('knockout');
 
 function RouterViewModel() {

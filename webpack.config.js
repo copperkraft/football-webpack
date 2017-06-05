@@ -43,6 +43,12 @@ module.exports = {
     devServer: {
         port: 1000,
         headers: { 'Access-Control-Allow-Origin': '*' }
+    },
+    resolve: {
+        alias: {
+            components: path.resolve(__dirname, 'src/components/'),
+            models: path.resolve(__dirname, 'src/models/')
+        }
     }
 };
 
