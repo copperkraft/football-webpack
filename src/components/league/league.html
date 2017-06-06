@@ -1,7 +1,7 @@
 <div class="league">
     <h1 class="league__title"><span data-bind="text: selectedLeagueName()"></span> table</h1>
     <select class="select" data-bind="options: leagues(), value: selectedLeagueName"></select>
-    <table class="league-table" data-bind="with: selectedLeague()">
+    <table class="league-table">
         <thead >
         <tr class="league-table__head">
             <th class="league-table__head-item">Position</th>
@@ -15,7 +15,7 @@
             <th class="league-table__head-item">P</th>
         </tr>
         </thead>
-        <tbody data-bind="foreach: standing">
+        <tbody data-bind="foreach: selectedLeague()">
         <tr class="league-table__row">
             <td class="league-table__item" data-bind="text: position"></td>
             <td class="league-table__item" data-bind="text: teamName"></td>

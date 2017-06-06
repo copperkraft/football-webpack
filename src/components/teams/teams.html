@@ -14,8 +14,8 @@
             </div>
         </li>
     </ul>
-    <div data-bind="with: selectedLeagueTeams()">
-        <ul class="team-list" data-bind="foreach: teams">
+    <div>
+        <ul class="team-list" data-bind="foreach: selectedLeagueTeams()">
             <li class="team-list__element">
                 <button class="favorite-button"
                         data-bind="click: data => $component.toggleState(name),
@@ -37,5 +37,4 @@
             </li>
         </ul>
     </div>
-
 </div>

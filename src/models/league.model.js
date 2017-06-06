@@ -2,6 +2,7 @@
  * Created by uladzimir.yakushkin on 31-May-17.
  */
 const ko = require('knockout');
+
 let leagueIds = ko.observable({
     "English Premier League": 426,
     "German 1. Bundesliga": 430,
