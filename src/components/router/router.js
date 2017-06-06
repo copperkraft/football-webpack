@@ -5,7 +5,7 @@ const template = require('components/router/router.html');
 const ko = require('knockout');
 
 function RouterViewModel() {
-    let routedComponents = ko.observable({});
+    const routedComponents = ko.observable({});
     function route (path, component) {
         routedComponents[path] = {component: component};
     }
@@ -18,9 +18,8 @@ function RouterViewModel() {
         this.url(location.hash.slice(1) || '/');
     };
     this.calculateRoute();
-    // Listen on hash change:
+
     window.addEventListener('hashchange', this.calculateRoute.bind(this));
-    // Listen on page load:
     window.addEventListener('load', this.calculateRoute.bind(this));
 
     this.page = ko.computed(function () {

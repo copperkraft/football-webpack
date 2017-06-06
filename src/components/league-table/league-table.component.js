@@ -3,12 +3,12 @@
  */
 const template = require('components/league-table/league-table.html');
 const ko = require('knockout');
-const leagueModel = require('models/league.model');
+const leaguesList = require('models/leagues-list');
 const leagueTable = require('models/league-table');
 
 function LeagueViewModel() {
-    this.leagues = leagueModel.list;
-    this.selectedLeagueName = ko.observable(leagueModel.list()[0]);
+    this.leagues = leaguesList;
+    this.selectedLeagueName = ko.observable(leaguesList[0]);
 
     this.selectedLeague = ko.pureComputed(function() {
         const table = ko.observable();
