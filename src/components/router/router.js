@@ -3,26 +3,22 @@
  */
 const template = require('components/router/router.html');
 const ko = require('knockout');
+const routes = require('components/routes');
 
 function RouterViewModel() {
     const routedComponents = ko.observable({});
-    function route (path, component) {
-        routedComponents[path] = {component: component};
-    }
-    route('league', 'league');
-    route('teams', 'teams');
+    routes.forEach(route => {routedComponents[route.path] = {component: route.component}});
 
     this.url = ko.observable();
 
     this.calculateRoute = function () {
         this.url(location.hash.slice(1) || '/');
     };
-    this.calculateRoute();
 
     window.addEventListener('hashchange', this.calculateRoute.bind(this));
     window.addEventListener('load', this.calculateRoute.bind(this));
 
-    this.page = ko.computed(function () {
+    this.page = ko.pureComputed(function () {
         if (routedComponents[this.url()]) {
             return this.url();
         } else {

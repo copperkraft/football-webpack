@@ -12,9 +12,12 @@ module.exports = {
     },
     remove: name => {
         let currentState = localStorage.favorites? JSON.parse(localStorage.favorites): [];
+
         if(currentState.some(item => item === name)) {
             currentState.splice(currentState.indexOf(name), 1);
         }
+
+        localStorage.favorites = JSON.stringify(currentState);
     },
     load: () => {
         return localStorage.favorites? JSON.parse(localStorage.favorites): [];
