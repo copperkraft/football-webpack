@@ -2,16 +2,14 @@
  * Created by uladzimir.yakushkin on 31-May-17.
  */
 
-const template = require('./teams.html');
 const ko = require('knockout');
+
+const template = require('components/league-teams/league-teams.html');
 const leaguesList = require('models/leagues-list');
 const leagueTeams = require('models/league-teams');
 const favorites = require('models/favorites');
 
-
 function TeamsViewModel() {
-
-
     this.favorites = favorites;
 
     this.toggleFavoriteState = name => {
