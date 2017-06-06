@@ -1,10 +1,10 @@
 /**
  * Created by uladzimir.yakushkin on 31-May-17.
  */
-const template = require('components/league/league.html');
+const template = require('components/league-table/league-table.html');
 const ko = require('knockout');
 const leagueModel = require('models/league.model');
-const leagueTableData = require('data/league-table-data');
+const leagueTable = require('models/league-table');
 
 function LeagueViewModel() {
     this.leagues = leagueModel.list;
@@ -12,9 +12,7 @@ function LeagueViewModel() {
 
     this.selectedLeague = ko.pureComputed(function() {
         const table = ko.observable();
-        leagueTableData(this.selectedLeagueName()).then(data => table(data));
-        //setTimeout(() => console.log(table()), 1000);
-        return table;
+        return leagueTable(this.selectedLeagueName());
     }, this);
 }
 

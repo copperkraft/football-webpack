@@ -5,7 +5,7 @@
 const template = require('./teams.html');
 const ko = require('knockout');
 const leagueModel = require('models/league.model');
-const leagueTeamsData = require('data/league-teams-data');
+const leagueTeams = require('models/league-teams');
 
 
 
@@ -40,11 +40,7 @@ function TeamsViewModel() {
     this.leagues = leagueModel.list;
     this.selectedLeagueName = ko.observable(leagueModel.list()[0]);
     this.selectedLeagueTeams = ko.pureComputed(function() {
-        const teams = ko.observable();
-        leagueTeamsData(this.selectedLeagueName()).then(data => {
-            teams(data);
-        });
-        return teams;
+        return leagueTeams(this.selectedLeagueName());
     }, this);
 }
 
