@@ -1,4 +1,4 @@
-const less = require('./app.less');
+import './app.less';
 
 require('components/registrator');
 

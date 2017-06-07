@@ -1,14 +1,12 @@
-/**
- * Created by uladzimir.yakushkin on 06-Jun-17.
- */
+import ko from 'knockout';
 
-const ko = require('knockout');
+import Team from 'models/team';
+import {leagueTeamsRepository} from 'data/league-teams-repository';
 
-const Team = require('models/team');
-const leagueTeamsData = require('data/league-teams-data');
-
-module.exports = leagueTitle => {
-    const leagueTeams = ko.observableArray();
-    leagueTeamsData(leagueTitle).then(data => leagueTeams(data.map(item => new Team(item))));
-    return leagueTeams;
+export const leagueTeams = {
+    get: leagueTitle => {
+        const leagueTeams = ko.observableArray();
+        leagueTeamsRepository.get(leagueTitle).then(data => leagueTeams(data.map(item => new Team(item))));
+        return leagueTeams;
+    }
 };

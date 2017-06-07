@@ -1,13 +1,10 @@
-/**
- * Created by uladzimir.yakushkin on 31-May-17.
- */
-const template = require('components/router/router.html');
-const ko = require('knockout');
-const routes = require('components/routes');
+import template from 'components/router/router.html';
+import ko from 'knockout';
+import routes from 'components/routes';
 
 function RouterViewModel() {
     const routedComponents = ko.observable({});
-    routes.forEach(route => {routedComponents[route.path] = {component: route.component}});
+    routes.forEach(route => routedComponents[route.path] = {component: route.component});
 
     this.url = ko.observable();
 
@@ -27,4 +24,4 @@ function RouterViewModel() {
     }, this);
 }
 
-module.exports = { viewModel: RouterViewModel, template: template };
+export {RouterViewModel as viewModel, template};

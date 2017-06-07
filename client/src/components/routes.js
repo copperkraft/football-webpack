@@ -1,7 +1,4 @@
-/**
- * Created by uladzimir.yakushkin on 06-Jun-17.
- */
-module.exports = [
+const routes = [
     {
         path: 'league',
         component: 'league-table'
@@ -11,3 +8,5 @@ module.exports = [
         component: 'league-teams'
     }
 ];
+
+export default routes;

@@ -1,13 +1,10 @@
-/**
- * Created by uladzimir.yakushkin on 31-May-17.
- */
+import ko from 'knockout';
 
-const ko = require('knockout');
+import template from 'components/league-teams/league-teams.html';
 
-const template = require('components/league-teams/league-teams.html');
-const leaguesList = require('models/leagues-list');
-const leagueTeams = require('models/league-teams');
-const favorites = require('models/favorites');
+import {leaguesList} from 'models/leagues-list';
+import {leagueTeams} from 'models/league-teams';
+import {favorites} from 'models/favorites';
 
 function TeamsViewModel() {
     this.favorites = favorites;
@@ -23,8 +20,8 @@ function TeamsViewModel() {
     this.leagues = leaguesList;
     this.selectedLeagueName = ko.observable(leaguesList()[0]);
     this.selectedLeagueTeams = ko.pureComputed(function() {
-        return leagueTeams(this.selectedLeagueName());
+        return leagueTeams.get(this.selectedLeagueName());
     }, this);
 }
 
-module.exports = { viewModel: TeamsViewModel, template: template };
+export {TeamsViewModel as viewModel, template};

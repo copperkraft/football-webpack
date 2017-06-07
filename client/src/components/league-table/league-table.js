@@ -1,19 +1,17 @@
-/**
- * Created by uladzimir.yakushkin on 31-May-17.
- */
-const template = require('components/league-table/league-table.html');
-const ko = require('knockout');
-const leaguesList = require('models/leagues-list');
-const leagueTable = require('models/league-table');
+import ko from 'knockout';
+
+import template from 'components/league-table/league-table.html';
+
+import {leaguesList} from 'models/leagues-list';
+import {leagueTable} from 'models/league-table';
 
 function LeagueViewModel() {
     this.leagues = leaguesList;
     this.selectedLeagueName = ko.observable(leaguesList[0]);
 
     this.selectedLeague = ko.pureComputed(function() {
-        const table = ko.observable();
-        return leagueTable(this.selectedLeagueName());
+        return leagueTable.get(this.selectedLeagueName());
     }, this);
 }
 
-module.exports = { viewModel: LeagueViewModel, template: template };
+export {LeagueViewModel as viewModel, template};

@@ -1,8 +1,4 @@
-/**
- * Created by uladzimir.yakushkin on 06-Jun-17.
- */
-
-module.exports = {
+export const favoriteData = {
     add: name => {
         let currentState = localStorage.favorites? JSON.parse(localStorage.favorites): [];
         if(!currentState.some(item => item === name)) {

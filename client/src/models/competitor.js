@@ -1,9 +1,5 @@
-/**
- * Created by uladzimir.yakushkin on 06-Jun-17.
- */
-
-module.exports = function Competitor (dataObject) {
-    this.id = dataObject._links.team.href.slice(38); //костыль и магическое число!
+export default function Competitor (dataObject) {
+    this.id = parseInt(dataObject._links.team.href.match(/\d+$/)[0], 10);
     this.position = dataObject.position;
     this.name = dataObject.teamName;
     this.games = dataObject.playedGames;
@@ -14,5 +10,5 @@ module.exports = function Competitor (dataObject) {
     this.losses = dataObject.losses;
     this.points = dataObject.points;
     this.imageUrl = dataObject.crestURI;
-};
+}
 

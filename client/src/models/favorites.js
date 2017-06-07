@@ -1,11 +1,8 @@
-/**
- * Created by uladzimir.yakushkin on 06-Jun-17.
- */
-const ko = require('knockout');
+import ko from 'knockout';
 
-const favoriteData = require('data/favorite-data');
+import {favoriteData} from 'data/favorite-repository';
 
-module.exports = {
+export const favorites = {
     add: function(name) {
         favoriteData.add(name);
         this.list.push(name);
