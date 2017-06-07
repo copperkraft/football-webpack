@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "node src/node/app.js",
-    "dev": "webpack-dev-server",
-    "dev-once": "webpack -d",
-    "prod": "webpack -p"
+    "server": "node server/app.js",
+    "webpack": "webpack -d",
+    "all": "webpack -d && node server/app.js"
   },
   "author": "",
   "license": "ISC",
