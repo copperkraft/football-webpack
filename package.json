@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "server": "node src/node/app.js",
     "dev": "webpack-dev-server",
     "dev-once": "webpack -d",
     "prod": "webpack -p"
@@ -23,6 +24,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "express": "^4.15.3",
     "knockout": "^3.4.2"
   }
 }
