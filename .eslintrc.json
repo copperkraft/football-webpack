@@ -24,6 +24,20 @@
         "semi": [
             "error",
             "always"
+        ],
+        "no-trailing-spaces": [
+            "error"
+        ],
+        "array-bracket-spacing": [
+            "error",
+            "never"
+        ],
+        "space-infix-ops": [
+            "error",
+            {"int32Hint": false}
+        ],
+        "no-console": [
+            "off"
         ]
     }
 }

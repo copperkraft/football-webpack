@@ -24,8 +24,8 @@ function RouterViewModel() {
     this.route = ko.observableArray();
 
     this.calculateRoute = function () {
-        const path = '/'+ location.hash.slice(1);
-        this.route(location.hash.length > 0 ? path.match(/\/\w+/g).map(parameter => parameter.slice(1)): []);
+        const path = '/' + location.hash.slice(1);
+        this.route(location.hash.length > 0 ? path.match(/\/\w+/g).map(parameter => parameter.slice(1)) : []);
         this.url(location.hash.slice(1) || '/');
     };
 
