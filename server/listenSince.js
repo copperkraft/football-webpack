@@ -6,7 +6,7 @@ module.exports = function listenSince (port, app) {
     const server = http.createServer(app).listen(port);
     server.on('error', (error) => {
         console.log('error: ' + error.message);
-        listenSince(port + 1);
+        listenSince(port + 1, app);
     });
 };
 
