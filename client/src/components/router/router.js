@@ -7,6 +7,7 @@ function RouterViewModel() {
     routes.forEach(route => routedComponents[route.path] = {component: route.component});
 
     this.url = ko.observable();
+    this.routeParams = ko.observable();
 
     this.calculateRoute = function () {
         this.url(location.hash.slice(1) || '/');

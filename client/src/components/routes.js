@@ -6,6 +6,10 @@ const routes = [
     {
         path: 'teams',
         component: 'league-teams'
+    },
+    {
+        path: 'teams/:id',
+        component: 'league-teams'
     }
 ];
 
