@@ -5,6 +5,8 @@
         <a class="header__link"  href="#teams" data-bind="css: {'header__link--selected': page()==='teams'}">teams</a>
     </nav>
 </header>
-<div data-bind="component: page">
+<main data-bind="if: page">
+    <div data-bind="component: page">
 
-</div>
+    </div>
+</main>

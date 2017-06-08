@@ -1,14 +1,10 @@
 const routes = [
     {
-        path: 'league',
+        path: '/league',
         component: 'league-table'
     },
     {
-        path: 'teams',
-        component: 'league-teams'
-    },
-    {
-        path: 'teams/:id',
+        path: '/teams',
         component: 'league-teams'
     }
 ];

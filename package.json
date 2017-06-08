@@ -6,6 +6,7 @@
   "scripts": {
     "server": "node server/app.js",
     "webpack": "webpack -d",
+    "dev": "webpack-dev-server",
     "all": "webpack -d && node server/app.js"
   },
   "author": "",
