@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "node server/app.js",
-    "webpack": "webpack -d",
-    "dev": "webpack-dev-server",
+    "dev": "webpack -d -w",
     "all": "webpack -d && node server/app.js"
   },
   "author": "",

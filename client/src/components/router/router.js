@@ -5,7 +5,7 @@ import routes from 'components/routes';
 function RouterViewModel() {
     const routedComponents = ko.observableArray(routes.map(route => {
         return {
-            path: route.path.match(/\/\w+/g).map(item => {
+            path: route.path.match(/\/:?\w+/g).map(item => {
                 return item[1] === ':' ? {
                     type: 'parameter',
                     name: item.slice(2)
@@ -18,17 +18,16 @@ function RouterViewModel() {
         };
     }
     ));
-    routes.forEach(route => routedComponents[route.path] = {component: route.component});
 
     this.url = ko.observable();
     this.route = ko.observableArray();
 
     this.calculateRoute = function () {
         const path = '/' + location.hash.slice(1);
-        this.route(location.hash.length > 0 ? path.match(/\/\w+/g).map(parameter => parameter.slice(1)) : []);
+        this.route(location.hash ? path.match(/\/\w+/g).map(item => item.slice(1)) : []);
         this.url(location.hash.slice(1) || '/');
     };
-
+    this.calculateRoute();
     window.addEventListener('hashchange', this.calculateRoute.bind(this));
     window.addEventListener('load', this.calculateRoute.bind(this));
 
@@ -42,11 +41,18 @@ function RouterViewModel() {
                     return true;
                 });
             }
-
             return false;
         });
         if (matchingComponent) {
-            return matchingComponent.component;
+            return {
+                name: matchingComponent.component,
+                params: matchingComponent.path.reduce((params, part, index) => {
+                    if (part.type === 'parameter') {
+                        params[part.name] = this.route()[index];
+                    }
+                    return params;
+                }, {})
+            };
         }
         location.hash = 'league';
     }, this);
