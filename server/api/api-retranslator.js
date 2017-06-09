@@ -1,4 +1,3 @@
-const apiExternalRequest = require('./api-external-request');
 const rp = require('request-promise');
 
 module.exports = (config) => (request, response) => {
