@@ -2,11 +2,11 @@
   "name": "football-webpack",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/app.js",
   "scripts": {
     "server": "node server/app.js",
     "dev": "webpack -d -w",
-    "all": "webpack -d && node server/app.js"
+    "start": "webpack -d && node server/app.js"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +26,8 @@
   },
   "dependencies": {
     "express": "^4.15.3",
-    "knockout": "^3.4.2"
+    "knockout": "^3.4.2",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
   }
 }

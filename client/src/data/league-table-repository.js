@@ -4,7 +4,7 @@ import {indexes as leagueIds} from 'data/indexes';
 export const leagueTableRepository = {
     get: leagueTitle => {
         return request(`api/table/${leagueIds[leagueTitle]}`).then(response => {
-            return JSON.parse(response).standing;
+            return JSON.parse(response);
         });
     }
 };

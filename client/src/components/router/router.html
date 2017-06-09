@@ -1,8 +1,8 @@
 <header class="header">
     <div class="header__logo">Football stats</div>
     <nav class="header__navigation">
-        <a class="header__link" href="#league" data-bind="css: {'header__link--selected': page()==='league-table'}">league table</a>
-        <a class="header__link"  href="#teams" data-bind="css: {'header__link--selected': page()==='league-teams'}">teams</a>
+        <a class="header__link" href="#league" data-bind="css: {'header__link--selected': page().name==='league-table'}">league table</a>
+        <a class="header__link"  href="#teams" data-bind="css: {'header__link--selected': page().name==='league-teams'}">teams</a>
         <a class="header__link"  href="#teams/2" >teams/2</a>
     </nav>
 </header>
