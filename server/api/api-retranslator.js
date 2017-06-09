@@ -1,8 +1,8 @@
 const apiExternalRequest = require('./api-external-request');
+const rp = require('request-promise');
 
-module.exports = (api, converter) => (request, response) => {
-    console.log('using ' + api);
-    apiExternalRequest(api, request.params).then(data => {
-        response.send(converter ? converter(data) : data);
+module.exports = (config) => (request, response) => {
+    rp(config.params(request.params)).then(data => {
+        response.send(config.converter ? config.converter(data) : data);
     });
 };
