@@ -1,4 +1,4 @@
-const rp = require('request-promise');
+const rp = require('request-promise-native');
 
 module.exports = (config) => (request, response) => {
     rp(config.params(request.params)).then(data => {
