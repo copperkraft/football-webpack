@@ -1,14 +1,13 @@
 .header {
-    max-width: 1020px;
-    margin: 0 auto;
     font-family: 'Segoe UI', sans-serif;
 
-    padding: 2em;
     box-sizing: border-box;
-
-    background: #eeeeee;
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 2em;
 
     border-radius: 0 0 1em 1em;
+    background: #eeeeee;
 
     .header__logo {
         font-size: 30px;
@@ -27,11 +26,10 @@
     .header__link {
         font-size: 20px;
 
+        transition: 100ms;
         text-decoration: none;
 
         color: #888888;
-
-        transition: 100ms;
 
         &--selected {
             text-decoration: underline;

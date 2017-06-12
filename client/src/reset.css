@@ -78,11 +78,16 @@ summary,
 time,
 mark,
 audio,
-video
-{
-    font: inherit;  font-size: 100%;
+video {
+    font: inherit;
+    font-size: 100%;
 
-    margin: 0;  padding: 0;  vertical-align: baseline;     border: 0;
+    margin: 0;
+    padding: 0;
+
+    vertical-align: baseline;
+
+    border: 0;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -95,32 +100,28 @@ header,
 hgroup,
 menu,
 nav,
-section
-{
+section {
     display: block;
 }
-body
-{
+body {
     line-height: 1;
 }
 ol,
-ul
-{
+ul {
     list-style: none;
 }
 blockquote,
-q
-{
+q {
     quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
-q:after
-{
-      content: '';      content: none;
+q:after {
+    content: '';
+    content: none;
 }
-table
-{
-    border-spacing: 0;  border-collapse: collapse;
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
 }

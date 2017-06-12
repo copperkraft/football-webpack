@@ -1,36 +1,35 @@
 .team-page {
-    font-family: "Segoe UI", sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 
     .team-page__title {
         font-size: 35px;
+
         padding-bottom: 1em;
     }
-    .team-page__tabs {
 
-    }
     .team-page__tab-item {
-        padding: 1em;
-        border-radius: 0.3em 0.3em 0 0;
-        border: 1px solid #888888;
-
-        border-bottom: none;
-        display: inline-block;
         font-size: 20px;
 
+        display: inline-block;
+
+        padding: 1em;
+
         transition: 100ms;
+        text-decoration: underline;
 
         color: #4060f0;
-
-        text-decoration: underline;
+        border: 1px solid #888888;
+        border-bottom: none;
+        border-radius: 0.3em 0.3em 0 0;
 
         &:hover {
             background-color: #eeeeee;
         }
 
         &--selected {
-            color: #444444;
             text-decoration: none;
 
+            color: #444444;
         }
     }
 }
