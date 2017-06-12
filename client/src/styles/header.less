@@ -1,9 +1,14 @@
 .header {
+    max-width: 1020px;
+    margin: 0 auto;
     font-family: 'Segoe UI', sans-serif;
 
     padding: 2em;
+    box-sizing: border-box;
 
     background: #eeeeee;
+
+    border-radius: 0 0 1em 1em;
 
     .header__logo {
         font-size: 30px;
@@ -26,10 +31,16 @@
 
         color: #888888;
 
+        transition: 100ms;
+
         &--selected {
             text-decoration: underline;
 
             color: #444444;
+        }
+
+        &:hover {
+            color: #000000;
         }
     }
 }

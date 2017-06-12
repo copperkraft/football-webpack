@@ -11,6 +11,11 @@ function TeamsViewModel(params) {
 
     this.selectedTab = ko.observable('info-tab');
 
+    this.changeSelection = (select) => {
+        console.log('1212');
+        this.selectedTab(select);
+    };
+
     this.tab = ko.computed(function () {
         return {
             name: this.selectedTab,

@@ -1,5 +1,4 @@
 .team-page {
-    padding: 2em;
     font-family: "Segoe UI", sans-serif;
 
     .team-page__title {
@@ -13,18 +12,25 @@
         padding: 1em;
         border-radius: 0.3em 0.3em 0 0;
         border: 1px solid #888888;
-        background-color: #eeeeee;
+
         border-bottom: none;
         display: inline-block;
         font-size: 20px;
-        color: #888888;
+
+        transition: 100ms;
+
+        color: #4060f0;
 
         text-decoration: underline;
 
+        &:hover {
+            background-color: #eeeeee;
+        }
+
         &--selected {
+            color: #444444;
             text-decoration: none;
-            color: #eeeeee;
-            background-color: #888888;
+
         }
     }
 }
