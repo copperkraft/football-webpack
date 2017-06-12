@@ -18,7 +18,11 @@
         <tbody data-bind="foreach: selectedLeague()">
         <tr class="league-table__row">
             <td class="league-table__item" data-bind="text: position"></td>
-            <td class="league-table__item" data-bind="text: name"></td>
+            <td class="league-table__item">
+                <a data-bind="attr: {href: '#teams/' + id}">
+                    <span data-bind="text: name"></span>
+                </a>
+            </td>
             <td class="league-table__item" data-bind="text: games"></td>
             <td class="league-table__item" data-bind="text: wins"></td>
             <td class="league-table__item" data-bind="text: draws"></td>

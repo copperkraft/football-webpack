@@ -1,9 +1,9 @@
 <div class="league">
-    <h1 class="league__title">some team with id <span data-bind="text: id"></span></h1>
+    <h1 class="league__title" data-bind="if: team()"><span data-bind="text: team().fullName"></span></h1>
     <div class="tabs">
         <div class="t"></div>
         <div class="tabs__item">Info</div>
         <div class="tabs__item">Fixtures</div>
     </div>
-    <div>//component here</div>
+    <div data-bind="component: tab"></div>
 </div>

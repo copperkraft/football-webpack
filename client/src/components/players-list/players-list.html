@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<ul class="team-list" data-bind="foreach: players()">
+    <li class="team-list__element">
+        <div class="team-list__fullName">
+            <span data-bind="text: jerseyNumber"></span>
+            <span data-bind="text: name"></span>
+        </div>
+        <div class="team-list__name">
+            position: <span data-bind="text: position"></span>
+        </div>
+        <div class="team-list__name">
+            position: <span data-bind="text: dateOfBirth"></span>
+        </div>
+        <div class="team-list__value" data-bind="visible: marketValue">
+            squad Market Value: <span data-bind="text: marketValue"></span>
+        </div>
+    </li>
+</ul>

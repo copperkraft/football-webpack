@@ -1,8 +1,4 @@
 export default function Fixture (dataObject) {
-    dataObject =  {
-
-    };
-
     this.id = dataObject.id;
     this.date = dataObject.date;
     this.homeTeamName = dataObject.homeTeamName;

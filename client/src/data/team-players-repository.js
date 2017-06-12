@@ -1,10 +1,9 @@
 import request from 'data/request';
-import {indexes as leagueIds} from 'data/indexes';
 
-export const teamFixturesRepository = {
+export const teamPlayersRepository = {
     get: teamId => {
         return request(`api/teams/${teamId}/players`).then(response => {
-            return JSON.parse(response);
+            return JSON.parse(response).sort((a, b) => a.jerseyNumber > b.jerseyNumber ? 1 : -1);
         });
     }
 };
