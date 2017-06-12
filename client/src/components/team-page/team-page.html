@@ -1,9 +1,8 @@
-<div class="league">
-    <h1 class="league__title" data-bind="if: team()"><span data-bind="text: team().fullName"></span></h1>
-    <div class="tabs">
-        <div class="t"></div>
-        <div class="tabs__item">Info</div>
-        <div class="tabs__item">Fixtures</div>
+<div class="team-page">
+    <h1 class="team-page__title" data-bind="if: team()"><span data-bind="text: team().fullName"></span></h1>
+    <div class="team-page__tabs">
+        <div class="team-page__tab-item" data-bind="css: {'team-page__tab-item--selected': selectedTab()==='info-tab'}">Info</div>
+        <div class="team-page__tab-item" data-bind="css: {'team-page__tab-item--selected': selectedTab()==='fixtures-tab'}">Fixtures</div>
     </div>
     <div data-bind="component: tab"></div>
 </div>

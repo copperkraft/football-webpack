@@ -7,6 +7,5 @@ import {teamPlayers} from 'models/team-players';
 
 function TeamsViewModel(params) {
     this.players = teamPlayers.get(params.id);
-
 }
 export {TeamsViewModel as viewModel, template};
