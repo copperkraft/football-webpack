@@ -1,7 +1,8 @@
 {
   "name": "football-webpack",
   "version": "1.0.0",
-  "description": "",
+  "description": "webpack football app",
+  "repository": "https://github.com/copperkraft/football-webpack.git",
   "main": "server/app.js",
   "scripts": {
     "server": "node server/app.js",
@@ -29,6 +30,7 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "request-promise-native": "^1.0.4",
-    "twit": "^2.2.5"
+    "twit": "^2.2.5",
+    "twit-promise": "^2.1.0"
   }
 }

@@ -17,10 +17,12 @@ function TeamsViewModel(params) {
     };
 
     this.tab = ko.computed(function () {
+        console.log(this.team());
         return {
             name: this.selectedTab,
             params: {
-                id: params.id
+                id: params.id,
+                name: this.team() ? this.team().name : ''
             }
         };
     }, this);

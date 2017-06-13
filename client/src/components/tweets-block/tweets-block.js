@@ -1,22 +1,12 @@
 import ko from 'knockout';
 
-import template from 'components/info-tab/tweets-block.html';
+import template from 'components/tweets-block/tweets-block.html';
+
+import {tweets} from 'models/tweets';
 
 function TeamsViewModel(params) {
     this.tag = params.tag;
-    this.tweets = ko.observable(() => {
-        return [
-            {
-                header: 'metadata',
-                text: 'first tweet'
-            }, {
-                header: 'metadata',
-                text: 'first tweet'
-            }, {
-                header: 'metadata',
-                text: 'first tweet'
-            }
-        ];
-    });
+    console.log(this.tag);
+    this.tweets = tweets.get(this.tag);
 }
 export {TeamsViewModel as viewModel, template};
