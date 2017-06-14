@@ -1,6 +1,10 @@
+<div data-bind="if: selectedFixture()">
+    <head-to-head params="fixture: selectedFixture"></head-to-head>
+</div>
 <div data-bind="if: fixtures">
     <ul class="fixtures-list" data-bind="foreach: fixtures">
-        <li class="fixtures-list__element">
+        <li class="fixtures-list__element"
+            data-bind="click: () => $component.selectedFixture($data), css: {'fixtures-list__element--selected': $component.selectedFixture() ? $component.selectedFixture().id === id : false}">
             <div class="fixtures-list__title">
                 <span data-bind="text: homeTeamName"></span>
                 -

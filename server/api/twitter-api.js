@@ -7,7 +7,6 @@ const T = new Twit({
 });
 
 module.exports = (request, response) => {
-    console.log(request.params);
     T.get('search/tweets', { q: '#' + request.params.tag.replace(/ /g, ''), count: 5 })
         .then(result => result.data.statuses.map(tweet => {
             return {

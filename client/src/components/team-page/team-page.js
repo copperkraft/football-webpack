@@ -9,7 +9,7 @@ import {teamInfo} from 'models/team-info';
 function TeamsViewModel(params) {
     this.team = teamInfo.get(params.id);
 
-    this.selectedTab = ko.observable('info-tab');
+    this.selectedTab = ko.observable('fixtures-tab');
 
     this.changeSelection = (select) => {
         this.selectedTab(select);
