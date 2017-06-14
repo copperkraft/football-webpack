@@ -1,15 +1,17 @@
 <div data-bind="if: fixtures">
-    <ul class="players-list" data-bind="foreach: fixtures">
-        <li class="players-list__name">
-            <div class="players-list__name">
-                <span data-bind="homeTeamName"></span>
+    <ul class="fixtures-list" data-bind="foreach: fixtures">
+        <li class="fixtures-list__element">
+            <div class="fixtures-list__title">
+                <span data-bind="text: homeTeamName"></span>
                 -
-                <span data-bind="awayTeamName"></span>
-                <span data-bind="if: status === 'FINISHED'">
-                <span data-bind="goalsHomeTeam"></span>
+                <span data-bind="text: awayTeamName"></span>
+                <span data-bind="if: isFinished">
+                <span data-bind="text: goalsHomeTeam"></span>
                 -
-                <span data-bind="goalsAwayTeam"></span>
+                <span data-bind="text: goalsAwayTeam"></span>
             </span>
+            </div>
+            <div class="fixtures-list__date" data-bind="text: date.toLocaleDateString()">
             </div>
         </li>
     </ul>

@@ -6,7 +6,10 @@ import {teamFixturesRepository} from 'data/team-fixtures-repository';
 export const fixturesList = {
     get: teamId => {
         const fixturesList = ko.observableArray();
-        teamFixturesRepository.get(teamId).then(data => fixturesList(data.map(item => new Fixture(item))));
+        teamFixturesRepository.get(teamId).then(data => {
+            console.log(data.map(item => new Fixture(item)));
+            return fixturesList(data.map(item => new Fixture(item)));
+        });
         return fixturesList;
     }
 };
