@@ -10,11 +10,10 @@ module.exports = (request, response) => {
     console.log(request.params);
     T.get('search/tweets', { q: '#' + request.params.tag.replace(/ /g, ''), count: 5 })
         .then(result => result.data.statuses.map(tweet => {
-            const date = new Date(tweet.created_at);
             return {
                 text: tweet.text,
                 user: tweet.user.screen_name,
-                time: `${date.getHours()}:${date.getMinutes()} ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
+                time: new Date(tweet.created_at)
             };
         }))
         .then(result => {

@@ -3,6 +3,6 @@ export default function Player (dataObject) {
     this.name = dataObject.name;
     this.jerseyNumber = dataObject.jerseyNumber;
     this.position = dataObject.position;
-    this.dateOfBirth = dataObject.dateOfBirth;
+    this.dateOfBirth = new Date(dataObject.dateOfBirth);
     this.marketValue = dataObject.marketValue;
 }
