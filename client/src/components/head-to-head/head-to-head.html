@@ -1,6 +1,13 @@
 <div class="head-to-head" data-bind="with: fixture()()">
     <div class="title title--wide" data-bind="text: homeTeamName + ' - ' + awayTeamName"></div>
     <div class="head-to-head__info">
+        <div data-bind="text: new Date(date).toDateString()"></div>
+        <div class="head-to-head__odds" data-bind="if: odds">
+            Odds:
+            Home win: <span data-bind="text: odds.homeWin"></span>
+            Draw: <span data-bind="text: odds.draw"></span>
+            Away win: <span data-bind="text: odds.awayWin"></span>
+        </div>
 
     </div>
     <div class="fixtures-list" data-bind="foreach: head2head">
@@ -13,8 +20,7 @@
                 -
                 <span data-bind="text: goalsAwayTeam"></span>
             </div>
-            <div class="fixtures-list__date" data-bind="text: new Date(date).toLocaleDateString()">
-            </div>
+            <div class="fixtures-list__date" data-bind="text: new Date(date).toDateString()"></div>
         </div>
     </div>
 </div>
