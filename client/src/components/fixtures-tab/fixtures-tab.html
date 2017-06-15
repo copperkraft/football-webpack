@@ -1,8 +1,14 @@
 <div data-bind="if: selectedFixture()">
     <head-to-head params="fixture: selectedFixture"></head-to-head>
 </div>
+<div class="date-select">
+    From: <input data-bind="value: dateFrom" type="text" class="js-datepicker-from">
+    <br>
+    To: <input data-bind="value: dateTo" type="text" class="js-datepicker-to">
+</div>
+
 <div data-bind="if: fixtures">
-    <ul class="fixtures-list" data-bind="foreach: fixtures">
+    <ul class="fixtures-list" data-bind="foreach: displayedFixtures">
         <li class="fixtures-list__element"
             data-bind="click: () => $component.selectedFixture($data), css: {'fixtures-list__element--selected': $component.selectedFixture() ? $component.selectedFixture().id === id : false}">
             <div class="fixtures-list__title">
