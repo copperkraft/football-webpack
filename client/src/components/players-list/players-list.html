@@ -1,4 +1,12 @@
-<ul class="players-list" data-bind="foreach: players()">
+<div class="pagination" data-bind="css: {'pagination--disable': pageCount() <= 1}">
+    <div data-bind="click: toFirstPage" class="pagination__page">First</div>
+    <div data-bind="click: previousPage" class="pagination__page">Prev</div>
+    <div data-bind="text: currentPage() + 1" class="pagination__page"></div>
+    <div data-bind="click: nextPage" class="pagination__page">Next</div>
+    <div data-bind="click: toLastPage" class="pagination__page">Last</div>
+</div>
+
+<ul class="players-list" data-bind="foreach: displayedPlayers()">
     <li class="players-list__element">
         <div class="players-list__title">
             <span data-bind="text: jerseyNumber"></span>
@@ -15,3 +23,11 @@
         </div>
     </li>
 </ul>
+
+<div class="pagination" data-bind="css: {'pagination--disable': pageCount() <= 1}">
+    <div data-bind="click: toFirstPage" class="pagination__page">First</div>
+    <div data-bind="click: previousPage" class="pagination__page">Prev</div>
+    <div data-bind="text: currentPage() + 1" class="pagination__page"></div>
+    <div data-bind="click: nextPage" class="pagination__page">Next</div>
+    <div data-bind="click: toLastPage" class="pagination__page">Last</div>
+</div>
