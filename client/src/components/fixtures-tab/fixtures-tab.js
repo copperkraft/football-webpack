@@ -12,24 +12,26 @@ function TeamsViewModel(params) {
     this.dateFrom = ko.observable(this.season.from.toDateString());
     this.dateTo = ko.observable(this.season.to.toDateString());
 
-    const datepickerFrom = ko.observable(new Pikaday({
+    new Pikaday({
         field: document.getElementsByClassName('js-datepicker-from')[0],
         minDate: this.season.from,
         maxDate: this.season.to,
         defaultDate: this.season.from,
         toString: date => date.toDateString(),
-    }));
-    const datepickerTo = ko.observable(new Pikaday({
+        parse: (dateString) => new Date(dateString)
+    });
+    new Pikaday({
         field: document.getElementsByClassName('js-datepicker-to')[0],
         minDate: this.season.from,
         maxDate: this.season.to,
         defaultDate: this.season.to,
         toString: date => date.toDateString(),
-    }));
+        parse: (dateString) => new Date(dateString)
+    });
 
     this.fixtures = fixturesList.get(params.id);
 
-    this.displayedFixtures = ko.computed(() => {
+    const relevantFixtures = ko.computed(() => {
         if (this.fixtures && this.fixtures()) {
             return this.fixtures().filter(fixture => {
                 return fixture.date > new Date(this.dateFrom()) &&
@@ -37,6 +39,17 @@ function TeamsViewModel(params) {
             });
         }
     });
+
+    this.pageSize = ko.observable(5);
+    this.currentPage = ko.observable(0);
+    this.pageCount = ko.computed(() => Math.ceil(relevantFixtures().length / this.pageSize()));
+    this.nextPage = () => this.currentPage(this.pageCount() - 1 > this.currentPage() ? this.currentPage() + 1 : this.currentPage());
+    this.previousPage = () => this.currentPage(this.currentPage() > 0 ? this.currentPage() - 1 : 0);
+    this.toFirstPage = () => this.currentPage(0);
+    this.toLastPage = () => this.currentPage(this.pageCount() - 1);
+    this.displayedFixtures = ko.computed(() => relevantFixtures().filter((item, index) => {
+        return index >= this.currentPage() * this.pageSize() && index < (this.currentPage() + 1) * this.pageSize();
+    }));
 
 
     this.selectedFixture = ko.observable();

@@ -1,0 +1,23 @@
+.pagination {
+    width: 400px;
+    display: table;
+    border: 1px solid #444444;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    .pagination__page {
+        cursor: pointer;
+        display: table-cell;
+        text-align: center;
+        padding: 1em;
+        &:hover {
+            text-decoration: underline;
+        }
+        &--disabled {
+            color: #aaaaaa;
+            text-decoration: none;
+        }
+    }
+    &--disable {
+        display: none;
+    }
+}
