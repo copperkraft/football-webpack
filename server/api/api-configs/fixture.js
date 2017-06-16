@@ -20,6 +20,11 @@ module.exports = {
             goalsHomeTeam: data.fixture.result.goalsHomeTeam,
             goalsAwayTeam: data.fixture.result.goalsAwayTeam,
             odds: data.fixture.odds,
+            stat: {
+                homeTeamWins: data.head2head.homeTeamWins,
+                awayTeamWins: data.head2head.awayTeamWins,
+                draws: data.head2head.draws
+            },
             head2head: data.head2head.fixtures.map(fixture => {
                 return {
                     date: fixture.date,

@@ -4,11 +4,18 @@
         <div data-bind="text: new Date(date).toDateString()"></div>
         <div class="head-to-head__odds" data-bind="if: odds">
             Odds:
-            Home win: <span data-bind="text: odds.homeWin"></span>
-            Draw: <span data-bind="text: odds.draw"></span>
+            <br>
+            Home win: <span data-bind="text: odds.homeWin"></span>,
+            Draw: <span data-bind="text: odds.draw"></span>,
             Away win: <span data-bind="text: odds.awayWin"></span>
         </div>
-
+        <div class="head-to-head__odds" data-bind="if: odds">
+            Head to head statistics:
+            <br>
+            Home wins: <span data-bind="text: stat.homeTeamWins"></span>,
+            Draws: <span data-bind="text: stat.draws"></span>,
+            Away wins: <span data-bind="text: stat.awayTeamWins"></span>
+        </div>
     </div>
     <div class="fixtures-list" data-bind="foreach: head2head">
         <div class="fixtures-list__element">
