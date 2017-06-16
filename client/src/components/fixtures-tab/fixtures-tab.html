@@ -7,39 +7,19 @@
     To: <input data-bind="value: dateTo" type="text" class="js-datepicker-to">
 </div>
 
-<div class="pagination" data-bind="css: {'pagination--disable': pageCount() <= 1}">
-    <div data-bind="click: toFirstPage" class="pagination__page">First</div>
-    <div data-bind="click: previousPage" class="pagination__page">Prev</div>
-    <div data-bind="text: (currentPage() + 1) + '/' + pageCount()" class="pagination__page"></div>
-    <div data-bind="click: nextPage" class="pagination__page">Next</div>
-    <div data-bind="click: toLastPage" class="pagination__page">Last</div>
-</div>
-
-
-<div data-bind="if: fixtures">
-    <ul class="fixtures-list" data-bind="foreach: displayedFixtures">
-        <li class="fixtures-list__element"
-            data-bind="click: () => $component.selectedFixture($data), css: {'fixtures-list__element--selected': $component.selectedFixture() ? $component.selectedFixture().id === id : false}">
-            <div class="fixtures-list__title">
-                <span data-bind="text: homeTeamName"></span>
-                -
-                <span data-bind="text: awayTeamName"></span>
-                <span data-bind="if: isFinished">
+<list-paginator class="fixtures-list" params="array: displayedFixtures()">
+    <div class="fixtures-list__element">
+        <div class="fixtures-list__title">
+            <span data-bind="text: homeTeamName"></span>
+            -
+            <span data-bind="text: awayTeamName"></span>
+            <span data-bind="if: isFinished">
                 <span data-bind="text: goalsHomeTeam"></span>
                 -
                 <span data-bind="text: goalsAwayTeam"></span>
             </span>
-            </div>
-            <div class="fixtures-list__date" data-bind="text: date.toDateString()">
-            </div>
-        </li>
-    </ul>
-</div>
-
-<div class="pagination" data-bind="css: {'pagination--disable': pageCount() <= 1}">
-    <div data-bind="click: toFirstPage" class="pagination__page">First</div>
-    <div data-bind="click: previousPage" class="pagination__page">Prev</div>
-    <div data-bind="text: (currentPage() + 1) + '/' + pageCount()" class="pagination__page"></div>
-    <div data-bind="click: nextPage" class="pagination__page">Next</div>
-    <div data-bind="click: toLastPage" class="pagination__page">Last</div>
-</div>
+        </div>
+        <div class="fixtures-list__date" data-bind="text: date.toDateString()">
+        </div>
+    </div>
+</list-paginator>

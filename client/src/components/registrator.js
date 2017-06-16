@@ -9,6 +9,7 @@ import * as info from 'components/info-tab/info-tab';
 import * as fixtures from 'components/fixtures-tab/fixtures-tab';
 import * as tweets from 'components/tweets-block/tweets-block';
 import * as headToHead from 'components/head-to-head/head-to-head';
+import * as paginator from 'components/list-paginator/list-paginator';
 
 ko.components.register('league-table', league);
 ko.components.register('league-teams', teams);
@@ -19,6 +20,7 @@ ko.components.register('info-tab', info);
 ko.components.register('fixtures-tab', fixtures);
 ko.components.register('tweets-block', tweets);
 ko.components.register('head-to-head', headToHead);
+ko.components.register('list-paginator', paginator);
 
 ko.applyBindings();
 
