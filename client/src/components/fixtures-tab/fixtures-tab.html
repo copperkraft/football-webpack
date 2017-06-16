@@ -10,7 +10,7 @@
 <div class="pagination" data-bind="css: {'pagination--disable': pageCount() <= 1}">
     <div data-bind="click: toFirstPage" class="pagination__page">First</div>
     <div data-bind="click: previousPage" class="pagination__page">Prev</div>
-    <div data-bind="text: currentPage() + 1" class="pagination__page"></div>
+    <div data-bind="text: (currentPage() + 1) + '/' + pageCount()" class="pagination__page"></div>
     <div data-bind="click: nextPage" class="pagination__page">Next</div>
     <div data-bind="click: toLastPage" class="pagination__page">Last</div>
 </div>
@@ -39,7 +39,7 @@
 <div class="pagination" data-bind="css: {'pagination--disable': pageCount() <= 1}">
     <div data-bind="click: toFirstPage" class="pagination__page">First</div>
     <div data-bind="click: previousPage" class="pagination__page">Prev</div>
-    <div data-bind="text: currentPage() + 1" class="pagination__page"></div>
+    <div data-bind="text: (currentPage() + 1) + '/' + pageCount()" class="pagination__page"></div>
     <div data-bind="click: nextPage" class="pagination__page">Next</div>
     <div data-bind="click: toLastPage" class="pagination__page">Last</div>
 </div>
