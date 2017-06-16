@@ -31,7 +31,7 @@ function TeamsViewModel(params) {
 
     this.fixtures = fixturesList.get(params.id);
 
-    const relevantFixtures = ko.computed(() => {
+    const relevantFixtures = ko.pureComputed(() => {
         if (this.fixtures && this.fixtures()) {
             return this.fixtures().filter(fixture => {
                 return fixture.date > new Date(this.dateFrom()) &&

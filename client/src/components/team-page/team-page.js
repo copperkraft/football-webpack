@@ -2,9 +2,7 @@ import ko from 'knockout';
 
 import template from 'components/team-page/team-page.html';
 
-import {favorites} from 'models/favorites';
 import {teamInfo} from 'models/team-info';
-
 
 function TeamsViewModel(params) {
     this.team = teamInfo.get(params.id);

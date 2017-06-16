@@ -1,5 +1,3 @@
-import ko from 'knockout';
-
 import template from 'components/tweets-block/tweets-block.html';
 
 import {tweets} from 'models/tweets';
