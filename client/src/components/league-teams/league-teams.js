@@ -2,7 +2,7 @@ import ko from 'knockout';
 
 import template from 'components/league-teams/league-teams.html';
 
-import {leaguesList} from 'providers/leagues-list';
+import {leaguesList} from 'constants/leagues-list';
 import {leagueTeams} from 'providers/league-teams';
 import {favorites} from 'providers/favorites';
 

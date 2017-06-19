@@ -2,7 +2,7 @@ import ko from 'knockout';
 
 import template from 'components/league-table/league-table.html';
 
-import {leaguesList} from 'providers/leagues-list';
+import {leaguesList} from 'constants/leagues-list';
 import {leagueTable} from 'providers/league-table';
 
 class LeagueViewModel {
