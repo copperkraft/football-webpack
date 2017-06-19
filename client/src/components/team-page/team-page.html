@@ -2,11 +2,11 @@
     <h1 class="title" data-bind="if: team()"><span data-bind="text: team().fullName"></span></h1>
     <div class="team-page__tabs">
         <div class="team-page__tab-item"
-             data-bind="css: {'team-page__tab-item--selected': selectedTab()==='info-tab'}, click: changeSelection.bind(null, 'info-tab')">
+             data-bind="css: {'team-page__tab-item--selected': selectedTab()==='info-tab'}, click: changeSelection.bind($component, 'info-tab')">
             Info
         </div>
         <div class="team-page__tab-item"
-             data-bind="css: {'team-page__tab-item--selected': selectedTab()==='fixtures-tab'}, click: changeSelection.bind(null, 'fixtures-tab')">
+             data-bind="css: {'team-page__tab-item--selected': selectedTab()==='fixtures-tab'}, click: changeSelection.bind($component, 'fixtures-tab')">
             Fixtures
         </div>
     </div>
