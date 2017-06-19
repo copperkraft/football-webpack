@@ -1,4 +1,4 @@
-import request from 'data/request';
+import request from 'utils/request';
 import {indexes as leagueIds} from 'constants/indexes';
 
 export const leagueTableRepository = {

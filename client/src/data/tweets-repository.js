@@ -1,4 +1,4 @@
-import request from 'data/request';
+import request from 'utils/request';
 
 export const tweetsRepository = {
     get: tag => {

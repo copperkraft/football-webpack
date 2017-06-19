@@ -50,7 +50,8 @@ module.exports = {
             models: path.resolve(__dirname, 'client/src/models/'),
             data: path.resolve(__dirname, 'client/src/data/'),
             providers: path.resolve(__dirname, 'client/src/providers/'),
-            constants: path.resolve(__dirname, 'client/src/constants/')
+            constants: path.resolve(__dirname, 'client/src/constants/'),
+            utils: path.resolve(__dirname, 'client/src/utils/')
         }
     }
 };
