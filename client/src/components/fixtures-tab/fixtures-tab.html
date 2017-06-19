@@ -7,8 +7,8 @@
     To: <input data-bind="value: dateTo" type="text" class="js-datepicker-to">
 </div>
 
-<list-paginator class="fixtures-list" params="array: displayedFixtures()">
-    <div class="fixtures-list__element">
+<list-paginator class="fixtures-list" params="array: relevantFixtures(), parentComponent: $component">
+    <div class="fixtures-list__element" data-bind="click: () => $component.parentComponent.selectedFixture($data)">
         <div class="fixtures-list__title">
             <span data-bind="text: homeTeamName"></span>
             -
