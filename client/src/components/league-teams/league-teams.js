@@ -2,9 +2,9 @@ import ko from 'knockout';
 
 import template from 'components/league-teams/league-teams.html';
 
-import {leaguesList} from 'models/leagues-list';
-import {leagueTeams} from 'models/league-teams';
-import {favorites} from 'models/favorites';
+import {leaguesList} from 'providers/leagues-list';
+import {leagueTeams} from 'providers/league-teams';
+import {favorites} from 'providers/favorites';
 
 class TeamsViewModel {
     constructor() {

@@ -1,6 +1,6 @@
 import template from 'components/tweets-block/tweets-block.html';
 
-import {tweets} from 'models/tweets';
+import {tweets} from 'providers/tweets';
 
 class TeamsViewModel {
     constructor(params) {

@@ -2,7 +2,7 @@ import ko from 'knockout';
 
 import template from 'components/team-page/team-page.html';
 
-import {teamInfo} from 'models/team-info';
+import {teamInfo} from 'providers/team-info';
 
 class TeamsViewModel {
     constructor(params) {

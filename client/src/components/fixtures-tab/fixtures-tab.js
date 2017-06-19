@@ -1,7 +1,7 @@
 import ko from 'knockout';
 
 import template from 'components/fixtures-tab/fixtures-tab.html';
-import {fixturesList} from 'models/fixtures-list';
+import {fixturesList} from 'providers/fixtures-list';
 import Pikaday from 'pikaday';
 
 class TeamsViewModel {
