@@ -9,10 +9,11 @@ class LeagueViewModel {
     constructor() {
         this.leagues = leaguesList;
         this.selectedLeagueName = ko.observable(leaguesList[0]);
+        this.selectedLeague = ko.observable(leagueTable.get(this.selectedLeagueName()));
 
-        this.selectedLeague = ko.pureComputed(function() {
-            return leagueTable.get(this.selectedLeagueName());
-        }, this);
+        this.selectedLeagueName.subscribe(() => {
+            this.selectedLeague(leagueTable.get(this.selectedLeagueName()));
+        });
     }
 }
 

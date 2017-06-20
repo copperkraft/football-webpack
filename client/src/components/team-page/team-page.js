@@ -10,7 +10,7 @@ class TeamsViewModel {
 
         this.selectedTab = ko.observable('fixtures-tab');
 
-        this.tab = ko.computed(function () {
+        this.tab = ko.pureComputed(function () {
             return {
                 name: this.selectedTab,
                 params: {

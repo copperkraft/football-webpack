@@ -9,12 +9,15 @@ import {favorites} from 'providers/favorites';
 class TeamsViewModel {
     constructor() {
         this.favorites = favorites;
-
         this.leagues = leaguesList;
+
         this.selectedLeagueName = ko.observable(leaguesList()[0]);
-        this.selectedLeagueTeams = ko.pureComputed(function() {
-            return leagueTeams.get(this.selectedLeagueName());
-        }, this);
+
+        this.selectedLeagueTeams = ko.observable(leagueTeams.get(this.selectedLeagueName()));
+
+        this.selectedLeagueName.subscribe(() => {
+            this.selectedLeagueTeams(leagueTeams.get(this.selectedLeagueName()));
+        });
     }
 
     toggleFavoriteState(name) {
