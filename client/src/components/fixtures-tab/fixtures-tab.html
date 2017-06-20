@@ -2,9 +2,9 @@
     <head-to-head params="fixture: selectedFixture"></head-to-head>
 </div>
 <div class="date-select">
-    From: <input data-bind="value: dateFrom" type="text" class="js-datepicker-from">
+    From: <input data-bind="calendar: {from: dateFrom, to: dateTo, value: dateFrom}">
     <br>
-    To: <input data-bind="value: dateTo" type="text" class="js-datepicker-to">
+    To: <input data-bind="calendar: {from: dateFrom, to: dateTo, value: dateTo}">
 </div>
 
 <list-paginator class="fixtures-list" params="array: relevantFixtures(), parentComponent: $component">

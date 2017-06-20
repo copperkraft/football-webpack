@@ -51,7 +51,8 @@ module.exports = {
             data: path.resolve(__dirname, 'client/src/data/'),
             providers: path.resolve(__dirname, 'client/src/providers/'),
             constants: path.resolve(__dirname, 'client/src/constants/'),
-            utils: path.resolve(__dirname, 'client/src/utils/')
+            utils: path.resolve(__dirname, 'client/src/utils/'),
+            bindings: path.resolve(__dirname, 'client/src/bindings/')
         }
     }
 };
