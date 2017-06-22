@@ -7,6 +7,6 @@ module.exports = app => {
     app.get('/api/teams/:id', apiRetranslator(require('./api-configs/teams')));
     app.get('/api/table/:id', apiRetranslator(require('./api-configs/league-table')));
     app.get('/api/fixture/:id', apiRetranslator(require('./api-configs/fixture')));
-    app.get('/api/twitter/:tag', require('./twitter-api'));
+    app.get('/api/twitter/:tag', apiRetranslator(require('./api-configs/twitter')));
 };
 
