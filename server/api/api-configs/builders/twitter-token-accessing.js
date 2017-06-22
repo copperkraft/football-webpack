@@ -16,11 +16,4 @@ const options = {
     },
     json: true
 };
-
-rp.post(options)
-    .then(function (data) {
-        console.log(data);
-    })
-    .catch(function (err) {
-        console.log(err.message);
-    });
+module.exports = rp.post(options);
