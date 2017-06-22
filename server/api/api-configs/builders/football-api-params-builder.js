@@ -1,5 +1,5 @@
 module.exports = (url, isMinified) => {
-    return {
+    const params = {
         uri: `http://api.football-data.org/v1/${url}`,
         method: 'GET',
         headers: {
@@ -8,4 +8,8 @@ module.exports = (url, isMinified) => {
         },
         json: true
     };
+
+    return new Promise((resolve, reject) => {
+        resolve(params);
+    });
 };

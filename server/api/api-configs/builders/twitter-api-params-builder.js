@@ -8,5 +8,7 @@ module.exports = (url) => {
         json: true
     };
 
-    return params;
+    return new Promise((resolve, reject) => {
+        resolve(params);
+    });
 };
