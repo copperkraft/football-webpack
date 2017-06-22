@@ -1,14 +1,11 @@
 const rp = require('request-promise-native');
 
-
-const T = {
+const keys = {
     consumer_key: 'Qu6V0uhsDglEwSGL825maZk1x',
     consumer_secret: 'iS7t0xhts6GmwTZajcUfLAe5zoStcaX5FZG5H79X9m2fMSlzd1',
 };
 
-/*POST /oauth2/token HTTP/1.1 */
-
-const b64Credentials = new Buffer(T.consumer_key + ':' + T.consumer_secret).toString('base64');
+const b64Credentials = new Buffer(keys.consumer_key + ':' + keys.consumer_secret).toString('base64');
 
 const options = {
     uri: 'https://api.twitter.com/oauth2/token',
@@ -19,10 +16,6 @@ const options = {
     },
     json: true
 };
-
-
-
-
 
 rp.post(options)
     .then(function (data) {

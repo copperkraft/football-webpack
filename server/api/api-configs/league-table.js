@@ -1,4 +1,4 @@
-const paramsBuilder = require('./football-api-params-builder');
+const paramsBuilder = require('./builders/football-api-params-builder');
 
 module.exports = {
     params: params => {
