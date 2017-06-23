@@ -5,7 +5,10 @@ import {fixtureInfo} from 'providers/fixture-info';
 
 class FixtureViewModel {
     constructor(params) {
-        this.fixture = fixtureInfo.get(params.fixture().id);
+        this.fixture = ko.observable(fixtureInfo.get(params.fixture().id));
+        params.fixture.subscribe((data) => {
+            this.fixture(fixtureInfo.get(data.id));
+        });
     }
 }
 export {FixtureViewModel as viewModel, template};
