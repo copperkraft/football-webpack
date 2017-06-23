@@ -6,14 +6,14 @@ class TeamsViewModel {
     constructor(params) {
         this.array = params.array;
         this.parentComponent = params.parentComponent;
-        this.pageSize = 5;
+        this.pageSize =  ko.observable(5);
         this.currentPage = ko.observable(0);
         this.displayedItems = ko.pureComputed(() => {
-            const first = this.currentPage() * this.pageSize;
-            return this.array().slice(first, first + this.pageSize);
+            const first = this.currentPage() * this.pageSize();
+            return this.array().slice(first, first + this.pageSize());
         });
         this.pageCount = ko.pureComputed(() => {
-            return Math.ceil(this.array().length / this.pageSize);
+            return Math.ceil(this.array().length / this.pageSize());
         });
     }
 
