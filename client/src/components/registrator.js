@@ -8,7 +8,7 @@ import * as players from 'components/players-list/players-list';
 import * as info from 'components/info-tab/info-tab';
 import * as fixtures from 'components/fixtures-tab/fixtures-tab';
 import * as tweets from 'components/tweets-block/tweets-block';
-import * as headToHead from 'components/head-to-head/head-to-head';
+import 'components/head-to-head/head-to-head';
 import * as paginator from 'components/list-paginator/list-paginator';
 import * as header from 'components/header-navigation/header-navigation';
 
@@ -21,7 +21,6 @@ ko.components.register('players-list', players);
 ko.components.register('info-tab', info);
 ko.components.register('fixtures-tab', fixtures);
 ko.components.register('tweets-block', tweets);
-ko.components.register('head-to-head', headToHead);
 ko.components.register('list-paginator', paginator);
 ko.components.register('header-navigation', header);
 
