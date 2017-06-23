@@ -1,3 +1,4 @@
+import './tweets-block.less';
 import template from 'components/tweets-block/tweets-block.html';
 
 import {tweets} from 'providers/tweets';

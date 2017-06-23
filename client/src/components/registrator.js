@@ -12,6 +12,7 @@ import * as headToHead from 'components/head-to-head/head-to-head';
 import * as paginator from 'components/list-paginator/list-paginator';
 import * as header from 'components/header-navigation/header-navigation';
 
+
 ko.components.register('league-table', league);
 ko.components.register('league-teams', teams);
 ko.components.register('router', router);

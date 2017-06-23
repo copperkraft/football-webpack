@@ -1,5 +1,6 @@
 import ko from 'knockout';
 
+import './list-paginator.less';
 import template from 'components/list-paginator/list-paginator.html';
 
 class TeamsViewModel {

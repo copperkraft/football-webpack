@@ -1,5 +1,6 @@
 import ko from 'knockout';
 
+import './team-page.less';
 import template from 'components/team-page/team-page.html';
 
 import {teamInfo} from 'providers/team-info';
