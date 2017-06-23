@@ -1,7 +1,7 @@
 import ko from 'knockout';
 import Pikaday from 'pikaday';
 
-export const calendar = {
+ko.bindingHandlers.calendar = {
     init: function(element, valueAccessor) {
         element.value = valueAccessor().value();
 
