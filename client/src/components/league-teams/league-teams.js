@@ -1,5 +1,6 @@
 import ko from 'knockout';
 
+import './league-teams.less';
 import template from 'components/league-teams/league-teams.html';
 
 import {leaguesList} from 'constants/leagues-list';

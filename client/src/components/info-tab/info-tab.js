@@ -1,3 +1,4 @@
+import './info-tab.less';
 import template from 'components/info-tab/info-tab.html';
 
 class TeamsViewModel {

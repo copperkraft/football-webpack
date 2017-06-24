@@ -1,6 +1,10 @@
 import ko from 'knockout';
 
-import template from 'components/fixtures-tab/fixtures-tab.html';
+
+import './fixtures-tab.less';
+import template from './fixtures-tab.html';
+
+import 'bindings/calendar';
 import {fixturesList} from 'providers/fixtures-list';
 
 class TeamsViewModel {

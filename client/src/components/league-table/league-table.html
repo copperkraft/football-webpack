@@ -1,6 +1,6 @@
 <div class="container">
-    <h1 class="title"><span data-bind="text: selectedLeagueName()"></span> table</h1>
-    <select class="select" data-bind="options: leagues(), value: selectedLeagueName"></select>
+    <h1 class="title"><span data-bind="text: selectedLeagueName"></span> table</h1>
+    <select class="select" data-bind="options: leagues, value: selectedLeagueName"></select>
     <table class="league-table">
         <thead >
         <tr class="league-table__head">
@@ -15,7 +15,7 @@
             <th class="league-table__head-item">P</th>
         </tr>
         </thead>
-        <tbody data-bind="foreach: selectedLeague()">
+        <tbody data-bind="foreach: selectedLeague()"> <!-- This binding does not work without parenthesis. Why? -->
         <tr class="league-table__row">
             <td class="league-table__item" data-bind="text: position"></td>
             <td class="league-table__item league-table__item--wide">
