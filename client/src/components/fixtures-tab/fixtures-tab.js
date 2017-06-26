@@ -3,11 +3,12 @@ import ko from 'knockout';
 
 import './fixtures-tab.less';
 import template from './fixtures-tab.html';
+import register from 'components/component-registrator';
 
 import 'bindings/calendar';
 import {fixturesList} from 'providers/fixtures-list';
 
-class TeamsViewModel {
+class ViewModel {
     constructor(params) {
         this.season = { //todo: fetch data from server
             from: new Date('09.01.2016'),
@@ -34,4 +35,5 @@ class TeamsViewModel {
         this.id = params.id;
     }
 }
-export {TeamsViewModel as viewModel, template};
+
+register('fixtures-tab', ViewModel, template);

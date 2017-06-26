@@ -1,6 +1,9 @@
 import template from 'components/router/router.html';
+import register from 'components/component-registrator';
+
 import ko from 'knockout';
 import routes from 'components/routes';
+
 
 class RouterViewModel {
     constructor() {
@@ -61,4 +64,4 @@ class RouterViewModel {
     }
 }
 
-export {RouterViewModel as viewModel, template};
+register('router', RouterViewModel, template);

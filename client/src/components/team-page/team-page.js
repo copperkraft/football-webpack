@@ -2,10 +2,11 @@ import ko from 'knockout';
 
 import './team-page.less';
 import template from 'components/team-page/team-page.html';
+import register from 'components/component-registrator';
 
 import {teamInfo} from 'providers/team-info';
 
-class TeamsViewModel {
+class ViewModel {
     constructor(params) {
         this.team = ko.observable();
         teamInfo.get(params.id).then(data => this.team(data));
@@ -28,4 +29,4 @@ class TeamsViewModel {
     }
 }
 
-export {TeamsViewModel as viewModel, template};
+register('team-page', ViewModel, template);

@@ -38,6 +38,10 @@
         ],
         "no-console": [
             "off"
+        ],
+        "object-shorthand": [
+            "error",
+            "always"
         ]
     }
 }

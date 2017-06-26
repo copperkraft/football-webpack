@@ -2,12 +2,13 @@ import ko from 'knockout';
 
 import './league-teams.less';
 import template from 'components/league-teams/league-teams.html';
+import register from 'components/component-registrator';
 
 import {leaguesList} from 'constants/leagues-list';
 import {leagueTeams} from 'providers/league-teams';
 import {favorites} from 'providers/favorites';
 
-class TeamsViewModel {
+class ViewModel {
     constructor() {
         this.favorites = favorites;
         this.leagues = leaguesList;
@@ -33,4 +34,4 @@ class TeamsViewModel {
     }
 }
 
-export {TeamsViewModel as viewModel, template};
+register('league-teams', ViewModel, template);
