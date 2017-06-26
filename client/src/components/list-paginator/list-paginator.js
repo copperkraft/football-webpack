@@ -2,10 +2,13 @@ import ko from 'knockout';
 
 import './list-paginator.less';
 import template from 'components/list-paginator/list-paginator.html';
+import register from 'components/component-registrator';
 
-class TeamsViewModel {
+class ViewModel {
     constructor(params) {
-        this.array = params.array;
+        if (params.array) {
+            this.array = params.array;
+        }
         this.parentComponent = params.parentComponent;
         this.pageSize =  ko.observable(5);
         this.currentPage = ko.observable(0);
@@ -39,4 +42,4 @@ class TeamsViewModel {
     }
 }
 
-export {TeamsViewModel as viewModel, template};
+register('list-paginator', ViewModel, template);

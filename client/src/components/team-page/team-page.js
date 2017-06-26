@@ -2,12 +2,17 @@ import ko from 'knockout';
 
 import './team-page.less';
 import template from 'components/team-page/team-page.html';
+import register from 'components/component-registrator';
 
 import {teamInfo} from 'providers/team-info';
 
-class TeamsViewModel {
-    constructor(params) {
-        this.team = teamInfo.get(params.id);
+import 'components/info-tab/info-tab';
+import 'components/fixtures-tab/fixtures-tab';
+
+class ViewModel {
+    constructor(params) { //TODO remove js from html
+        this.team = ko.observable();
+        teamInfo.get(params.id).then(data => this.team(data));
 
         this.selectedTab = ko.observable('fixtures-tab');
 
@@ -27,4 +32,4 @@ class TeamsViewModel {
     }
 }
 
-export {TeamsViewModel as viewModel, template};
+register('team-page', ViewModel, template);

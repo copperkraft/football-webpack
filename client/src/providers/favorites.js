@@ -3,11 +3,11 @@ import ko from 'knockout';
 import {favoriteData} from 'data/favorite-repository';
 
 export const favorites = {
-    add: function(name) {
+    add(name) {
         favoriteData.add(name);
         this.list.push(name);
     },
-    remove: function(name) {
+    remove(name) {
         this.list.remove(name);
         favoriteData.remove(name);
     },

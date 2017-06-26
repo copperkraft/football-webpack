@@ -2,9 +2,11 @@ import ko from 'knockout';
 
 import './head-to-head.less';
 import template from './head-to-head.html';
+import register from 'components/component-registrator';
+
 import {fixtureInfo} from 'providers/fixture-info';
 
-class FixtureViewModel {
+class ViewModel {
     constructor(params) {
         this.fixture = ko.observable();
         fixtureInfo.get(params.fixture().id).then(data =>
@@ -19,8 +21,4 @@ class FixtureViewModel {
     }
 }
 
-if(!ko.components.isRegistered('head-to-head')) {
-    ko.components.register('head-to-head', {viewModel: FixtureViewModel, template: template});
-}
-
-export {FixtureViewModel as viewModel, template};
+register('head-to-head', ViewModel, template);

@@ -7,8 +7,8 @@
     To: <input data-bind="calendar: {from: dateFrom, to: dateTo, value: dateTo}">
 </div>
 
-<list-paginator class="fixtures-list" params="array: relevantFixtures(), parentComponent: $component">
-    <div class="fixtures-list__element" data-bind="click: () => $component.parentComponent.selectedFixture($data)">
+<list-paginator class="fixtures-list" params="array: relevantFixtures, parentComponent: $component">
+    <div class="fixtures-list__element" data-bind="click: () => $component.parentComponent.selectFixture($data)">
         <div class="fixtures-list__title">
             <span data-bind="text: homeTeamName"></span>
             -
@@ -19,7 +19,7 @@
                 <span data-bind="text: goalsAwayTeam"></span>
             </span>
         </div>
-        <div class="fixtures-list__date" data-bind="text: date.toDateString()">
+        <div class="fixtures-list__date" data-bind="text: $component.parentComponent.formatDate(date)">
         </div>
     </div>
 </list-paginator>
