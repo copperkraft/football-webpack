@@ -8,7 +8,9 @@ import {teamPlayers} from 'providers/team-players';
 
 class TeamsViewModel {
     constructor(params) {
-        this.players = teamPlayers.get(params.id);
+        this.players = ko.observable([]);
+        teamPlayers.get(params.id)
+            .then(data => this.players(data));
     }
 }
 export {TeamsViewModel as viewModel, template};

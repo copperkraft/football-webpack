@@ -15,12 +15,10 @@ ko.bindingHandlers.calendar = {
         });
 
         ko.utils.domNodeDisposal.addDisposeCallback(element, () => {
-            console.log('picker destroyed!');
             pickerInstanse.destroy();
         });
 
         element.addEventListener('change', () => {
-            console.log('something changed');
             valueAccessor().value(element.value);
         });
     }

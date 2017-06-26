@@ -17,15 +17,17 @@ class TeamsViewModel {
         this.dateFrom = ko.observable(this.season.from.toDateString());
         this.dateTo = ko.observable(this.season.to.toDateString());
 
-        this.fixtures = fixturesList.get(params.id);
+        this.fixtures = ko.observable();
+        fixturesList.get(params.id).then(data => this.fixtures(data));
 
         this.relevantFixtures = ko.pureComputed(() => {
-            if (this.fixtures && this.fixtures()) {
+            if (this.fixtures()) {
                 return this.fixtures().filter(fixture => {
                     return fixture.date > new Date(this.dateFrom()) &&
                         fixture.date < new Date(this.dateTo());
                 });
             }
+            return [];
         });
 
         this.selectedFixture = ko.observable();

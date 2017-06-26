@@ -5,10 +5,6 @@ import {teamInfoRepository} from 'data/team-info-repository';
 
 export const teamInfo = {
     get: teamId => {
-        const teamInfo = ko.observable();
-        teamInfoRepository.get(teamId).then(data => {
-            teamInfo(new Team(data));
-        });
-        return teamInfo;
+        return teamInfoRepository.get(teamId).then(data => new Team(data));
     }
 };

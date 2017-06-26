@@ -5,8 +5,6 @@ import {leagueTeamsRepository} from 'data/league-teams-repository';
 
 export const leagueTeams = {
     get: leagueTitle => {
-        const leagueTeams = ko.observableArray();
-        leagueTeamsRepository.get(leagueTitle).then(data => leagueTeams(data.map(item => new Team(item))));
-        return leagueTeams;
+        return leagueTeamsRepository.get(leagueTitle).then(data => data.map(item => new Team(item)));
     }
 };

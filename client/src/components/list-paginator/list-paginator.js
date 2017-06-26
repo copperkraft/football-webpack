@@ -5,7 +5,9 @@ import template from 'components/list-paginator/list-paginator.html';
 
 class TeamsViewModel {
     constructor(params) {
-        this.array = params.array;
+        if (params.array) {
+            this.array = params.array;
+        }
         this.parentComponent = params.parentComponent;
         this.pageSize =  ko.observable(5);
         this.currentPage = ko.observable(0);

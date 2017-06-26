@@ -13,7 +13,8 @@ class LeagueViewModel {
         this.selectedLeague = ko.observable();
 
         this.selectedLeagueName.subscribe(() => {
-            this.selectedLeague(leagueTable.get(this.selectedLeagueName()));
+            leagueTable.get(this.selectedLeagueName())
+                .then(data => this.selectedLeague(data));
         });
     }
 }

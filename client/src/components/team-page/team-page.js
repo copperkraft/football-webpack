@@ -7,7 +7,8 @@ import {teamInfo} from 'providers/team-info';
 
 class TeamsViewModel {
     constructor(params) {
-        this.team = teamInfo.get(params.id);
+        this.team = ko.observable();
+        teamInfo.get(params.id).then(data => this.team(data));
 
         this.selectedTab = ko.observable('fixtures-tab');
 

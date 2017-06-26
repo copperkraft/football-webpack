@@ -7,7 +7,7 @@
     To: <input data-bind="calendar: {from: dateFrom, to: dateTo, value: dateTo}">
 </div>
 
-<list-paginator class="fixtures-list" params="array: relevantFixtures(), parentComponent: $component">
+<list-paginator class="fixtures-list" params="array: relevantFixtures, parentComponent: $component">
     <div class="fixtures-list__element" data-bind="click: () => $component.parentComponent.selectedFixture($data)">
         <div class="fixtures-list__title">
             <span data-bind="text: homeTeamName"></span>
