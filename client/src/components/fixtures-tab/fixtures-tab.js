@@ -8,6 +8,9 @@ import register from 'components/component-registrator';
 import 'bindings/calendar';
 import {fixturesList} from 'providers/fixtures-list';
 
+import 'components/head-to-head/head-to-head';
+import 'components/list-paginator/list-paginator';
+
 class ViewModel {
     constructor(params) {
         this.season = { //todo: fetch data from server

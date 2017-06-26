@@ -1,4 +1,8 @@
-const routes = [
+import 'components/league-teams/league-teams';
+import 'components/league-table/league-table';
+import 'components/team-page/team-page';
+
+export default [
     {
         path: '/league',
         component: 'league-table'
@@ -12,5 +16,3 @@ const routes = [
         component: 'team-page'
     }
 ];
-
-export default routes;

@@ -6,6 +6,7 @@ import register from 'components/component-registrator';
 
 import {teamPlayers} from 'providers/team-players';
 
+import 'components/list-paginator/list-paginator';
 
 class ViewModel {
     constructor(params) {
