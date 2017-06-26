@@ -37,6 +37,14 @@ class ViewModel {
         this.selectedFixture = ko.observable();
         this.id = params.id;
     }
+
+    selectFixture(fixture) {
+        this.selectedFixture(fixture);
+    }
+
+    formatDate(date) { //todo: apply using common date functions
+        return date.toDateString();
+    }
 }
 
 register('fixtures-tab', ViewModel, template);
