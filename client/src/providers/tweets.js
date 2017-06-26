@@ -1,14 +1,10 @@
-import ko from 'knockout';
-
 import Tweet from 'models/tweet';
 import {tweetsRepository} from 'data/tweets-repository';
 
 export const tweets = {
-    get: tag => {
+    get(tag) {
         if (tag) {
             return tweetsRepository.get(tag).then(data => data.map(item => new Tweet(item)));
-        } else {
-            return new Promise();
         }
     }
 };
