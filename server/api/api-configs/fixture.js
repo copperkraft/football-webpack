@@ -1,10 +1,10 @@
 const paramsBuilder = require('./builders/football-api-params-builder');
 
 module.exports = {
-    params: params => {
+    params(params) {
         return paramsBuilder(`fixtures/${params.id}`, true);
     },
-    mapper: data => {
+    mapper(data) {
         return {
             date: data.fixture.date,
             status: data.fixture.status,
