@@ -1,18 +1,19 @@
 import 'components/league-teams/league-teams';
 import 'components/league-table/league-table';
 import 'components/team-page/team-page';
+import routeNames from 'constants/routes';
 
 export default [
     {
-        path: '/league',
+        path: `/${routeNames.leagueTablePage}`,
         component: 'league-table'
     },
     {
-        path: '/teams',
+        path: `/${routeNames.leagueTeamsPage}`,
         component: 'league-teams'
     },
     {
-        path: '/teams/:id',
+        path: `/${routeNames.teamPage}/:id`,
         component: 'team-page'
     }
 ];

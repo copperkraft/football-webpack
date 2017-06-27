@@ -2,15 +2,17 @@ import template from 'components/header-navigation/header-navigation.html';
 import ko from 'knockout';
 import register from 'components/component-registrator';
 
+import routeNames from 'constants/routes';
+
 class ViewModel {
     constructor() {
-        this.links = [ //todo: move links to constants
+        this.links = [
             {
                 text: 'league table',
-                reference: '#league'
+                reference: `#${routeNames.leagueTablePage}`
             },{
                 text: 'teams',
-                reference: '#teams'
+                reference: `#${routeNames.leagueTeamsPage}`
             }
         ];
         this.url = ko.observable(location.hash);

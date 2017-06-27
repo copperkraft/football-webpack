@@ -2,7 +2,7 @@ import template from 'components/router/router.html';
 import register from 'components/component-registrator';
 
 import ko from 'knockout';
-import routes from 'components/routes';
+import routes from 'components/component-routes';
 
 import 'components/header-navigation/header-navigation';
 
