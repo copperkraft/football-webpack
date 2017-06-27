@@ -26,11 +26,15 @@ class ViewModel {
     }
 
     toggleFavoriteState(name) {
-        if(this.favorites.list().some(item => item === name)) {
+        if(this.isFavorite(name)) {
             this.favorites.remove(name);
         } else {
             this.favorites.add(name);
         }
+    }
+
+    isFavorite(name) {
+        return this.favorites.list().some(item => item === name);
     }
 }
 

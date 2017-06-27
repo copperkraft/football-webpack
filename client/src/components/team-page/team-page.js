@@ -27,8 +27,12 @@ class ViewModel {
         }, this);
     }
 
-    changeSelection(select) {
+    setSelection(select) {
         this.selectedTab(select);
+    }
+
+    isSelected(tab) {
+        return this.selectedTab() === tab;
     }
 }
 

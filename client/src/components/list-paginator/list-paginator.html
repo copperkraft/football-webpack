@@ -4,7 +4,11 @@
     </label>
     <div data-bind="click: goToFirstPage" class="pagination__page">First</div>
     <div data-bind="click: goToPreviousPage" class="pagination__page">Prev</div>
-    <div data-bind="text: (currentPage() + 1) + '/' + pageCount()" class="pagination__page"></div>
+    <div class="pagination__page">
+        <span data-bind="text: currentPage() + 1"></span>
+        /
+        <span data-bind="text: pageCount()"></span>
+    </div>
     <div data-bind="click: goToNextPage" class="pagination__page">Next</div>
     <div data-bind="click: goToLastPage" class="pagination__page">Last</div>
 </div>
@@ -19,7 +23,11 @@
     </label>
     <div data-bind="click: goToFirstPage" class="pagination__page">First</div>
     <div data-bind="click: goToPreviousPage" class="pagination__page">Prev</div>
-    <div data-bind="text: (currentPage() + 1) + '/' + pageCount()" class="pagination__page"></div>
+    <div class="pagination__page">
+        <span data-bind="text: currentPage() + 1"></span>
+        /
+        <span data-bind="text: pageCount()"></span>
+    </div>
     <div data-bind="click: goToNextPage" class="pagination__page">Next</div>
     <div data-bind="click: goToLastPage" class="pagination__page">Last</div>
 </div>

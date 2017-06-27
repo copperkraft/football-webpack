@@ -18,6 +18,10 @@ class ViewModel {
                 .then(data => this.selectedLeague(data));
         });
     }
+
+    getTeamLink(id) {
+        return `#teams/${id}`;
+    }
 }
 
 register('league-table', ViewModel, template);
