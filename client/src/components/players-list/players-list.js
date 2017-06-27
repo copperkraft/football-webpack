@@ -8,6 +8,8 @@ import {teamPlayers} from 'providers/team-players-provider';
 
 import 'components/list-paginator/list-paginator';
 
+import 'bindings/date';
+
 class ViewModel {
     constructor(params) {
         this.players = ko.observable([]);

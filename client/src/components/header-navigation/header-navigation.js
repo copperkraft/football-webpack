@@ -4,7 +4,7 @@ import register from 'components/component-registrator';
 
 class ViewModel {
     constructor() {
-        this.links = [
+        this.links = [ //todo: move links to constants
             {
                 text: 'league table',
                 reference: '#league'

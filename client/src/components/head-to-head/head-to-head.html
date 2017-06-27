@@ -5,7 +5,7 @@
         <span data-bind="text: awayTeamName"></span>
     </div>
     <div class="head-to-head__info">
-        <div data-bind="text: new Date(date).toDateString()"></div> <!-- todo: remove date logic to utils -->
+        <div data-bind="date: new Date(date)"></div>
         <div class="head-to-head__odds" data-bind="if: odds">
             Odds:
             <br>
@@ -31,7 +31,7 @@
                 -
                 <span data-bind="text: goalsAwayTeam"></span>
             </div>
-            <div class="fixtures-list__date" data-bind="text: new Date(date).toDateString()"></div> <!-- todo: remove date logic to utils -->
+            <div class="fixtures-list__date" data-bind="date: new Date(date)"></div>
         </div>
     </div>
 </div>

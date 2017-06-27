@@ -10,7 +10,7 @@ import 'components/info-tab/info-tab';
 import 'components/fixtures-tab/fixtures-tab';
 
 class ViewModel {
-    constructor(params) { //TODO remove js from html
+    constructor(params) {
         this.team = ko.observable();
         teamInfo.get(params.id).then(data => this.team(data));
 

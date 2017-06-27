@@ -8,7 +8,7 @@
             position: <span data-bind="text: position"></span>
         </div>
         <div class="players-list__info">
-            date of birth: <span data-bind="text: dateOfBirth.toDateString()"></span> <!-- todo: remove date methods -->
+            date of birth: <span data-bind="date: dateOfBirth"></span>
         </div>
         <div class="players-list__info" data-bind="visible: marketValue">
             market value: <span data-bind="text: marketValue"></span>

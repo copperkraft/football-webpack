@@ -11,6 +11,8 @@ import {fixturesList} from 'providers/fixtures-list-provider';
 import 'components/head-to-head/head-to-head';
 import 'components/list-paginator/list-paginator';
 
+import 'bindings/date';
+
 class ViewModel {
     constructor(params) {
         this.season = { //todo: fetch data from server
@@ -40,10 +42,6 @@ class ViewModel {
 
     selectFixture(fixture) {
         this.selectedFixture(fixture);
-    }
-
-    formatDate(date) { //todo: apply using common date functions
-        return date.toDateString();
     }
 }
 
