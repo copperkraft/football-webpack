@@ -7,9 +7,5 @@ export default (name, viewModel, template) => {
         } else {
             ko.components.register(name, {template});
         }
-        console.log('registered component', name);
-
-    } else {
-        console.log('already registered', name);
     }
 };
