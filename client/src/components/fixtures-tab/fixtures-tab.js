@@ -6,7 +6,7 @@ import template from './fixtures-tab.html';
 import register from 'components/component-registrator';
 
 import 'bindings/calendar';
-import {fixturesList} from 'providers/fixtures-list';
+import {fixturesList} from 'providers/fixtures-list-provider';
 
 import 'components/head-to-head/head-to-head';
 import 'components/list-paginator/list-paginator';

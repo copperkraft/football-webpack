@@ -4,9 +4,7 @@ import './tweets-block.less';
 import template from 'components/tweets-block/tweets-block.html';
 import register from 'components/component-registrator';
 
-
-
-import {tweets} from 'providers/tweets';
+import {tweets} from 'providers/tweets-provider';
 
 class ViewModel {
     constructor(params) {

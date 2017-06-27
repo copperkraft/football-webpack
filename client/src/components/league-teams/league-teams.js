@@ -5,8 +5,8 @@ import template from 'components/league-teams/league-teams.html';
 import register from 'components/component-registrator';
 
 import {leaguesList} from 'constants/leagues-list';
-import {leagueTeams} from 'providers/league-teams';
-import {favorites} from 'providers/favorites';
+import {leagueTeams} from 'providers/league-teams-provider';
+import {favorites} from 'providers/favorites-provider';
 
 class ViewModel {
     constructor() {

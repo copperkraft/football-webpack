@@ -4,7 +4,7 @@ import './head-to-head.less';
 import template from './head-to-head.html';
 import register from 'components/component-registrator';
 
-import {fixtureInfo} from 'providers/fixture-info';
+import {fixtureInfo} from 'providers/fixture-info-provider';
 
 class ViewModel {
     constructor(params) {

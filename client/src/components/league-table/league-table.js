@@ -5,7 +5,7 @@ import template from 'components/league-table/league-table.html';
 import register from 'components/component-registrator';
 
 import {leaguesList} from 'constants/leagues-list';
-import {leagueTable} from 'providers/league-table';
+import {leagueTable} from 'providers/league-table-provider';
 
 class ViewModel {
     constructor() {
