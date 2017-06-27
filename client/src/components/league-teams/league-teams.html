@@ -2,7 +2,7 @@
     <h1 class="title"><span data-bind="text: selectedLeagueName"></span> teams</h1>
     <select class="select" data-bind="options: leagues, value: selectedLeagueName"></select>
 
-    <ul class="team-list team-list--favorite" data-bind="foreach: favorites.list, visible: favorites.list().length">
+    <ul class="team-list team-list--favorite" data-bind="foreach: favorites, visible: favorites().length">
         <li class="team-list__element">
             <button class="favorite-button favorite-button--selected"
                     data-bind="click: () => $component.toggleFavoriteState($data),">

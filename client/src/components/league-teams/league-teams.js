@@ -10,31 +10,36 @@ import {favorites} from 'providers/favorites-provider';
 
 class ViewModel {
     constructor() {
-        this.favorites = favorites;
+        this.favorites = ko.observableArray();
+        favorites.load().then(data => this.favorites(data));
+
         this.leagues = leaguesList;
-
         this.selectedLeagueName = ko.observable(leaguesList()[0]);
-
         this.selectedLeagueTeams = ko.observable();
 
         leagueTeams.get(this.selectedLeagueName())
             .then(data => this.selectedLeagueTeams(data));
 
-        this.selectedLeagueName.subscribe(() => {
-
+        this.selectedLeagueName.subscribe((value) => {
+            leagueTeams.get(value)
+                .then(data => this.selectedLeagueTeams(data));
         });
     }
 
     toggleFavoriteState(name) {
         if(this.isFavorite(name)) {
-            this.favorites.remove(name);
+            favorites.remove(name);
         } else {
-            this.favorites.add(name);
+            favorites.add(name);
         }
+        setTimeout(() => favorites.load().then(data => {
+            this.favorites(data); //call this asynchronous, because add and remove methods are also asynchronous
+        }), 0);
+
     }
 
     isFavorite(name) {
-        return this.favorites.list().some(item => item === name);
+        return this.favorites().some(item => item === name);
     }
 }
 
