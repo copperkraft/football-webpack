@@ -4,7 +4,7 @@ module.exports = {
     params: params => {
         return paramsBuilder(`teams/${params.id}/fixtures`, true);
     },
-    converter: data => {
+    mapper: data => {
         return data.fixtures;
     }
 };

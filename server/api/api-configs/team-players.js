@@ -4,7 +4,7 @@ module.exports = {
     params: params => {
         return paramsBuilder(`teams/${params.id}/players`, true);
     },
-    converter: data => {
+    mapper: data => {
         return data.players.sort((left, right) => left > right ? 1 : -1);
     }
 };

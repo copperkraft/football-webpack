@@ -4,7 +4,7 @@ module.exports = {
     params: params => {
         return paramsBuilder(`competitions/${params.id}/teams`, true);
     },
-    converter: data => {
+    mapper: data => {
         return data.teams;
     }
 };

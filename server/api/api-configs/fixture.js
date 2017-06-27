@@ -4,7 +4,7 @@ module.exports = {
     params: params => {
         return paramsBuilder(`fixtures/${params.id}`, true);
     },
-    converter: data => {
+    mapper: data => {
         return {
             date: data.fixture.date,
             status: data.fixture.status,
