@@ -7,6 +7,8 @@ import register from 'components/component-registrator';
 import {leaguesList} from 'constants/leagues-list';
 import {leagueTable} from 'providers/league-table-provider';
 
+import 'bindings/team-link';
+
 class ViewModel {
     constructor() {
         this.leagues = leaguesList;
@@ -17,10 +19,6 @@ class ViewModel {
             leagueTable.get(this.selectedLeagueName())
                 .then(data => this.selectedLeague(data));
         });
-    }
-
-    getTeamLink(id) {
-        return `#teams/${id}`;
     }
 }
 

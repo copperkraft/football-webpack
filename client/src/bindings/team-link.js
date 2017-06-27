@@ -1,7 +1,7 @@
 import ko from 'knockout';
 
-ko.bindingHandlers.date = {
+ko.bindingHandlers.teamLink = {
     update(element, valueAccessor) {
-        element.innerHTML = '#teams/' + valueAccessor().toDateString(); //todo: move 'teams' to constants
+        element.href = '#teams/' + valueAccessor(); //todo: move 'teams' to constants
     }
 };
