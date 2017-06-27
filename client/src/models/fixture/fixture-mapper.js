@@ -1,13 +1,12 @@
 import Fixture from './fixture';
 
-export default dataObject => {
-    return new Fixture({
-        id: dataObject.id,
-        date : new Date(dataObject.date),
-        homeTeamName : dataObject.homeTeamName,
-        awayTeamName : dataObject.awayTeamName,
-        goalsHomeTeam : dataObject.result.goalsHomeTeam,
-        goalsAwayTeam : dataObject.result.goalsAwayTeam,
-        isFinished : dataObject.status === 'FINISHED',
-    });
-};
+export default dataObject => new Fixture({
+    id: dataObject.id,
+    date : new Date(dataObject.date),
+    homeTeamName : dataObject.homeTeamName,
+    awayTeamName : dataObject.awayTeamName,
+    goalsHomeTeam : dataObject.result.goalsHomeTeam,
+    goalsAwayTeam : dataObject.result.goalsAwayTeam,
+    isFinished : dataObject.status === 'FINISHED',
+});
+

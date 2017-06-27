@@ -2,7 +2,7 @@ import ko from 'knockout';
 import Pikaday from 'pikaday';
 
 ko.bindingHandlers.calendar = {
-    init: function(element, valueAccessor) {
+    init(element, valueAccessor) {
         element.value = valueAccessor().value();
 
         const pickerInstanse = new Pikaday({

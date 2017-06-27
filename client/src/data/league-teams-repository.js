@@ -2,7 +2,7 @@ import request from 'utils/request';
 import {indexes as leagueIds} from 'constants/indexes';
 
 export const leagueTeamsRepository = {
-    get:  leagueTitle => {
+    get(leagueTitle) {
         return request(`api/teams/${leagueIds[leagueTitle]}`);
     }
 };

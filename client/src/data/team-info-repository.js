@@ -1,7 +1,7 @@
 import request from 'utils/request';
 
 export const teamInfoRepository = {
-    get: teamId => {
+    get(teamId) {
         return request(`api/teams/${teamId}/info`);
     }
 };
