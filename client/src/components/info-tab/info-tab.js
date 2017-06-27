@@ -12,4 +12,4 @@ class ViewModel {
     }
 }
 
-register('info-tab', template);
+register('info-tab', null, template);
