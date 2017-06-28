@@ -11,7 +11,7 @@ import {favorites} from 'providers/favorites-provider';
 class ViewModel {
     constructor() {
         this.favorites = ko.observableArray();
-        favorites.load().then(data => this.favorites(data));
+        favorites.get().then(data => this.favorites(data));
 
         this.leagues = leaguesList;
         this.selectedLeagueName = ko.observable(leaguesList()[0]);
@@ -28,14 +28,14 @@ class ViewModel {
 
     toggleFavoriteState(name) {
         if(this.isFavorite(name)) {
-            favorites.remove(name);
+            favorites.remove(name).then(() =>
+                favorites.get().then(data => this.favorites(data))
+            );
         } else {
-            favorites.add(name);
+            favorites.add(name).then(() =>
+                favorites.get().then(data => this.favorites(data))
+            );
         }
-        setTimeout(() => favorites.load().then(data => {
-            this.favorites(data); //call this asynchronous, because add and remove methods are also asynchronous
-        }), 0);
-
     }
 
     isFavorite(name) {

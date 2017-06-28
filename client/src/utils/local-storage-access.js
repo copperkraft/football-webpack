@@ -1,9 +1,15 @@
 export const storage = {
     put(name, data) {
-        localStorage.setItem(name, JSON.stringify(data));
+        return new Promise((resolve) => {
+            localStorage.setItem(name, JSON.stringify(data));
+            resolve(true);
+        });
     },
     delete(name) {
-        localStorage.removeItem(name);
+        return new Promise((resolve) => {
+            localStorage.removeItem(name);
+            resolve(true);
+        });
     },
     get(name) {
         return new Promise((resolve) => {

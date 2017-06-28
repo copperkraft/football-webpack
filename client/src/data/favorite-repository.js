@@ -2,7 +2,7 @@ import {storage} from 'utils/local-storage-access';
 
 export const favoriteData = {
     add(name) {
-        storage.get('favorites').then(currentState => {
+        return storage.get('favorites').then(currentState => {
             if(!currentState.some(item => item === name)) {
                 currentState.push(name);
             }
@@ -11,7 +11,7 @@ export const favoriteData = {
         });
     },
     remove(name) {
-        storage.get('favorites').then(currentState => {
+        return storage.get('favorites').then(currentState => {
             if (currentState.some(item => item === name)) {
                 currentState.splice(currentState.indexOf(name), 1);
             }
@@ -19,7 +19,7 @@ export const favoriteData = {
             storage.put('favorites', currentState);
         });
     },
-    load() {
+    get() {
         return storage.get('favorites');
     }
 };
