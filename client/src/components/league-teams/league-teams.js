@@ -8,6 +8,8 @@ import {leaguesList} from 'constants/leagues-list';
 import {leagueTeams} from 'providers/league-teams-provider';
 import {favorites} from 'providers/favorites-provider';
 
+import 'bindings/team-link';
+
 class LeagueTeamsViewModel {
     constructor() {
         this.favorites = ko.observableArray();

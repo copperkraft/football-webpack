@@ -6,11 +6,11 @@
         <li class="team-list__element">
             <button class="favorite-button favorite-button--selected"
                     data-bind="click: () => $component.toggleFavoriteState($data),">
-                &#128465
+                &#9733
             </button>
-            <div class="team-list__fullName">
+            <a class="team-list__fullName">
                 <span data-bind="text: $data"></span>
-            </div>
+            </a>
         </li>
     </ul>
     <div>
@@ -24,9 +24,9 @@
                 <div class="team-list__image-container">
                     <img class="team-list__image" data-bind="attr: {src: imageUrl}">
                 </div>
-                <div class="team-list__fullName">
+                <a class="team-list__fullName" data-bind="teamLink: id">
                     <span data-bind="text: fullName"></span>
-                </div>
+                </a>
                 <div data-bind="visible: name" class="team-list__name">
                     short name: <span data-bind="text: name"></span>
                 </div>
