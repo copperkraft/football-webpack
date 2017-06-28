@@ -9,7 +9,7 @@ module.exports = (url, isMinified) => {
         json: true
     };
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         resolve(params);
     });
 };

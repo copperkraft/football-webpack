@@ -6,7 +6,7 @@ export const storage = {
         localStorage.removeItem(name);
     },
     get(name) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             resolve(JSON.parse(localStorage.getItem(name) || '[]'));
         });
     }
