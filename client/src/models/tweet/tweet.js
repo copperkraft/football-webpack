@@ -1,5 +1,5 @@
 export default class Tweet {
-    constructor(params) {
+    constructor(params = {}) {
         this.text = params.text;
         this.user = params.user;
         this.time = params.time;

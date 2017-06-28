@@ -1,5 +1,5 @@
 export default class Player {
-    constructor(params) {
+    constructor(params = {}) {
         this.id = params.id;
         this.name = params.name;
         this.jerseyNumber = params.jerseyNumber;

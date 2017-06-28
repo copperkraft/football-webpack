@@ -1,5 +1,5 @@
 export default class Fixture {
-    constructor(params) {
+    constructor(params = {}) {
         this.id = params.id;
         this.date = params.date;
         this.homeTeamName = params.homeTeamName;

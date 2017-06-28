@@ -1,5 +1,5 @@
 export default class Competitor {
-    constructor(params) {
+    constructor(params = {}) {
         this.id = params.id;
         this.position = params.position;
         this.name = params.name;
