@@ -28,20 +28,20 @@ class LeagueTeamsViewModel {
         });
     }
 
-    toggleFavoriteState(name) {
-        if(this.isFavorite(name)) {
-            favorites.remove(name).then(() =>
+    toggleFavoriteState(team) {
+        if(this.isFavorite(team)) {
+            favorites.remove(team).then(() =>
                 favorites.get().then(data => this.favorites(data))
             );
         } else {
-            favorites.add(name).then(() =>
+            favorites.add(team).then(() =>
                 favorites.get().then(data => this.favorites(data))
             );
         }
     }
 
-    isFavorite(name) {
-        return this.favorites().some(item => item === name);
+    isFavorite(team) {
+        return this.favorites().some(item => item.name === team.name);
     }
 }
 

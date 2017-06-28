@@ -9,7 +9,7 @@
                 &#9733
             </button>
             <a class="team-list__fullName">
-                <span data-bind="text: $data"></span>
+                <span data-bind="text: name"></span>
             </a>
         </li>
     </ul>
@@ -17,8 +17,8 @@
         <ul class="team-list" data-bind="foreach: selectedLeagueTeams()">
             <li class="team-list__element">
                 <button class="favorite-button"
-                        data-bind="click: () => $component.toggleFavoriteState(name),
-                        css: {'favorite-button--selected': $component.isFavorite(name)}">
+                        data-bind="click: () => $component.toggleFavoriteState($data),
+                        css: {'favorite-button--selected': $component.isFavorite($data)}">
                     &#9733
                 </button>
                 <div class="team-list__image-container">

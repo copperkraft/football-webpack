@@ -1,11 +1,11 @@
 import {favoriteData} from 'data/favorite-repository';
 
 export const favorites = {
-    add(name) {
-        return favoriteData.add(name);
+    add(team) {
+        return favoriteData.add(team);
     },
-    remove(name) {
-        return favoriteData.remove(name);
+    remove(team) {
+        return favoriteData.remove(team);
     },
     get() {
         return favoriteData.get();
