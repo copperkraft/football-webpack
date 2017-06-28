@@ -8,7 +8,7 @@ import {leaguesList} from 'constants/leagues-list';
 import {leagueTeams} from 'providers/league-teams-provider';
 import {favorites} from 'providers/favorites-provider';
 
-class ViewModel {
+class LeagueTeamsViewModel {
     constructor() {
         this.favorites = ko.observableArray();
         favorites.get().then(data => this.favorites(data));
@@ -43,4 +43,4 @@ class ViewModel {
     }
 }
 
-register('league-teams', ViewModel, template);
+register('league-teams', template, LeagueTeamsViewModel);

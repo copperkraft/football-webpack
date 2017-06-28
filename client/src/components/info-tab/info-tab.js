@@ -5,4 +5,4 @@ import register from 'components/component-registrator';
 import 'components/players-list/players-list';
 import 'components/tweets-block/tweets-block';
 
-register('info-tab', null, template);
+register('info-tab', template);

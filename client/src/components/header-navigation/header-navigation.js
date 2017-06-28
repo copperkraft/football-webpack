@@ -4,7 +4,7 @@ import register from 'components/component-registrator';
 
 import routeNames from 'constants/routes';
 
-class ViewModel {
+class HeaderNavigationViewModel {
     constructor() {
         this.links = [
             {
@@ -26,4 +26,4 @@ class ViewModel {
     }
 }
 
-register('header-navigation', ViewModel, template);
+register('header-navigation', template, HeaderNavigationViewModel);

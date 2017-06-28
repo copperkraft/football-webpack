@@ -65,4 +65,4 @@ class RouterViewModel {
     }
 }
 
-register('router', RouterViewModel, template);
+register('router', template, RouterViewModel);

@@ -13,11 +13,11 @@ import 'components/list-paginator/list-paginator';
 
 import 'bindings/date';
 
-class ViewModel {
+class FixturesTabViewModel {
     constructor(params) {
         this.season = { //todo: fetch data from server
-            from: new Date('08.01.2017'),
-            to: new Date('05.31.2018')
+            from: new Date('09.01.2016'),
+            to: new Date('05.31.2017')
         };
 
         this.dateFrom = ko.observable(this.season.from.toDateString());
@@ -45,4 +45,4 @@ class ViewModel {
     }
 }
 
-register('fixtures-tab', ViewModel, template);
+register('fixtures-tab', template, FixturesTabViewModel);

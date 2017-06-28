@@ -6,7 +6,7 @@ import register from 'components/component-registrator';
 
 import {tweets} from 'providers/tweets-provider';
 
-class ViewModel {
+class TwitterBlockViewModel {
     constructor(params) {
         this.tag = params.tag;
         this.tweets = ko.observable([]);
@@ -14,4 +14,4 @@ class ViewModel {
     }
 }
 
-register('tweets-block', ViewModel, template);
+register('tweets-block', template, TwitterBlockViewModel);

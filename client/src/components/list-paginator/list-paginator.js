@@ -4,7 +4,7 @@ import './list-paginator.less';
 import template from 'components/list-paginator/list-paginator.html';
 import register from 'components/component-registrator';
 
-class ViewModel {
+class ListPaginatorViewModel {
     constructor(params) {
         if (params.array) {
             this.array = params.array;
@@ -43,4 +43,4 @@ class ViewModel {
     }
 }
 
-register('list-paginator', ViewModel, template);
+register('list-paginator', template, ListPaginatorViewModel);

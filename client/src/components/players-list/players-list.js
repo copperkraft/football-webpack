@@ -10,7 +10,7 @@ import 'components/list-paginator/list-paginator';
 
 import 'bindings/date';
 
-class ViewModel {
+class PlayerListViewModel {
     constructor(params) {
         this.players = ko.observable([]);
         teamPlayers.get(params.id)
@@ -18,4 +18,4 @@ class ViewModel {
     }
 }
 
-register('players-list', ViewModel, template);
+register('players-list', template, PlayerListViewModel);
