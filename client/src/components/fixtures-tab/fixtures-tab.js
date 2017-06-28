@@ -16,8 +16,8 @@ import 'bindings/date';
 class ViewModel {
     constructor(params) {
         this.season = { //todo: fetch data from server
-            from: new Date('09.01.2016'),
-            to: new Date('05.31.2017')
+            from: new Date('08.01.2017'),
+            to: new Date('05.31.2018')
         };
 
         this.dateFrom = ko.observable(this.season.from.toDateString());
