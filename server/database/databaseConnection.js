@@ -19,15 +19,5 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
-const User = sequelize.define('user', {
-    firstName: {
-        type: Sequelize.STRING
-    },
-    lastName: {
-        type: Sequelize.STRING
-    }
-});
 
-User.findAll().then(users => {
-    console.log(users);
-});
+module.exports = sequelize;
