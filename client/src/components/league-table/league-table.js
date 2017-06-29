@@ -6,7 +6,6 @@ import register from 'components/component-registrator';
 
 import {leaguesList} from 'constants/leagues-list';
 import {leagueTable} from 'providers/league-table-provider';
-
 import 'bindings/team-link';
 
 class LeagueTableViewModel {

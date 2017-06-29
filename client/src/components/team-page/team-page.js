@@ -5,7 +5,6 @@ import template from 'components/team-page/team-page.html';
 import register from 'components/component-registrator';
 
 import {teamInfo} from 'providers/team-info-provider';
-
 import 'components/info-tab/info-tab';
 import 'components/fixtures-tab/fixtures-tab';
 

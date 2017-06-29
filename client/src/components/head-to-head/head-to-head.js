@@ -5,7 +5,6 @@ import template from './head-to-head.html';
 import register from 'components/component-registrator';
 
 import {fixtureInfo} from 'providers/fixture-info-provider';
-
 import 'bindings/date';
 
 class HeadToHeadViewModel {

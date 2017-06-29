@@ -7,7 +7,6 @@ import register from 'components/component-registrator';
 import {leaguesList} from 'constants/leagues-list';
 import {leagueTeams} from 'providers/league-teams-provider';
 import {favorites} from 'providers/favorites-provider';
-
 import 'bindings/team-link';
 
 class LeagueTeamsViewModel {
