@@ -6,7 +6,7 @@ import register from 'components/component-registrator';
 import routeNames from 'constants/routes';
 
 class HeaderNavigationViewModel {
-    constructor() {
+    constructor(params) {
         this.links = [
             {
                 text: 'league table',
@@ -16,14 +16,11 @@ class HeaderNavigationViewModel {
                 reference: `#${routeNames.leagueTeamsPage}`
             }
         ];
-        this.url = ko.observable(location.hash);
-        window.addEventListener('hashchange', () => {
-            this.url(location.hash);
-        });
+        this.url = params.url;
     }
 
     isCurrent(url) {
-        return url === this.url();
+        return url === `#${this.url()}`;
     }
 }
 

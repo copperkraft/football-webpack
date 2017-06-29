@@ -3,66 +3,48 @@ import ko from 'knockout';
 import template from 'components/router/router.html';
 import register from 'components/component-registrator';
 
-
-import routes from 'components/component-routes';
+import routedComponents from 'components/component-routes';
 import 'components/header-navigation/header-navigation';
+import routeNames from 'constants/routes';
 
 class RouterViewModel {
     constructor() {
-        const routedComponents = ko.observableArray(routes.map(route => {
-            return {
-                path: route.path.match(/\/:?\w+/g).map(item => {
-                    return item[1] === ':' ? {
-                        type: 'parameter',
-                        name: item.slice(2)
-                    } : {
-                        type: 'constant',
-                        name:  item.slice(1)
-                    };
-                }),
-                component: route.component
-            };
-        }
-        ));
-
         this.url = ko.observable();
-        this.route = ko.observableArray();
+        this.component = ko.observable();
 
-        this.calculateRoute();
-        window.addEventListener('hashchange', this.calculateRoute.bind(this));
-        window.addEventListener('load', this.calculateRoute.bind(this));
-
-        this.page = ko.pureComputed(function () {
-            const matchingComponent = routedComponents().find(item => {
-                if (item.path.length === this.route().length) {
-                    return item.path.every((part, position) => {
-                        if (part.type === 'constant') {
-                            return part.name === this.route()[position];
-                        }
-                        return true;
-                    });
-                }
-                return false;
-            });
-            if (matchingComponent) {
-                return {
-                    name: matchingComponent.component,
-                    params: matchingComponent.path.reduce((params, part, index) => {
-                        if (part.type === 'parameter') {
-                            params[part.name] = this.route()[index];
-                        }
-                        return params;
-                    }, {})
-                };
-            }
-            location.hash = 'league';
-        }, this);
+        window.addEventListener('hashchange', this.findComponent.bind(this));
+        window.addEventListener('load', this.findComponent.bind(this));
     }
 
-    calculateRoute() {
-        const path = '/' + location.hash.slice(1);
-        this.route(location.hash ? path.match(/\/\w+/g).map(item => item.slice(1)) : []);
-        this.url(location.hash.slice(1) || '/');
+    findComponent() {
+        this.url(location.hash.slice(1) || '');
+        const routeParts = this.url().split('/');
+
+        const matchingComponent = routedComponents.find(item => {
+            if (item.path.length === routeParts.length) {
+                return item.path.every((part, position) => {
+                    if (part.type === 'constant') {
+                        return part.name === routeParts[position];
+                    }
+                    return true;
+                });
+            }
+            return false;
+        });
+
+        if (matchingComponent) {
+            this.component({
+                name: matchingComponent.component,
+                params: matchingComponent.path.reduce((params, part, index) => {
+                    if (part.type === 'parameter') {
+                        params[part.name] = this.route()[index];
+                    }
+                    return params;
+                }, {})
+            });
+        } else {
+            location.hash = `#${routeNames.leagueTablePage}`;
+        }
     }
 }
 
