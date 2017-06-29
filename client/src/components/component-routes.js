@@ -4,7 +4,7 @@ import 'components/team-page/team-page';
 
 import routeNames from 'constants/routes';
 
-export default [
+const routes = [
     {
         path: `/${routeNames.leagueTablePage}`,
         component: 'league-table'
@@ -18,3 +18,18 @@ export default [
         component: 'team-page'
     }
 ];
+
+export default routes.map(route => {
+    return {
+        path: route.path.match(/\/:?\w+/g).map(item => {
+            return item[1] === ':' ? {
+                type: 'parameter',
+                name: item.slice(2)
+            } : {
+                type: 'constant',
+                name:  item.slice(1)
+            };
+        }),
+        component: route.component
+    };
+});

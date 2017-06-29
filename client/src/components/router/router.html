@@ -1,5 +1,5 @@
-<header-navigation></header-navigation>
-<main data-bind="if: page">
-    <div data-bind="component: page">
+<header-navigation params="{url: url}"></header-navigation>
+<main data-bind="if: component">
+    <div data-bind="component: component">
     </div>
 </main>
