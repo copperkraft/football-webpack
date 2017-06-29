@@ -1,13 +1,14 @@
 import {favoriteData} from 'data/favorite-repository';
+import favoriteMapper from 'models/favorite/favorite-mapper';
 
 export const favorites = {
     add(team) {
-        return favoriteData.add(team);
+        return favoriteData.add(favoriteMapper(team));
     },
     remove(team) {
-        return favoriteData.remove(team);
+        return favoriteData.remove(favoriteMapper(team));
     },
     get() {
-        return favoriteData.get();
+        return favoriteData.get().then(data => data.map(favoriteMapper));
     }
 };
