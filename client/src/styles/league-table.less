@@ -1,4 +1,6 @@
 .league-table {
+    width: 100%;
+
     text-align: center;
 
     .league-table__head {
@@ -6,8 +8,6 @@
         background: #888888;
     }
     .league-table__head-item {
-        width: 10%;
-
         border: 1px solid #000000;
     }
     .league-table__row {
@@ -19,5 +19,9 @@
         width: 10%;
 
         border: 1px solid #000000;
+
+        &.league-table__item--wide {
+            width: 20%;
+        }
     }
 }

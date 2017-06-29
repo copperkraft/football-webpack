@@ -1,27 +1,47 @@
 import ko from 'knockout';
 
+import './league-teams.less';
 import template from 'components/league-teams/league-teams.html';
+import register from 'components/component-registrator';
 
-import {leaguesList} from 'models/leagues-list';
-import {leagueTeams} from 'models/league-teams';
-import {favorites} from 'models/favorites';
+import {leaguesList} from 'constants/leagues-list';
+import {leagueTeams} from 'providers/league-teams-provider';
+import {favorites} from 'providers/favorites-provider';
+import 'bindings/team-link';
 
-function TeamsViewModel() {
-    this.favorites = favorites;
+class LeagueTeamsViewModel {
+    constructor() {
+        this.favorites = ko.observableArray();
+        favorites.get().then(data => this.favorites(data));
 
-    this.toggleFavoriteState = name => {
-        if(this.favorites.list().some(item => item === name)) {
-            this.favorites.remove(name);
+        this.leagues = leaguesList;
+        this.selectedLeagueName = ko.observable(leaguesList()[0]);
+        this.selectedLeagueTeams = ko.observable();
+
+        leagueTeams.get(this.selectedLeagueName())
+            .then(data => this.selectedLeagueTeams(data));
+
+        this.selectedLeagueName.subscribe((value) => {
+            leagueTeams.get(value)
+                .then(data => this.selectedLeagueTeams(data));
+        });
+    }
+
+    toggleFavoriteState(team) {
+        if(this.isFavorite(team)) {
+            favorites.remove(team).then(() =>
+                favorites.get().then(data => this.favorites(data))
+            );
         } else {
-            this.favorites.add(name);
+            favorites.add(team).then(() =>
+                favorites.get().then(data => this.favorites(data))
+            );
         }
-    };
+    }
 
-    this.leagues = leaguesList;
-    this.selectedLeagueName = ko.observable(leaguesList()[0]);
-    this.selectedLeagueTeams = ko.pureComputed(function() {
-        return leagueTeams.get(this.selectedLeagueName());
-    }, this);
+    isFavorite(team) {
+        return this.favorites().some(item => item.name === team.name);
+    }
 }
 
-export {TeamsViewModel as viewModel, template};
+register('league-teams', template, LeagueTeamsViewModel);

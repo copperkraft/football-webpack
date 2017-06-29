@@ -1,0 +1,23 @@
+.fixtures-list {
+    display: block;
+
+    box-sizing: border-box;
+    width: 400px;
+
+    .fixtures-list__element {
+        margin-bottom: 5px;
+        padding: 20px;
+
+        border-radius: 10px;
+        background-color: #eeeeee;
+
+        &.fixtures-list__element--selected {
+            color: #ffffff;
+            background-color: #4060f0;
+        }
+
+        &:last-child {
+            border: none;
+        }
+    }
+}

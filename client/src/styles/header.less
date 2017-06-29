@@ -1,8 +1,12 @@
 .header {
     font-family: 'Segoe UI', sans-serif;
 
+    box-sizing: border-box;
+    max-width: 1020px;
+    margin: 0 auto;
     padding: 2em;
 
+    border-radius: 0 0 1em 1em;
     background: #eeeeee;
 
     .header__logo {
@@ -22,14 +26,19 @@
     .header__link {
         font-size: 20px;
 
+        transition: 100ms;
         text-decoration: none;
 
         color: #888888;
 
-        &--selected {
+        &.header__link--selected {
             text-decoration: underline;
 
             color: #444444;
+        }
+
+        &:hover {
+            color: #000000;
         }
     }
 }

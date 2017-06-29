@@ -1,0 +1,7 @@
+import {fixtureRepository} from 'data/fixture-repository';
+
+export const fixtureInfo = {
+    get(id) {
+        return fixtureRepository.get(id);
+    }
+};

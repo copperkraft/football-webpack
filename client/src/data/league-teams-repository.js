@@ -1,10 +1,8 @@
-import request from 'data/request';
-import {indexes as leagueIds} from 'data/indexes';
+import request from 'utils/request';
+import {indexes as leagueIds} from 'constants/indexes';
 
 export const leagueTeamsRepository = {
-    get:  leagueTitle => {
-        return request(`api/teams/${leagueIds[leagueTitle]}`).then(response => {
-            return JSON.parse(response).sort((a, b) => a.shortName > b.shortName ? 1 : -1);
-        });
+    get(leagueTitle) {
+        return request(`api/teams/${leagueIds[leagueTitle]}`);
     }
 };

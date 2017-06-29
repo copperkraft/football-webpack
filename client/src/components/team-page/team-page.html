@@ -1,3 +1,14 @@
-<div class="league">
-    <h1 class="league__title">some team with id <span data-bind="text: id"></span></h1>
+<div class="container team-page">
+    <h1 class="title" data-bind="if: team()"><span data-bind="text: team().fullName"></span></h1>
+    <div class="team-page__tabs">
+        <div class="team-page__tab-item"
+             data-bind="css: {'team-page__tab-item--selected': isSelected('info-tab')}, click: () => setSelection('info-tab')">
+            Info
+        </div>
+        <div class="team-page__tab-item"
+             data-bind="css: {'team-page__tab-item--selected': isSelected('fixtures-tab')}, click: () => setSelection('fixtures-tab')">
+            Fixtures
+        </div>
+    </div>
+    <div data-bind="component: tab"></div>
 </div>
