@@ -16,6 +16,12 @@ const User = database.define('user', {
     },
     birthDate: {
         type: Sequelize.DATEONLY
+    },
+    password: {
+        type: Sequelize.STRING,
+    },
+    salt: {
+        type: Sequelize.STRING
     }
 });
 
