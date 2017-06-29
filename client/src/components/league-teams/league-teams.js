@@ -42,7 +42,7 @@ class LeagueTeamsViewModel {
     }
 
     loadFavorites() {
-        favorites.get().then(data => this.favorites(data))
+        favorites.get().then(data => this.favorites(data));
     }
 }
 

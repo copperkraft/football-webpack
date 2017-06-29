@@ -1,5 +1,3 @@
-import ko from 'knockout';
-
 import template from 'components/header-navigation/header-navigation.html';
 import register from 'components/component-registrator';
 
