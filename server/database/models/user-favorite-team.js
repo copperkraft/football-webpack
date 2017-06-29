@@ -1,11 +1,20 @@
-const Sequelize = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+    const Team = sequelize.define('team', {
+        teamId: {
+            type: DataTypes.INTEGER
+        },
+        teamName: {
+            type: DataTypes.STRING
+        }
+    });
 
-const sequelize = require('../databaseConnection');
+    Team.associate = (models) => {
+        Team.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
 
-const UserFavoriteTeam = sequelize.define('user', {
-    teamId: {
-        type: Sequelize.INTEGER
-    }
-});
-
-module.exports = UserFavoriteTeam;
+    return Team;
+};

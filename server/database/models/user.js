@@ -1,30 +1,23 @@
-const Sequelize = require('sequelize');
-
-const database = require('../databaseConnection');
-
-const UserFavoriteTeam = require('./user-favorite-team');
-
-const User = database.define('user', {
-    name: {
-        type: Sequelize.STRING
-    },
-    email: {
-        type: Sequelize.STRING,
-        validate: {
-            isEmail: true
+module.exports = (sequelize, DataTypes) => {
+    return sequelize.define('user', {
+        name: {
+            type: DataTypes.STRING
+        },
+        email: {
+            type: DataTypes.STRING,
+            validate: {
+                isEmail: true
+            }
+        },
+        birthDate: {
+            type: DataTypes.DATEONLY
+        },
+        password: {
+            type: DataTypes.STRING,
+        },
+        salt: {
+            type: DataTypes.STRING
         }
-    },
-    birthDate: {
-        type: Sequelize.DATEONLY
-    },
-    password: {
-        type: Sequelize.STRING,
-    },
-    salt: {
-        type: Sequelize.STRING
-    }
-});
+    })
+};
 
-User.hasMany(UserFavoriteTeam, {as: 'Favorites'});
-
-module.exports = User;
