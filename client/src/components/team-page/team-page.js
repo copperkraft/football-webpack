@@ -5,11 +5,10 @@ import template from 'components/team-page/team-page.html';
 import register from 'components/component-registrator';
 
 import {teamInfo} from 'providers/team-info-provider';
-
 import 'components/info-tab/info-tab';
 import 'components/fixtures-tab/fixtures-tab';
 
-class ViewModel {
+class TeamPageViewModel {
     constructor(params) {
         this.team = ko.observable();
         teamInfo.get(params.id).then(data => this.team(data));
@@ -36,4 +35,4 @@ class ViewModel {
     }
 }
 
-register('team-page', ViewModel, template);
+register('team-page', template, TeamPageViewModel);

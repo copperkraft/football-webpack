@@ -1,11 +1,11 @@
 <div class="pagination">
     <label class="pagination__page">
-        <select data-bind="options: [5, 10, 15, 20], value: pageSize"></select>
+        <select data-bind="options: pageSizes, value: pageSize"></select>
     </label>
     <div data-bind="click: goToFirstPage" class="pagination__page">First</div>
     <div data-bind="click: goToPreviousPage" class="pagination__page">Prev</div>
     <div class="pagination__page">
-        <span data-bind="text: currentPage() + 1"></span>
+        <span data-bind="text: currentPage"></span>
         /
         <span data-bind="text: pageCount()"></span>
     </div>
@@ -19,12 +19,12 @@
 
 <div class="pagination">
     <label class="pagination__page">
-        <select data-bind="options: [5, 10, 15, 20], value: pageSize"></select>
+        <select data-bind="options: pageSizes, value: pageSize"></select>
     </label>
     <div data-bind="click: goToFirstPage" class="pagination__page">First</div>
     <div data-bind="click: goToPreviousPage" class="pagination__page">Prev</div>
     <div class="pagination__page">
-        <span data-bind="text: currentPage() + 1"></span>
+        <span data-bind="text: currentPage"></span>
         /
         <span data-bind="text: pageCount()"></span>
     </div>

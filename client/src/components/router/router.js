@@ -1,9 +1,10 @@
+import ko from 'knockout';
+
 import template from 'components/router/router.html';
 import register from 'components/component-registrator';
 
-import ko from 'knockout';
-import routes from 'components/component-routes';
 
+import routes from 'components/component-routes';
 import 'components/header-navigation/header-navigation';
 
 class RouterViewModel {
@@ -65,4 +66,4 @@ class RouterViewModel {
     }
 }
 
-register('router', RouterViewModel, template);
+register('router', template, RouterViewModel);

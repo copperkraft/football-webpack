@@ -4,16 +4,17 @@ import './list-paginator.less';
 import template from 'components/list-paginator/list-paginator.html';
 import register from 'components/component-registrator';
 
-class ViewModel {
+class ListPaginatorViewModel {
     constructor(params) {
         if (params.array) {
             this.array = params.array;
         }
         this.parentComponent = params.parentComponent;
-        this.pageSize =  ko.observable(5);
-        this.currentPage = ko.observable(0);
+        this.pageSizes = [5, 10, 15, 20];
+        this.pageSize =  ko.observable(this.pageSizes[0]);
+        this.currentPage = ko.observable(1);
         this.displayedItems = ko.pureComputed(() => {
-            const first = this.currentPage() * this.pageSize();
+            const first = (this.currentPage() - 1) * this.pageSize();
             return this.array().slice(first, first + this.pageSize());
         });
         this.pageCount = ko.pureComputed(() => {
@@ -22,24 +23,24 @@ class ViewModel {
     }
 
     goToPreviousPage() {
-        if (this.currentPage() > 0) {
+        if (this.currentPage() > 1) {
             this.currentPage(this.currentPage() - 1);
         }
     }
 
     goToNextPage() {
-        if (this.pageCount() - 1 > this.currentPage()) {
+        if (this.pageCount() > this.currentPage()) {
             this.currentPage(this.currentPage() + 1);
         }
     }
 
     goToFirstPage() {
-        return this.currentPage(0);
+        this.currentPage(1);
     }
 
     goToLastPage() {
-        return this.currentPage(this.pageCount() - 1);
+        this.currentPage(this.pageCount());
     }
 }
 
-register('list-paginator', ViewModel, template);
+register('list-paginator', template, ListPaginatorViewModel);

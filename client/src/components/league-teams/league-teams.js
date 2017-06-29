@@ -7,11 +7,12 @@ import register from 'components/component-registrator';
 import {leaguesList} from 'constants/leagues-list';
 import {leagueTeams} from 'providers/league-teams-provider';
 import {favorites} from 'providers/favorites-provider';
+import 'bindings/team-link';
 
-class ViewModel {
+class LeagueTeamsViewModel {
     constructor() {
         this.favorites = ko.observableArray();
-        favorites.load().then(data => this.favorites(data));
+        favorites.get().then(data => this.favorites(data));
 
         this.leagues = leaguesList;
         this.selectedLeagueName = ko.observable(leaguesList()[0]);
@@ -26,21 +27,21 @@ class ViewModel {
         });
     }
 
-    toggleFavoriteState(name) {
-        if(this.isFavorite(name)) {
-            favorites.remove(name);
+    toggleFavoriteState(team) {
+        if(this.isFavorite(team)) {
+            favorites.remove(team).then(() =>
+                favorites.get().then(data => this.favorites(data))
+            );
         } else {
-            favorites.add(name);
+            favorites.add(team).then(() =>
+                favorites.get().then(data => this.favorites(data))
+            );
         }
-        setTimeout(() => favorites.load().then(data => {
-            this.favorites(data); //call this asynchronous, because add and remove methods are also asynchronous
-        }), 0);
-
     }
 
-    isFavorite(name) {
-        return this.favorites().some(item => item === name);
+    isFavorite(team) {
+        return this.favorites().some(item => item.name === team.name);
     }
 }
 
-register('league-teams', ViewModel, template);
+register('league-teams', template, LeagueTeamsViewModel);

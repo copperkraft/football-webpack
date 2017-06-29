@@ -6,10 +6,9 @@ import register from 'components/component-registrator';
 
 import {leaguesList} from 'constants/leagues-list';
 import {leagueTable} from 'providers/league-table-provider';
-
 import 'bindings/team-link';
 
-class ViewModel {
+class LeagueTableViewModel {
     constructor() {
         this.leagues = leaguesList;
         this.selectedLeagueName = ko.observable(leaguesList[0]);
@@ -22,4 +21,4 @@ class ViewModel {
     }
 }
 
-register('league-table', ViewModel, template);
+register('league-table', template, LeagueTableViewModel);

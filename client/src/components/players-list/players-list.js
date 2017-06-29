@@ -5,12 +5,10 @@ import template from 'components/players-list/players-list.html';
 import register from 'components/component-registrator';
 
 import {teamPlayers} from 'providers/team-players-provider';
-
 import 'components/list-paginator/list-paginator';
-
 import 'bindings/date';
 
-class ViewModel {
+class PlayerListViewModel {
     constructor(params) {
         this.players = ko.observable([]);
         teamPlayers.get(params.id)
@@ -18,4 +16,4 @@ class ViewModel {
     }
 }
 
-register('players-list', ViewModel, template);
+register('players-list', template, PlayerListViewModel);

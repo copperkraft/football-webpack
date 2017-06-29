@@ -5,10 +5,9 @@ import template from './head-to-head.html';
 import register from 'components/component-registrator';
 
 import {fixtureInfo} from 'providers/fixture-info-provider';
-
 import 'bindings/date';
 
-class ViewModel {
+class HeadToHeadViewModel {
     constructor(params) {
         this.fixture = ko.observable();
         fixtureInfo.get(params.fixture().id).then(data =>
@@ -23,4 +22,4 @@ class ViewModel {
     }
 }
 
-register('head-to-head', ViewModel, template);
+register('head-to-head', template, HeadToHeadViewModel);
