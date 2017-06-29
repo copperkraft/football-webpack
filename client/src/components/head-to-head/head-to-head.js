@@ -10,14 +10,14 @@ import 'bindings/date';
 class HeadToHeadViewModel {
     constructor(params) {
         this.fixture = ko.observable();
-        fixtureInfo.get(params.fixture().id).then(data =>
-            this.fixture(data)
-        );
+        this.loadInfo(params.fixture().id);
 
-        params.fixture.subscribe(fixture =>
-            fixtureInfo.get(fixture.id).then(data =>
-                this.fixture(data)
-            )
+        params.fixture.subscribe(fixture => this.loadInfo(fixture.id));
+    }
+
+    loadInfo(id) {
+        fixtureInfo.get(id).then(data =>
+            this.fixture(data)
         );
     }
 }

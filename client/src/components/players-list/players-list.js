@@ -10,9 +10,8 @@ import 'bindings/date';
 
 class PlayerListViewModel {
     constructor(params) {
-        this.players = ko.observable([]);
-        teamPlayers.get(params.id)
-            .then(data => this.players(data));
+        this.players = ko.observableArray([]);
+        teamPlayers.get(params.id).then(data => this.players(data));
     }
 }
 
