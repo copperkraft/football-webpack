@@ -5,10 +5,10 @@
     <ul class="team-list team-list--favorite" data-bind="foreach: favorites, visible: favorites().length">
         <li class="team-list__element">
             <button class="favorite-button favorite-button--selected"
-                    data-bind="click: () => $component.toggleFavoriteState($data),">
+                    data-bind="click: () => $component.toggleFavoriteState($data)">
                 &#9733
             </button>
-            <a class="team-list__fullName">
+            <a class="team-list__fullName" data-bind="teamLink: id">
                 <span data-bind="text: name"></span>
             </a>
         </li>
