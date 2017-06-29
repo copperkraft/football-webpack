@@ -13,7 +13,17 @@ class TeamPageViewModel {
         this.team = ko.observable();
         teamInfo.get(params.id).then(data => this.team(data));
 
-        this.selectedTab = ko.observable('fixtures-tab');
+        this.tabs = [
+            {
+                text: 'Fixtures',
+                component: 'fixtures-tab'
+            }, {
+                text: 'Info',
+                component: 'info-tab'
+            }
+        ];
+
+        this.selectedTab = ko.observable(this.tabs[0].component);
 
         this.tab = ko.pureComputed(function () {
             return {
