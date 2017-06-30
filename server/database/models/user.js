@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('user', {
+    const User = sequelize.define('user', {
         name: {
             type: DataTypes.STRING
         },
@@ -18,6 +18,14 @@ module.exports = (sequelize, DataTypes) => {
         salt: {
             type: DataTypes.STRING
         }
-    })
+    });
+
+    User.associate = (models) => {
+        User.belongsToMany(models.favorite, {
+            through: 'UserFavorite'
+        });
+    };
+
+    return User;
 };
 
