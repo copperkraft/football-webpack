@@ -1,0 +1,16 @@
+<div class="user-actions">
+    <div data-bind="with: user">
+        Hello, <span data-bind="name"></span>
+        <button data-bind="click: logOut">log out</button>
+    </div>
+    <div>
+        <button data-bind="click: () => openForm('sign-in')">Sign in</button>
+        or
+        <button data-bind="click: () => openForm('sign-up')">Sign up</button>
+    </div>
+</div>
+<modal params="visible: isFormOpened">
+    <signing-form params="mode: 'register'"></signing-form>
+</modal>
+
+
