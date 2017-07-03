@@ -4,6 +4,7 @@ import template from 'components/header-navigation/header-navigation.html';
 import register from 'components/component-registrator';
 
 import routeNames from 'constants/routes';
+import 'components/user-actions/user-actions';
 
 class HeaderNavigationViewModel {
     constructor() {
