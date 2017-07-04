@@ -1,23 +1,23 @@
 module.exports = {
-    get(id) {
+    get(session) {
         return new Promise((resolve) => resolve({
-            email: `user${id}@example.com`,
+            email: `user${session.user.id}@example.com`,
             name: 'someName',
             favorites: [
                 {
-                    name: `team of ${id}`,
-                    teamId: id + 10
+                    name: `team of ${session.user.id}`,
+                    teamId: session.user.id + 10
                 },{
-                    name: `team as ${id}`,
-                    teamId: id + 15
+                    name: `team as ${session.user.id}`,
+                    teamId: session.user.id + 15
                 },{
-                    name: `team in ${id}`,
-                    teamId: id + 20
+                    name: `team in ${session.user.id}`,
+                    teamId: session.user.id + 20
                 },
             ]
         }));
     },
-    authorise(eMail, password) {
+    authorise(session, eMail, password) {
         return new Promise((resolve, reject) => {
             if (eMail === password) {
                 resolve();
@@ -26,17 +26,16 @@ module.exports = {
             }
         });
     },
-    register(eMail, password, info) {
+    register(session, user) {
         return new Promise((resolve, reject) => {
-            if (eMail !== password) {
-                console.log(info);
+            if (user.eMail !== user.password) {
                 resolve();
             } else {
                 reject();
             }
         });
     },
-    isExist(eMail) {
-        return new Promise(resolve => resolve());
+    isExist(session, eMail) {
+        return new Promise(resolve => resolve(eMail));
     }
 };

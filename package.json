@@ -28,7 +28,9 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "express-session": "^1.15.3",
     "knockout": "^3.4.2",
     "pg": "^6.4.0",
     "pg-hstore": "^2.3.2",
