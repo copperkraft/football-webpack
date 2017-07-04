@@ -12,7 +12,8 @@ class UserActionsViewModel {
     constructor() {
         this.user = ko.observable();
         this.isAuthorised = ko.observable(false);
-        this.isFormOpened = ko.observable(true);
+        this.isFormOpened = ko.observable(false);
+        this.formMode = ko.observable('sign-in');
     }
 
     logOut() {
@@ -20,10 +21,9 @@ class UserActionsViewModel {
     }
 
     openForm (interactionType) {
+        this.formMode(interactionType);
         this.isFormOpened(true);
     }
 }
 
 register('user-actions', template, UserActionsViewModel);
-
-//todo: add component to header

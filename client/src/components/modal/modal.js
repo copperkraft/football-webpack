@@ -6,6 +6,7 @@ import register from 'components/component-registrator';
 
 class ModalViewModel {
     constructor(params) {
+        this.comp = params.comp || {};
         this.data = params.data || {};
         this.isVisible = params.visible || ko.observable(false);
         this.parentComponent = params.parentComponent;

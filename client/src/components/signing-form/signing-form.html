@@ -1,13 +1,27 @@
 <div class="signing-form">
-    <h1 class="signing-form__title" data-bind="text: 'sign in'"></h1>
+    <div data-bind="if: !isSignUp()">
+        <h1 class="signing-form__title">Sign in</h1>
+    </div>
+    <div data-bind="if: isSignUp()">
+        <h1 class="signing-form__title">Sign up</h1>
+    </div>
+
     <p class="signing-form__description">e-mail</p>
     <input class="signing-form__input" type="email">
     <p class="signing-form__description">password</p>
     <input class="signing-form__input" type="password">
+    <div data-bind="if: isSignUp()">
+        <p class="signing-form__description">name</p>
+        <input class="signing-form__input" type="text">
+    </div>
     <br>
-    <input class="signing-form__submit" type="submit" value="submit" data-bind="click: () => console.log('submit')">
-    <p class="signing-form__description">Don't have an account? <a href="/#">Register</a></p>
-
+    <input class="signing-form__submit" type="submit" value="submit" data-bind="click: submit">
+    <div data-bind="if: !isSignUp()">
+        <p class="signing-form__description">Don't have an account? <a href="/#" data-bind="click: toggleMode">Sign up!</a></p>
+    </div>
+    <div data-bind="if: isSignUp()">
+        <p class="signing-form__description">Already have an account? <a href="/#" data-bind="click: toggleMode">Sign in!</a></p>
+    </div>
 </div>
 
 

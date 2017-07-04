@@ -4,13 +4,13 @@
         <button data-bind="click: logOut">log out</button>
     </div>
     <div>
-        <button data-bind="click: () => openForm('sign-in')">Sign in</button>
+        <a href="/#" data-bind="click: () => openForm('sign-in')">Sign in</a>
         or
-        <button data-bind="click: () => openForm('sign-up')">Sign up</button>
+        <a href="/#" data-bind="click: () => openForm('sign-up')">Sign up</a>
     </div>
 </div>
-<modal params="visible: isFormOpened">
-    <signing-form params="mode: 'register'"></signing-form>
+<modal params="visible: isFormOpened, comp: $component">
+    <signing-form params="mode: $component.comp.formMode"></signing-form>
 </modal>
 
 
