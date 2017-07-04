@@ -5,7 +5,7 @@ const handlerRegistrator = (url, app, handler) => {
         app.get(url, handler.get);
     }
     if (handler.post) {
-        app.post(url, handler.get);
+        app.post(url, handler.post);
     }
 };
 

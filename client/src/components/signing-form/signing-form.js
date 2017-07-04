@@ -33,11 +33,15 @@ class UserActionsViewModel {
             }).then(data => console.log(data))
                 .catch(error => console.error(error));
         } else {
+            console.log({
+                email: this.email(),
+                password: this.password()
+            });
             user.logIn({
-                email: this.email,
-                password: this.password
+                email: this.email(),
+                password: this.password()
             }).then(data => console.log(data))
-                .catch(error => console.error(error));
+                .catch(error => console.log(error));
         }
     }
 }

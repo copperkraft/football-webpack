@@ -7,12 +7,12 @@
     </div>
 
     <p class="signing-form__description">e-mail</p>
-    <input class="signing-form__input" type="email">
+    <input data-bind="value: email" class="signing-form__input" type="email">
     <p class="signing-form__description">password</p>
-    <input class="signing-form__input" type="password">
+    <input data-bind="value: password" class="signing-form__input" type="password">
     <div data-bind="if: isSignUp()">
         <p class="signing-form__description">name</p>
-        <input class="signing-form__input" type="text">
+        <input data-bind="value: name" class="signing-form__input" type="text">
     </div>
     <br>
     <input class="signing-form__submit" type="submit" value="submit" data-bind="click: submit">
