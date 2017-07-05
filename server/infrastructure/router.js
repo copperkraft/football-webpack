@@ -5,7 +5,7 @@ const session = require('express-session');
 const apiRegistrator = require('../api/registrator');
 
 module.exports = function (app) {
-    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.json());
     app.use(session({
         secret: 'keyboard cat',
         resave: false,

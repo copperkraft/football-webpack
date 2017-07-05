@@ -6,15 +6,13 @@ import register from 'components/component-registrator';
 
 import {user} from 'providers/user-provider';
 
-
-
 class UserActionsViewModel {
     constructor(params) {
         this.mode = params.mode;
-        console.log(this.mode);
         this.mode('sign-in');
         this.password = ko.observable('');
         this.email = ko.observable('');
+        this.name = ko.observable('');
     }
 
     isSignUp() {
@@ -28,19 +26,17 @@ class UserActionsViewModel {
     submit() {
         if (this.isSignUp()) {
             user.register({
-                email: this.email,
-                password: this.password
+                email: this.email(),
+                password: this.password(),
+                name: this.name()
             }).then(data => console.log(data))
                 .catch(error => console.error(error));
         } else {
-            console.log({
-                email: this.email(),
-                password: this.password()
-            });
             user.logIn({
                 email: this.email(),
                 password: this.password()
-            }).then(data => console.log(data))
+            })
+                .then(data => data) //todo: using user data in client
                 .catch(error => console.log(error));
         }
     }

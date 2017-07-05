@@ -1,8 +1,9 @@
 const user = require('../../models/user');
 
 module.exports.post = (request, response) => {
-    user.register({
-        eMail: request.body.email,
+    console.log(request.body);
+    user.register(request.session, {
+        email: request.body.email,
         password: request.body.password,
         name: request.body.name
     })
