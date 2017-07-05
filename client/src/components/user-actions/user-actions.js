@@ -4,7 +4,7 @@ import 'components/user-actions/user-actions.less';
 import template from 'components/user-actions/user-actions.html';
 import register from 'components/component-registrator';
 
-//import {user} from 'providers/user-provider';
+import {user} from 'providers/user-provider';
 import 'components/modal/modal';
 import 'components/signing-form/signing-form';
 
@@ -14,10 +14,14 @@ class UserActionsViewModel {
         this.isAuthorised = ko.observable(false);
         this.isFormOpened = ko.observable(false);
         this.formMode = ko.observable('sign-in');
+        user.get().then(data => {
+            console.log(data);
+            this.user(data);
+        });
     }
 
     logOut() {
-
+        console.log('logout failed');
     }
 
     openForm (interactionType) {

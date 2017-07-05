@@ -6,7 +6,7 @@ module.exports = class User {
     }
     static get(session) {
         return new Promise((resolve, reject) => {
-            database.findById(session.userId)
+            database.user.findById(session.userId)
                 .then(user => {
                     if (user) {
                         resolve(user); //todo: insert mapper somewhere to return valuable data

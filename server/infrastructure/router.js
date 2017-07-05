@@ -5,12 +5,16 @@ const session = require('express-session');
 const apiRegistrator = require('../api/registrator');
 
 module.exports = function (app) {
-    app.use(bodyParser.json());
     app.use(session({
-        secret: 'keyboard cat',
+        secret: 'cat name',
         resave: false,
-        saveUninitialized: true
+        saveUninitialized: false,
+        cookie: {
+            httpOnly: false,
+            maxAge: 24 * 60 * 60 * 1000
+        }
     }));
+    app.use(bodyParser.json());
 
     app.use(express.static(path.resolve(__dirname, '../../client/dist')));
     app.get('/', (req, res) => {
