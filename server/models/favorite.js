@@ -12,19 +12,31 @@ module.exports = class Favorite {
     }
     static add(session, teamData) {
         return user.get(session).then(user => {
-            database.favorite.findOrCreate({where: {teamId: teamData.teamId, teamName: teamData.teamName}, include: database.user})
+            return database.favorite
+                .findOrCreate({
+                    where: {
+                        teamId: teamData.teamId,
+                        teamName: teamData.teamName
+                    },
+                    include: database.user
+                })
                 .then(team => {
                     user.addFavorite(team[0]);
-                    return user.getFavorites();
                 });
         });
     }
     static remove(session, teamData) {
         return user.get(session).then(user => {
-            database.favorite.findOrCreate({where: {teamId: teamData.teamId}})
+            return database.favorite
+                .findOrCreate({
+                    where: {
+                        teamId: teamData.teamId,
+                        teamName: teamData.teamName
+                    },
+                    include: database.user
+                })
                 .then(team => {
                     user.removeFavorite(team[0]);
-                    return user.getFavorites();
                 });
         });
     }

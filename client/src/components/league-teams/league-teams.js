@@ -29,13 +29,13 @@ class LeagueTeamsViewModel {
 
     toggleFavoriteState(team) {
         if(this.isFavorite(team)) {
-            favorites.remove(team).then(() =>
-                favorites.get().then(data => this.favorites(data))
-            );
+            favorites.remove(team)
+                .then(() => favorites.get())
+                .then(data => this.favorites(data));
         } else {
-            favorites.add(team).then(() =>
-                favorites.get().then(data => this.favorites(data))
-            );
+            favorites.add(team)
+                .then(() => favorites.get())
+                .then(data => this.favorites(data));
         }
     }
 

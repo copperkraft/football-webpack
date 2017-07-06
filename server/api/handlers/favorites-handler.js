@@ -7,7 +7,6 @@ module.exports.get = (request, response) => {
 };
 module.exports.post = (request, response) => {
     if(request.body.isFavorite) {
-        console.log(request.body);
         favorite.add(request.session, {
             teamName: request.body.name,
             teamId: request.body.id
