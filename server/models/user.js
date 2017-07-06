@@ -1,8 +1,9 @@
 const database = require('../database/index');
+const encryptor = require('../utils/passwordEncryptor');
 
 module.exports = class User {
     constructor(databaseEntity) {
-
+        this.data = databaseEntity;
     }
     static get(session) {
         return new Promise((resolve, reject) => {
@@ -21,9 +22,13 @@ module.exports = class User {
         return new Promise((resolve, reject) => {
             database.user.findOne({where: {email: loginData.email}})
                 .then(user => {
-                    if (user) { //todo: password logic
-                        session.userId = user.id;
-                        resolve(user); //todo: insert mapper somewhere to return valuable data
+                    if (user) {
+                        if (encryptor.check(loginData.password, user.salt, user.password)) {
+                            session.userId = user.id;
+                            resolve(user); //todo: insert mapper somewhere to return valuable data
+                        } else {
+                            reject('wrong password: ', loginData);
+                        }
                     } else {
                         reject('wrong e-male: ', loginData);
                     }
@@ -31,17 +36,17 @@ module.exports = class User {
                 .catch(err => reject(err));
         });
     }
-    static register(session, user) {
+    static register(session, userData) {
         return new Promise((resolve, reject) => {
-            //todo existence check
+            const salt = encryptor.generateSalt().toString();
             database.user.create({
-                email: user.email,
-                name: user.name,
-                password: user.pass, //todo: crypto logic
-                salt: Math.random()  //todo: crypto logic
+                email: userData.email,
+                name: userData.name,
+                salt: salt,
+                password: encryptor.encrypt(userData.password, salt)
             })
                 .then(user => {
-                    if (user) { //todo: password logic
+                    if (user) {
                         session.userId = user.id;
                         resolve(user); //todo: insert mapper somewhere to return valuable data
                     } else {
