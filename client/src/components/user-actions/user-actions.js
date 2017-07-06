@@ -21,7 +21,7 @@ class UserActionsViewModel {
     }
 
     logOut() {
-        console.log('logout failed');
+        user.logout();
     }
 
     openForm (interactionType) {

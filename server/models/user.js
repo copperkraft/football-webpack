@@ -56,7 +56,7 @@ module.exports = class User {
                 .catch(err => reject(err));
         });
     }
-    static logOff(session) {
+    static logout(session) {
         return new Promise((resolve) => {
             session.destroy();
             resolve();

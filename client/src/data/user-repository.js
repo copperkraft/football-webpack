@@ -7,9 +7,9 @@ export const userRepository = {
     register(info) {
         return request('api/user/register', 'POST', info);
     },
-    /*logOff() {
-        return request('user/login');
-    },*/
+    logout() {
+        return request('api/user/logout');
+    },
     get() {
         return request('api/user');
     },

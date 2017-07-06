@@ -11,14 +11,11 @@ export const user = {
             return data;
         });
     },
-    logOff() {
-        return new Promise((resolve) => {
-            resolve();
-        });
+    logout() {
+        return userRepository.logout();
     },
     get() {
         return userRepository.get().then(data => {
-            console.log(data);
             return data;
         });
     }
