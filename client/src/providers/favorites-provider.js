@@ -3,10 +3,10 @@ import favoriteMapper from 'models/favorite/favorite-mapper';
 
 export const favorites = {
     add(team) {
-        return favoriteData.add(favoriteMapper(team));
+        return favoriteData.add(team);
     },
     remove(team) {
-        return favoriteData.remove(favoriteMapper(team));
+        return favoriteData.remove(team);
     },
     get() {
         return favoriteData.get().then(data => data.map(favoriteMapper));

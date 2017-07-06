@@ -15,13 +15,18 @@ class UserActionsViewModel {
         this.isFormOpened = ko.observable(false);
         this.formMode = ko.observable('sign-in');
         user.get().then(data => {
-            console.log(data);
             this.user(data);
+        });
+        this.user.subscribe(value => {
+            if(value) {
+                this.isFormOpened(false);
+            }
         });
     }
 
     logOut() {
         user.logout();
+        this.user(null);
     }
 
     openForm (interactionType) {

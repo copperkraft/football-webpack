@@ -9,6 +9,7 @@ import {user} from 'providers/user-provider';
 class UserActionsViewModel {
     constructor(params) {
         this.mode = params.mode;
+        this.user = params.user;
         this.mode('sign-in');
         this.password = ko.observable('');
         this.email = ko.observable('');
@@ -29,14 +30,15 @@ class UserActionsViewModel {
                 email: this.email(),
                 password: this.password(),
                 name: this.name()
-            }).then(data => console.log(data))
+            })
+                .then(data => this.user(data))
                 .catch(error => console.error(error));
         } else {
             user.logIn({
                 email: this.email(),
                 password: this.password()
             })
-                .then(data => data) //todo: using user data in client
+                .then(data => this.user(data))
                 .catch(error => console.log(error));
         }
     }
