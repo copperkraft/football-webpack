@@ -5,4 +5,4 @@ const router = require('./infrastructure/router');
 
 router(app);
 
-listenSince(3000, app);
+listenSince(app.get('port') || 3000, app);
