@@ -18,7 +18,7 @@ export default function request(url, method, data) {
             credentials: 'include',
             body: JSON.stringify(data)
         }).then(response => {
-            if (response.status === 202) {
+            if (response.status === 202 || response.status === 403) {
                 return;
             }
             return response.json();

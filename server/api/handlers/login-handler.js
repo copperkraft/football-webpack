@@ -6,5 +6,5 @@ module.exports.post = (request, response) => {
         password:  request.body.password
     })
         .then(user => response.send(user))
-        .catch(err => response.sendStatus(401));
+        .catch(err => response.sendStatus(403));
 };

@@ -8,5 +8,5 @@ module.exports.post = (request, response) => {
         name: request.body.name
     })
         .then(user => response.send(user))
-        .catch(() => response.sendStatus(401));
+        .catch(() => response.sendStatus(403));
 };
