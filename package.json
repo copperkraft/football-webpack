@@ -4,6 +4,9 @@
   "description": "webpack football app",
   "repository": "https://github.com/copperkraft/football-webpack.git",
   "main": "server/app.js",
+  "engines": {
+    "node": "6.9.4"
+  },
   "scripts": {
     "precommit": "npm run lint",
     "lint": "eslint server/**/*.js client/src/**/*.js",
