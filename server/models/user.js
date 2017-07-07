@@ -51,7 +51,7 @@ module.exports = class User {
             database.user.create({
                 email: userData.email,
                 name: userData.name,
-                salt: salt,
+                salt,
                 password: encryptor.encrypt(userData.password, salt)
             })
                 .then(user => {
