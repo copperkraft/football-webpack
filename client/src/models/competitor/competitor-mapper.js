@@ -1,6 +1,6 @@
 import Competitor from './competitor';
 
-export default dataObject => new Competitor({
+export default dataObject => dataObject ? new Competitor({
     id: parseInt(dataObject._links.team.href.match(/\d+$/)[0], 10),
     position: dataObject.position,
     name : dataObject.teamName,
@@ -12,6 +12,6 @@ export default dataObject => new Competitor({
     losses : dataObject.losses,
     points : dataObject.points,
     imageUrl : dataObject.crestURI
-});
+}) : null;
 
 

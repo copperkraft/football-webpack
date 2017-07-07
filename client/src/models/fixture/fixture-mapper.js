@@ -1,6 +1,6 @@
 import Fixture from './fixture';
 
-export default dataObject => new Fixture({
+export default dataObject => dataObject ? new Fixture({
     id: dataObject.id,
     date : new Date(dataObject.date),
     homeTeamName : dataObject.homeTeamName,
@@ -8,5 +8,5 @@ export default dataObject => new Fixture({
     goalsHomeTeam : dataObject.result.goalsHomeTeam,
     goalsAwayTeam : dataObject.result.goalsAwayTeam,
     isFinished : dataObject.status === 'FINISHED',
-});
+}) : null;
 
