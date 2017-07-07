@@ -9,7 +9,9 @@
     "lint": "eslint server/**/*.js client/src/**/*.js",
     "server": "node server/app.js",
     "dev": "webpack -d -w",
-    "start": "webpack -d && node server/app.js"
+    "start": "webpack -d && node server/app.js",
+    "postinstall": "webpack -d",
+    "heroku-postbuild": "webpack -d"
   },
   "author": "",
   "license": "ISC",
