@@ -10,6 +10,6 @@ module.exports = {
         return this.encrypt(password, salt) === hash;
     },
     generateSalt() {
-        return Math.floor(1000 + Math.random() * 9000);
+        return crypto.randomBytes(8).toString('hex');
     }
 };
