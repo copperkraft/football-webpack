@@ -9,6 +9,8 @@ export const favorites = {
         return favoriteData.remove(team);
     },
     get() {
-        return favoriteData.get().then(data => data.map(favoriteMapper));
+        return favoriteData.get().then(data => {
+            return data ? data.map(favoriteMapper) : [];
+        });
     }
 };

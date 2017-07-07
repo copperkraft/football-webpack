@@ -3,8 +3,11 @@ export default function request(url, method, data) {
         return fetch(url, {
             credentials: 'include'
         }).then(response => {
+            if (response.status === 202) {
+                return;
+            }
             return response.json();
-        });
+        }).catch(error => console.log(error));
     } else {
         return fetch(url, {
             method: 'post',

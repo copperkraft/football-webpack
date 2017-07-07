@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             validate: {
                 isEmail: true
-            }
+            },
+            unique: true
         },
         birthDate: {
             type: DataTypes.DATEONLY

@@ -10,13 +10,11 @@ import 'components/signing-form/signing-form';
 
 class UserActionsViewModel {
     constructor() {
-        this.user = ko.observable();
+        this.user = user.currentUser;
         this.isAuthorised = ko.observable(false);
         this.isFormOpened = ko.observable(false);
         this.formMode = ko.observable('sign-in');
-        user.get().then(data => {
-            this.user(data);
-        });
+        user.get();
         this.user.subscribe(value => {
             if(value) {
                 this.isFormOpened(false);
@@ -26,7 +24,6 @@ class UserActionsViewModel {
 
     logOut() {
         user.logout();
-        this.user(null);
     }
 
     openForm (interactionType) {
