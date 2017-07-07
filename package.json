@@ -5,8 +5,7 @@
   "repository": "https://github.com/copperkraft/football-webpack.git",
   "main": "server/app.js",
   "scripts": {
-    "precommit": "npm test",
-    "prepush": "npm test",
+    "precommit": "npm run lint",
     "lint": "eslint server/**/*.js client/src/**/*.js",
     "server": "node server/app.js",
     "dev": "webpack -d -w",

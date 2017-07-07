@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./databaseConnection');
-const path = require('path');
-
 
 const db = {};
 
@@ -13,7 +11,6 @@ models.forEach((name) => {
     const model = sequelize.import('./models/' + name);
     db[model.name] = model;
 });
-
 
 
 Object.keys(db).forEach(function(modelName) {
