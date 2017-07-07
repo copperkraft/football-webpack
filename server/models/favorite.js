@@ -2,12 +2,19 @@ const database = require('../database/index');
 const user = require('./user');
 
 module.exports = class Favorite {
-    constructor() {}
+    constructor(params = {}) {
+        this.id = params.id;
+        this.name = params.name;
+    }
+    static mapper (databaseEntity) {
+        return {
+            id: databaseEntity.dataValues.teamId,
+            name: databaseEntity.dataValues.teamName,
+        };
+    }
     static get(session) {
         return user.get(session).then(user => {
-            console.log('getting...');
-            return user.getFavorites();
-
+            return user.getFavorites().then(values => values.map(Favorite.mapper));
         });
     }
     static add(session, teamData) {
@@ -21,6 +28,7 @@ module.exports = class Favorite {
                     include: database.user
                 })
                 .then(team => {
+                    console.log(Favorite.mapper(team[0]));
                     user.addFavorite(team[0]);
                 });
         });

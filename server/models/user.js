@@ -2,8 +2,17 @@ const database = require('../database/index');
 const encryptor = require('../utils/passwordEncryptor');
 
 module.exports = class User {
-    constructor(databaseEntity) {
-        this.data = databaseEntity;
+    constructor(params = {}) {
+        this.email = params.email;
+        this.birthDate = params.birthDate;
+        this.name = params.name;
+    }
+    static mapper (databaseEntity) {
+        return {
+            email: databaseEntity.dataValues.email,
+            birthDate: databaseEntity.dataValues.birthDate,
+            name: databaseEntity.dataValues.teamName,
+        };
     }
     static get(session) {
         return new Promise((resolve, reject) => {
