@@ -1,6 +1,7 @@
 import 'components/league-teams/league-teams';
 import 'components/league-table/league-table';
 import 'components/team-page/team-page';
+import 'components/profile-page/profile-page';
 
 import routeNames from 'constants/routes';
 
@@ -16,5 +17,9 @@ export default [
     {
         path: `/${routeNames.teamPage}/:id`,
         component: 'team-page'
+    },
+    {
+        path: `/${routeNames.profilePage}`,
+        component: 'profile-page'
     }
 ];

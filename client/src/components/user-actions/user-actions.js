@@ -11,7 +11,6 @@ import 'components/signing-form/signing-form';
 class UserActionsViewModel {
     constructor() {
         this.user = user.currentUser;
-        this.isAuthorised = ko.observable(false);
         this.isFormOpened = ko.observable(false);
         this.formMode = ko.observable('sign-in');
         user.get();
