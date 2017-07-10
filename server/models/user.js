@@ -11,7 +11,7 @@ module.exports = class User {
         return {
             email: databaseEntity.dataValues.email,
             birthDate: databaseEntity.dataValues.birthDate,
-            name: databaseEntity.dataValues.teamName,
+            name: databaseEntity.dataValues.name,
         };
     }
     static get(session) {
@@ -19,7 +19,7 @@ module.exports = class User {
             database.user.findById(session.userId)
                 .then(user => {
                     if (user) {
-                        resolve(user); //todo: insert mapper somewhere to return valuable data
+                        resolve(User.mapper(user));
                     } else {
                         reject();
                     }
@@ -34,7 +34,7 @@ module.exports = class User {
                     if (user) {
                         if (encryptor.check(loginData.password, user.salt, user.password)) {
                             session.userId = user.id;
-                            resolve(user); //todo: insert mapper somewhere to return valuable data
+                            resolve(User.mapper(user));
                         } else {
                             reject('wrong password: ', loginData);
                         }
@@ -57,7 +57,7 @@ module.exports = class User {
                 .then(user => {
                     if (user) {
                         session.userId = user.id;
-                        resolve(user); //todo: insert mapper somewhere to return valuable data
+                        resolve(User.mapper(user));
                     } else {
                         reject('wrong e-male');
                     }
