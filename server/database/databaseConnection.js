@@ -1,11 +1,11 @@
 const Sequelize = require('sequelize');
 
-
-const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgresql://postgres:123456@localhost/my_db', {
+console.log(process.env.DB_SSL);
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     protocol: 'postgres',
     dialectOptions: {
-        ssl: !!process.env.DATABASE_URL
+        ssl: process.env.DB_SSL !== 'false'
     }
 });
 
