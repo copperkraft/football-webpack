@@ -12,4 +12,4 @@ const app = express();
 
 router(app);
 
-listenSince(process.env.PORT || 3000, app);
+listenSince(process.env.PORT, app);
