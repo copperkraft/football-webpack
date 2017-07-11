@@ -7,7 +7,7 @@ import register from 'components/component-registrator';
 import {leaguesList} from 'constants/leagues-list';
 import {leagueTeams} from 'providers/league-teams-provider';
 import {favorites} from 'providers/favorites-provider';
-import {user} from 'providers/user-provider';
+import {userProvider} from 'providers/user-provider';
 import 'bindings/team-link';
 
 class LeagueTeamsViewModel {
@@ -27,7 +27,7 @@ class LeagueTeamsViewModel {
                 .then(data => this.selectedLeagueTeams(data));
         });
 
-        user.currentUser.subscribe(() => {
+        userProvider.currentUser.subscribe(() => {
             favorites.get().then(data => this.favorites(data));
         });
     }
