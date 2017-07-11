@@ -13,5 +13,3 @@ export default dataObject => dataObject ? new Competitor({
     points : dataObject.points,
     imageUrl : dataObject.crestURI
 }) : null;
-
-
