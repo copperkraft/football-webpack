@@ -4,7 +4,7 @@ import 'components/signing-form/signing-form.less';
 import template from 'components/signing-form/signing-form.html';
 import register from 'components/component-registrator';
 
-import {user} from 'providers/user-provider';
+import {userProvider} from 'providers/user-provider';
 
 class UserActionsViewModel {
     constructor(params) {
@@ -26,7 +26,7 @@ class UserActionsViewModel {
 
     submit() {
         if (this.isSignUp()) {
-            user.register({
+            userProvider.register({
                 email: this.email(),
                 password: this.password(),
                 name: this.name()
@@ -34,7 +34,7 @@ class UserActionsViewModel {
                 .then(data => this.user(data))
                 .catch(error => console.error(error));
         } else {
-            user.logIn({
+            userProvider.logIn({
                 email: this.email(),
                 password: this.password()
             })

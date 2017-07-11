@@ -2,7 +2,7 @@ import ko from 'knockout';
 
 import {userRepository} from 'data/user-repository';
 
-export const user = {
+export const userProvider = {
     logIn(info) {
         return userRepository.logIn(info).then(data => {
             this.currentUser(data);
