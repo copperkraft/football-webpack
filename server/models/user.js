@@ -27,7 +27,7 @@ module.exports = class User {
                 .catch(err => reject(err));
         });
     }
-    static authorise(session, loginData) {
+    static authorize(session, loginData) {
         return new Promise((resolve, reject) => {
             database.user.findOne({where: {email: loginData.email}})
                 .then(user => {

@@ -1,7 +1,8 @@
-const user = require('../../models/user');
+const User = require('../../models/user');
+
 
 module.exports.post = (request, response) => {
-    user.authorise(request.session, {
+    User.authorize(request.session, {
         email: request.body.email,
         password:  request.body.password
     })
