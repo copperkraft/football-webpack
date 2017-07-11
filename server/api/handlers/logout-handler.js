@@ -1,5 +1,6 @@
-module.exports.get = (request, response) => {
-    request.session.destroy();
-    response.sendStatus(202);
+module.exports = (app, url) => {
+    app.get(url, (request, response) => {
+        request.session.destroy();
+        response.sendStatus(202);
+    });
 };
-
