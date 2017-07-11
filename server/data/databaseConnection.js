@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 
-console.log(process.env.DB_SSL);
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const databaseConnection = new Sequelize(process.env.DATABASE_URL, { //todo: configs here!
     dialect: 'postgres',
     protocol: 'postgres',
     dialectOptions: {
@@ -9,8 +8,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     }
 });
 
-
-sequelize
+databaseConnection
     .authenticate()
     .then(() => {
         console.log('Connection has been established successfully.');
@@ -19,5 +17,6 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
-sequelize.sync();
-module.exports = sequelize;
+databaseConnection.sync();
+
+module.exports = databaseConnection;

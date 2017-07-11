@@ -1,11 +1,17 @@
-const User = require('../../models/user');
+const user = require('../../models/user');
 
 
 module.exports.post = (request, response) => {
-    User.authorize(request.session, {
+    user.authorize({
         email: request.body.email,
         password:  request.body.password
     })
-        .then(user => response.send(user))
-        .catch(() => response.sendStatus(403));
+        .then(user => {
+            request.session.userId = user.id;
+            response.send(user);
+        })
+        .catch(error => {
+            console.log('an error occur in login handler. ' + error);
+            response.sendStatus(403);
+        });
 };

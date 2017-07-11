@@ -21,7 +21,6 @@ module.exports = app => {
 
     handlerRegistrator('/api/user/login', app, require('./handlers/login-handler'));
     handlerRegistrator('/api/user/register', app, require('./handlers/register-handler'));
-    handlerRegistrator('/api/user/exist', app, require('./handlers/existance-handler'));
     handlerRegistrator('/api/user/logout', app, require('./handlers/logout-handler'));
     handlerRegistrator('/api/user/', app, require('./handlers/user-handler'));
     handlerRegistrator('/api/favorites/', app, require('./handlers/favorites-handler'));

@@ -1,25 +1,27 @@
-const favorite = require('../../models/favorite');
+const user = require('../../models/user');
 
 module.exports.get = (request, response) => {
-    favorite.get(request.session)
+    user.getFavorites(request.session.userId)
         .then(favorites => response.send(favorites))
-        .catch(() => response.sendStatus(403));
+        .catch(error => {
+            console.log('an error occur in favorite handler. ' + error);
+            response.sendStatus(403);
+        });
 };
 module.exports.post = (request, response) => {
     if(request.body.isFavorite) {
-        favorite.add(request.session, {
+        user.addFavorite(request.session.userId, {
             teamName: request.body.name,
             teamId: request.body.id
         })
             .then(() => response.sendStatus(202))
             .catch(() => response.sendStatus(403));
     } else {
-        favorite.remove(request.session, {
+        user.removeFavorite(request.session.userId, {
             teamName: request.body.name,
             teamId: request.body.id
         })
             .then(() => response.sendStatus(202))
             .catch(() => response.sendStatus(403));
     }
-
 };

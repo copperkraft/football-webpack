@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Favorite = sequelize.define('favorite', {
+    const favorite = sequelize.define('favorite', {
         teamId: {
             type: DataTypes.INTEGER,
             unique: true
@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    Favorite.associate = (models) => {
-        Favorite.belongsToMany(models.user, {
+    favorite.associate = (user) => {
+        favorite.belongsToMany(user, {
             through: 'UserFavorite'
         });
     };
 
-    return Favorite;
+    return favorite;
 };
