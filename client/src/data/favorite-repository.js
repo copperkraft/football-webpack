@@ -2,20 +2,20 @@ import request from 'utils/request';
 
 export const favoriteData = {
     add(team) {
-        return request('api/favorites', 'POST', {
+        return request.post('api/favorites', {
             name: team.name,
             id: team.id,
             isFavorite: true
         });
     },
     remove(team) {
-        return request('api/favorites', 'POST', {
+        return request.post('api/favorites', {
             name: team.name,
             id: team.id,
             isFavorite: false
         });
     },
     get() {
-        return request('api/favorites');
+        return request.get('api/favorites');
     }
 };

@@ -2,18 +2,18 @@ import request from 'utils/request';
 
 export const userRepository = {
     logIn(info) {
-        return request('api/user/login', 'POST', info);
+        return request.post('api/user/login', info);
     },
     register(info) {
-        return request('api/user/register', 'POST', info);
+        return request.post('api/user/register', info);
     },
     logout() {
-        return request('api/user/logout');
+        return request.get('api/user/logout');
     },
     get() {
-        return request('api/user');
+        return request.get('api/user');
     },
     isExist() {
-        return request('api/user/exist');
+        return request.get('api/user/exist');
     }
 };

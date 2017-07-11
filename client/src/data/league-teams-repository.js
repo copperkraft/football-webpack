@@ -3,6 +3,6 @@ import {indexes as leagueIds} from 'constants/indexes';
 
 export const leagueTeamsRepository = {
     get(leagueTitle) {
-        return request(`api/teams/${leagueIds[leagueTitle]}`);
+        return request.get(`api/teams/${leagueIds[leagueTitle]}`);
     }
 };

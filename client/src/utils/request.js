@@ -1,5 +1,5 @@
-export default function request(url, method, data) {
-    if (!method) {
+export default {
+    get (url) {
         return fetch(url, {
             credentials: 'include'
         }).then(response => {
@@ -8,7 +8,8 @@ export default function request(url, method, data) {
             }
             return response.json();
         }).catch(error => console.log(error));
-    } else {
+    },
+    post (url, data) {
         return fetch(url, {
             method: 'post',
             headers: {
@@ -24,4 +25,4 @@ export default function request(url, method, data) {
             return response.json();
         }).catch(error => console.log(error));
     }
-}
+};
