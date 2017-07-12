@@ -5,6 +5,7 @@ import template from 'components/user-actions/user-actions.html';
 import register from 'components/component-registrator';
 
 import {userProvider} from 'providers/user-provider';
+import modes from 'constants/formModes';
 import 'components/modal/modal';
 import 'components/signing-form/signing-form';
 
@@ -25,8 +26,13 @@ class UserActionsViewModel {
         userProvider.logout();
     }
 
-    openForm (interactionType) {
-        this.formMode(interactionType);
+    openSignInForm () {
+        this.formMode(modes[0]);
+        this.isFormOpened(true);
+    }
+
+    openSignUpForm () {
+        this.formMode(modes[1]);
         this.isFormOpened(true);
     }
 }

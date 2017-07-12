@@ -3,6 +3,7 @@ import ko from 'knockout';
 import './modal.less';
 import template from 'components/modal/modal.html';
 import register from 'components/component-registrator';
+import 'bindings/exact-click';
 
 class ModalViewModel {
     constructor(params) {
@@ -11,10 +12,8 @@ class ModalViewModel {
         this.isVisible = params.visible || ko.observable(false);
         this.parentComponent = params.parentComponent;
     }
-    hide(viewModel, event) {
-        if (event.target.className.indexOf('modal--visible') !== -1) {
-            this.isVisible(false);
-        }
+    hide() {
+        this.isVisible(false);
     }
 }
 

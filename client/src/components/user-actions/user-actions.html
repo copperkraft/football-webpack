@@ -1,13 +1,12 @@
 <div class="user-actions">
     <div data-bind="if: user()">
         Hello, <span data-bind="text: user().name"></span>
-        |
-        <a href="/#" data-bind="click: logOut">log out</a>
+        <button data-bind="click: logOut">log out</button>
     </div>
     <div data-bind="if: !user()">
-        <a href="/#" data-bind="click: () => openForm('sign-in')">Sign in</a>
+        <button data-bind="click: () => openSignInForm()">Sign in</button>
         or
-        <a href="/#" data-bind="click: () => openForm('sign-up')">Sign up</a>
+        <button data-bind="click: () => openSignUpForm()">Sign up</button>
     </div>
 </div>
 <modal params="visible: isFormOpened, comp: $component">
