@@ -16,6 +16,7 @@ class LeagueTeamsViewModel {
         favorites.get().then(data => this.favorites(data));
 
         this.leagues = leaguesList;
+        this.displayFavoriteButtons = ko.observable(false);
         this.selectedLeagueName = ko.observable(leaguesList()[0]);
         this.selectedLeagueTeams = ko.observable();
 
@@ -27,8 +28,15 @@ class LeagueTeamsViewModel {
                 .then(data => this.selectedLeagueTeams(data));
         });
 
-        userProvider.currentUser.subscribe(() => {
-            favorites.get().then(data => this.favorites(data));
+        userProvider.currentUser.subscribe((user) => {
+            if (user) {
+                this.displayFavoriteButtons(true);
+                favorites.get().then(data => this.favorites(data));
+            } else {
+                this.favorites([]);
+                this.displayFavoriteButtons(false);
+            }
+
         });
     }
 
