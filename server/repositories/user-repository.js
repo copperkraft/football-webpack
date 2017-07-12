@@ -10,59 +10,55 @@ const mapper = databaseEntity => ({
 
 module.exports = {
     get(userId) {
-        return new Promise((resolve, reject) => {
-            database.user.findById(userId)
-                .then(user => {
-                    if (user) {
-                        resolve(mapper(user));
-                    } else {
-                        reject();
-                    }
-                })
-                .catch(err => reject(err));
-        });
-    },
-    set(userId, data) {
-        return new Promise((resolve, reject) => {
-            //todo: set new data and return new record!
-        });
-    },
-    authorize(loginData) {
-        return new Promise((resolve, reject) => {
-            database.user.findOne({where: {email: loginData.email}})
+        return database.user.findById(userId)
             .then(user => {
                 if (user) {
-                    if (encryptor.check(loginData.password, user.salt, user.password)) {
-                        resolve(mapper(user));
-                    } else {
-                        reject('wrong password');
-                    }
+                    return mapper(user);
                 } else {
-                    reject('wrong e-male');
+                    throw 'user is not logged';
                 }
-            })
-            .catch(err => reject(err));
+            });
+    },
+    set(userId, data) {
+        return database.user.findById(userId)
+            .then(user => {
+                if (user) {
+                    return user.update(data).then(user => mapper(user));
+                } else {
+                    throw 'user with this id does not exist';
+                }
+            });
+    },
+    authorize(loginData) {
+        return database.user.findOne({
+            where: {
+                email: loginData.email
+            }
+        }).then(user => {
+            if (user) {
+                if (encryptor.check(loginData.password, user.salt, user.password)) {
+                    return (mapper(user));
+                } else {
+                    throw 'wrong password';
+                }
+            } else {
+                throw 'wrong email';
+            }
         });
     },
     register(userData) {
-        return new Promise((resolve, reject) => {
-            const salt = encryptor.generateSalt().toString();
-            database.user.create({
-                email: userData.email,
-                name: userData.name,
-                salt,
-                password: encryptor.encrypt(userData.password, salt)
-            })
-                .then(user => {
-                    if (user) {
-                        console.log('registred user:');
-                        console.log(user);
-                        resolve(mapper(user));
-                    } else {
-                        reject('wrong e-male');
-                    }
-                })
-                .catch(err => reject(err));
+        const salt = encryptor.generateSalt().toString();
+        return database.user.create({
+            email: userData.email,
+            name: userData.name,
+            salt,
+            password: encryptor.encrypt(userData.password, salt)
+        }).then(user => {
+            if (user) {
+                return mapper(user);
+            } else {
+                throw 'registration error';
+            }
         });
     }
 };
