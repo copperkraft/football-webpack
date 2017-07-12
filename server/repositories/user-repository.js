@@ -22,6 +22,11 @@ module.exports = {
                 .catch(err => reject(err));
         });
     },
+    set(userId, data) {
+        return new Promise((resolve, reject) => {
+            //todo: set new data and return new record!
+        });
+    },
     authorize(loginData) {
         return new Promise((resolve, reject) => {
             database.user.findOne({where: {email: loginData.email}})

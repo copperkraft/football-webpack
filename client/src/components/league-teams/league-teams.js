@@ -16,7 +16,7 @@ class LeagueTeamsViewModel {
         favorites.get().then(data => this.favorites(data));
 
         this.leagues = leaguesList;
-        this.displayFavoriteButtons = ko.observable(false);
+        this.displayFavoriteButtons = ko.observable(!!userProvider.currentUser());
         this.selectedLeagueName = ko.observable(leaguesList()[0]);
         this.selectedLeagueTeams = ko.observable();
 

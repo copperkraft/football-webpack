@@ -8,5 +8,12 @@ module.exports = (app, url) => {
             })
             .catch(() => response.sendStatus(403));
     });
+    app.post(url, (request, response) => {
+        user.set(request.session.userId)
+            .then(data => {
+                response.send(data);
+            })
+            .catch(() => response.sendStatus(403));
+    });
 };
 
