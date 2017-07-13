@@ -3,13 +3,12 @@ import Pikaday from 'pikaday';
 
 ko.bindingHandlers.calendar = {
     init(element, valueAccessor) {
-        element.value = valueAccessor().value();
-
+        element.value = new Date(valueAccessor().value()).toDateString();
         const pickerInstanse = new Pikaday({
             field: element,
-            minDate: new Date(valueAccessor().from()),
-            maxDate: new Date(valueAccessor().to()),
-            defaultDate: new Date(valueAccessor().value()),
+            minDate: valueAccessor().from ? new Date(valueAccessor().from()) : null,
+            maxDate: valueAccessor().from ? new Date(valueAccessor().to()) : null,
+            defaultDate: element.value,
             toString: date => date.toDateString(),
             parse: dateString => new Date(dateString)
         });

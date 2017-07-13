@@ -32,5 +32,12 @@ export const userProvider = {
                 this.currentUser(data);
             });
     },
+    set(info) {
+        return userRepository.set(info)
+            .then(data => userMapper(data))
+            .then(data => {
+                this.currentUser(data);
+            });
+    },
     currentUser: ko.observable()
 };

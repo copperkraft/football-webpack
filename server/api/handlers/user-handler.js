@@ -9,7 +9,10 @@ module.exports = (app, url) => {
             .catch(() => response.sendStatus(403));
     });
     app.post(url, (request, response) => {
-        user.set(request.session.userId)
+        user.set(request.session.userId, {
+            birthDate: request.body.birthDate,
+            name: request.body.name
+        })
             .then(data => {
                 response.send(data);
             })

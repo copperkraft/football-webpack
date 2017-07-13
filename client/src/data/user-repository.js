@@ -13,6 +13,9 @@ export const userRepository = {
     get() {
         return request.get('api/user');
     },
+    set(info) {
+        return request.post('api/user', info);
+    },
     isExist() {
         return request.get('api/user/exist');
     }
