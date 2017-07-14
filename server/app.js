@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const config = require('config');
 
 dotenv.config();
 
@@ -12,4 +13,4 @@ const app = express();
 
 router(app);
 
-listenSince(process.env.PORT, app);
+listenSince(config.get('port'), app);

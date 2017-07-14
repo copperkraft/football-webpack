@@ -1,0 +1,5 @@
+{
+  "databaseUrl": "postgresql://postgres:123456@localhost/my_db",
+  "port": 3000,
+  "usingSsl": false
+}

@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const settings = {
-    DB_SSL: false,
+    SSL: false,
     DATABASE_URL: 'postgresql://postgres:123456@localhost/my_db',
     PORT: 3000
 };

@@ -1,10 +1,11 @@
 const Sequelize = require('sequelize');
+const config = require('config');
 
-const databaseConnection = new Sequelize(process.env.DATABASE_URL, { //todo: configs here!
+const databaseConnection = new Sequelize(config.get('databaseUrl'), { //todo: configs here!
     dialect: 'postgres',
     protocol: 'postgres',
     dialectOptions: {
-        ssl: process.env.DB_SSL !== 'false'
+        ssl: config.get('usingSsl')
     }
 });
 
