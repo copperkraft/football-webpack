@@ -8,6 +8,7 @@ import register from 'components/component-registrator';
 import {userProvider} from 'providers/user-provider';
 import modes from 'constants/formModes';
 import 'knockout.validation';
+import notie from 'notie';
 
 
 class UserActionsViewModel {
@@ -37,16 +38,32 @@ class UserActionsViewModel {
                 password: this.password(),
                 name: this.name()
             })
-                .then(data => this.user(data))
-                .catch(error => console.error(error));
+                .then(() => this.showSuccessAlert('user created'))
+                .catch(() => this.showErrorAlert('email is incorrect or already taken'));
         } else {
             userProvider.logIn({
                 email: this.email(),
                 password: this.password()
             })
-                .then(data => this.user(data))
-                .catch(error => console.log(error));
+                .then(() => this.showSuccessAlert('success'))
+                .catch(() => this.showErrorAlert('wrong email or password'));
         }
+    }
+
+    showSuccessAlert(text) {
+        notie.alert({
+            type: 'success',
+            text: text || 'success',
+            time: 1
+        });
+    }
+
+    showErrorAlert(text) {
+        notie.alert({
+            type: 'success',
+            text: text || 'error',
+            time: 1
+        });
     }
 }
 
