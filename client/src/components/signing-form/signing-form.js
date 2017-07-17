@@ -1,20 +1,24 @@
 import ko from 'knockout';
 
+
 import 'components/signing-form/signing-form.less';
 import template from 'components/signing-form/signing-form.html';
 import register from 'components/component-registrator';
 
 import {userProvider} from 'providers/user-provider';
 import modes from 'constants/formModes';
+import 'knockout.validation';
+
 
 class UserActionsViewModel {
     constructor(params) {
+        ko.validation.init();
         this.mode = params.mode;
         this.user = params.user;
         this.mode(modes[0]);
-        this.password = ko.observable('');
-        this.email = ko.observable('');
-        this.name = ko.observable('');
+        this.password = ko.observable('').extend({required: true, minLength: 3.5});
+        this.email = ko.observable('').extend({required: true, email: true});
+        this.name = ko.observable('').extend({required: true});
     }
 
     isSignUp() {

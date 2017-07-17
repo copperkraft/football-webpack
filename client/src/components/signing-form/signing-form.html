@@ -6,16 +6,23 @@
         <h1 class="signing-form__title">Sign up</h1>
     </div>
 
-    <p class="signing-form__description">e-mail</p>
-    <input data-bind="value: email" class="signing-form__input" type="email">
-    <p class="signing-form__description">password</p>
-    <input data-bind="value: password" class="signing-form__input" type="password">
-    <div data-bind="if: isSignUp()">
-        <p class="signing-form__description">name</p>
-        <input data-bind="value: name" class="signing-form__input">
+    <div class="signing-form__group">
+        <input placeholder="email" data-bind="value: email, class: {'signing-form__submit--invalid': email.isValid()}"
+               class="signing-form__input"
+               type="email">
+    </div>
+
+    <div class="signing-form__group">
+        <input placeholder="password" data-bind="value: password" class="signing-form__input" type="password">
+    </div>
+
+    <div class="signing-form__group" data-bind="if: isSignUp()">
+        <input placeholder="name" data-bind="value: name" class="signing-form__input">
     </div>
     <br>
+
     <input class="signing-form__submit" type="submit" value="submit" data-bind="click: submit">
+
     <div data-bind="if: !isSignUp()">
         <p class="signing-form__description">Don't have an account? <a href="/#" data-bind="click: toggleMode">Sign up!</a></p>
     </div>

@@ -1,6 +1,11 @@
 .signing-form {
     width: 400px;
 
+    .validationMessage {
+        margin-top: 0.5em;
+        color: #ff0000;
+    }
+
     .signing-form__title {
         color: #444444;
         font-size: 30px;
@@ -13,6 +18,10 @@
         margin-bottom: 0.5em;
     }
 
+    .signing-form__group {
+        margin-bottom: 1em;
+    }
+
     .signing-form__input {
         font-family: "Segoe UI", sans-serif;
 
@@ -22,7 +31,6 @@
         padding: 5px;
         border: none;
         background-color: #eeeeee;
-        margin-bottom: 1em;
         transition: 100ms;
 
         &:hover {
