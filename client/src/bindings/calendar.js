@@ -3,8 +3,14 @@ import Pikaday from 'pikaday';
 
 ko.bindingHandlers.calendar = {
     init(element, valueAccessor) {
-        element.value = new Date(valueAccessor().value()).toDateString();
-        const pickerInstanse = new Pikaday({
+        let value = ko.unwrap(valueAccessor().value); //value can be observable or not
+        value = value || new Date(); //default value is current date
+        value = value instanceof Date ? value : new Date(value); //value can be string or Date object
+
+        element.value = value.toDateString();
+
+        const pickerInstance = new Pikaday({
+            yearRange: [1900, 2020],
             field: element,
             minDate: valueAccessor().from ? new Date(valueAccessor().from()) : null,
             maxDate: valueAccessor().from ? new Date(valueAccessor().to()) : null,
@@ -14,7 +20,7 @@ ko.bindingHandlers.calendar = {
         });
 
         ko.utils.domNodeDisposal.addDisposeCallback(element, () => {
-            pickerInstanse.destroy();
+            pickerInstance.destroy();
         });
 
         element.addEventListener('change', () => {
