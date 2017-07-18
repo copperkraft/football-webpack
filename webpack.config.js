@@ -1,11 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-    entry: path.resolve(__dirname + "/client/src/app.js"),
+    entry: path.resolve(__dirname + '/client/src/app.js'),
     output: {
-        path: path.resolve(__dirname + "/client/dist"),
+        path: path.resolve(__dirname + '/client/dist'),
         filename: 'app.bundle.js'
     },
     module: {
@@ -24,7 +24,7 @@ module.exports = {
                 })
             }, {
                 test: /\.html$/,
-                use: [ {
+                use: [{
                     loader: 'html-loader',
                     options: {
                         minimize: true

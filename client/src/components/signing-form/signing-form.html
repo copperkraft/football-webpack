@@ -7,21 +7,24 @@
     </div>
 
     <div class="signing-form__group">
-        <input placeholder="email" data-bind="value: email, class: {'signing-form__submit--invalid': email.isValid()}"
+        <input placeholder="email" data-bind="textInput: email, css: {'signing-form__submit--invalid': email.isValid()}"
                class="signing-form__input"
                type="email">
     </div>
 
     <div class="signing-form__group">
-        <input placeholder="password" data-bind="value: password" class="signing-form__input" type="password">
+        <input placeholder="password" data-bind="textInput: password" class="signing-form__input" type="password">
     </div>
 
     <div class="signing-form__group" data-bind="if: isSignUp()">
-        <input placeholder="name" data-bind="value: name" class="signing-form__input">
+        <input placeholder="name" data-bind="textInput: name" class="signing-form__input">
     </div>
     <br>
 
-    <input class="signing-form__submit" type="submit" value="submit" data-bind="click: submit">
+    <input class="signing-form__submit"
+           type="submit"
+           value="submit"
+           data-bind="click: submit, css: {'signing-form__submit--invalid': !isDataValid()}">
 
     <div data-bind="if: !isSignUp()">
         <p class="signing-form__description">Don't have an account? <a href="/#" data-bind="click: toggleMode">Sign up!</a></p>

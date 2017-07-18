@@ -2,7 +2,6 @@
     width: 400px;
 
     .validationMessage {
-        margin-top: 0.5em;
         color: #ff0000;
     }
 
@@ -12,19 +11,18 @@
         margin-bottom: 1em;
     }
 
+    .signing-form__group {
+        margin-bottom: 1em;
+    }
+
     .signing-form__description {
         color: #444444;
         font-size: 20px;
         margin-bottom: 0.5em;
     }
 
-    .signing-form__group {
-        margin-bottom: 1em;
-    }
-
     .signing-form__input {
         font-family: "Segoe UI", sans-serif;
-
         box-sizing: border-box;
         width: 100%;
         font-size: 20px;
@@ -58,6 +56,11 @@
 
         &:active {
             background-color: #444444;
+        }
+
+        &.signing-form__submit--invalid {
+            color: #999999;
+            background-color: #666666;
         }
     }
 }
