@@ -1,7 +1,7 @@
 <div class="container">
     <h1 class="title"><span data-bind="text: selectedLeagueName"></span> table</h1>
     <select class="select" data-bind="options: leagues, value: selectedLeagueName"></select>
-    <table class="league-table">
+    <table class="league-table" data-bind="spinner: selectedLeague">
         <thead>
         <tr class="league-table__head">
             <th class="league-table__head-item">Position</th>
