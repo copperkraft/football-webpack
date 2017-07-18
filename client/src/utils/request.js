@@ -3,11 +3,20 @@ export default {
         return fetch(url, {
             credentials: 'include'
         }).then(response => {
-            if (response.status === 202) {
-                return;
+            switch (response.status) {
+                case 401:
+                    throw 'not authorized';
+                case 403:
+                    throw 'forbidden';
+                case 200:
+                    return response.json();
+                default:
+                    return;
             }
-            return response.json();
-        }).catch(error => console.log(error));
+        }).catch(error => {
+            console.log(error);
+            throw error;
+        });
     },
     post (url, data) {
         return fetch(url, {
@@ -19,10 +28,19 @@ export default {
             credentials: 'include',
             body: JSON.stringify(data)
         }).then(response => {
-            if (response.status === 202 || response.status === 403) {
-                return;
+            switch (response.status) {
+                case 401:
+                    throw 'not authorized';
+                case 403:
+                    throw 'forbidden';
+                case 200:
+                    return response.json();
+                default:
+                    return;
             }
-            return response.json();
-        }).catch(error => console.log(error));
+        }).catch(error => {
+            console.log(error);
+            throw error;
+        });
     }
 };

@@ -26,12 +26,12 @@ class UserActionsViewModel {
         return this.mode() === modes[1];
     }
 
-
     toggleMode() {
         this.mode(this.mode() === modes[1] ? modes[0] : modes[1]);
     }
 
     submit() {
+        this.checkInput();
         if (this.isSignUp()) {
             userProvider.register({
                 email: this.email(),
@@ -60,9 +60,9 @@ class UserActionsViewModel {
 
     showErrorAlert(text) {
         notie.alert({
-            type: 'success',
+            type: 'error',
             text: text || 'error',
-            time: 1
+            time: 3
         });
     }
 }
