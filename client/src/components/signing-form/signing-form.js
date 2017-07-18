@@ -8,7 +8,7 @@ import register from 'components/component-registrator';
 import {userProvider} from 'providers/user-provider';
 import modes from 'constants/formModes';
 import 'knockout.validation';
-import notie from 'notie';
+import {showSuccessAlert, showErrorAlert} from 'utils/notifications';
 
 
 class UserActionsViewModel {
@@ -39,7 +39,7 @@ class UserActionsViewModel {
 
     submit() {
         if(!this.isDataValid()) {
-            this.showErrorAlert('invalid input');
+            showErrorAlert('invalid input');
             return;
         }
         if (this.isSignUp()) {
@@ -48,32 +48,16 @@ class UserActionsViewModel {
                 password: this.password(),
                 name: this.name()
             })
-                .then(() => this.showSuccessAlert('user created'))
-                .catch(() => this.showErrorAlert('request error'));
+                .then(() => showSuccessAlert('user created'))
+                .catch(() => showErrorAlert('request error'));
         } else {
             userProvider.logIn({
                 email: this.email(),
                 password: this.password()
             })
-                .then(() => this.showSuccessAlert('user authorized'))
-                .catch(() => this.showErrorAlert('request error'));
+                .then(() => showSuccessAlert('user authorized'))
+                .catch(() => showErrorAlert('request error'));
         }
-    }
-
-    showSuccessAlert(text) {
-        notie.alert({
-            type: 'success',
-            text: text || 'success',
-            time: 1
-        });
-    }
-
-    showErrorAlert(text) {
-        notie.alert({
-            type: 'error',
-            text: text || 'error',
-            time: 3
-        });
     }
 }
 
