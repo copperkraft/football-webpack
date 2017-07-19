@@ -1,5 +1,5 @@
 const rp = require('request-promise-native');
-const paging = require('./paginator');
+const paging = require('./paging');
 
 module.exports = (config) => (request, response) => {
     config.params(request.params).then(params => {
