@@ -1,6 +1,5 @@
 import ko from 'knockout';
 
-
 import './fixtures-tab.less';
 import template from './fixtures-tab.html';
 import register from 'components/component-registrator';

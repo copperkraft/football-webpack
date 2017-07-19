@@ -1,6 +1,5 @@
 const user = require('../../models/user');
 
-
 module.exports = (app, url) => {
     app.get(url, (request, response) => {
         user.getFavorites(request.session.userId)
