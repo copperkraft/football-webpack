@@ -8,7 +8,7 @@
 </div>
 
 <list-paginator params="currentPage: currentPage, pageCount: pageCount, pageSize: pageSize"></list-paginator>
-<div class="fixtures-list" data-bind="foreach: fixtures">
+<div class="fixtures-list" data-bind="foreach: fixtures, spinner: fixtures">
     <div class="fixtures-list__element" data-bind="click: () => $component.selectFixture($data)">
         <div class="fixtures-list__title">
             <span data-bind="text: homeTeamName"></span>

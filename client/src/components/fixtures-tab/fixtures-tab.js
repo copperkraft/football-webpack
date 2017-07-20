@@ -38,6 +38,7 @@ class FixturesTabViewModel {
     }
 
     loadFixtures() {
+        this.fixtures(null);
         fixturesList.get(
             this.id, {
                 size: this.pageSize(),
