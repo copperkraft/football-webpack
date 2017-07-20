@@ -1,12 +1,9 @@
 import ko from 'knockout';
-
-const routes = {
-    team: '#teams/:id'
-};
+import {routes} from 'constants/routes';
 
 ko.bindingHandlers.href = {
     update(element, valueAccessor) {
-        element.href = routes[valueAccessor().route]
+        element.href = '#' + routes[valueAccessor().route]
             .replace(/:(\w+)/g, (match, template) => valueAccessor()[template]);
     }
 };
