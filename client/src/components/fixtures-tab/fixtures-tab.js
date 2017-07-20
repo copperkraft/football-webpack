@@ -5,7 +5,7 @@ import template from './fixtures-tab.html';
 import register from 'components/component-registrator';
 
 import 'bindings/calendar';
-//import {fixturesList} from 'providers/fixtures-list-provider';
+import {fixturesList} from 'providers/fixtures-list-provider';
 
 import 'components/head-to-head/head-to-head';
 import 'components/list-paginator/list-paginator';
@@ -21,17 +21,36 @@ class FixturesTabViewModel {
 
         this.dateFrom = ko.observable(this.season.from.toDateString());
         this.dateTo = ko.observable(this.season.to.toDateString());
-
         this.fixtures = ko.observable();
-
-        this.currentPage = ko.observable(1);
         this.pageCount = ko.observable(5);
-        this.pageSize = ko.observable();
+        this.currentPage = ko.observable(1);
+        this.pageSize = ko.observable(5);
 
-        //fixturesList.get(params.id).then(data => this.fixtures(data));
+        this.dateFrom.subscribe(this.loadFixtures.bind(this));
+        this.dateTo.subscribe(this.loadFixtures.bind(this));
+        this.currentPage.subscribe(this.loadFixtures.bind(this));
+        this.pageSize.subscribe(this.loadFixtures.bind(this));
 
         this.selectedFixture = ko.observable();
         this.id = params.id;
+
+        this.loadFixtures();
+    }
+
+    loadFixtures() {
+        fixturesList.get(
+            this.id, {
+                size: this.pageSize(),
+                number: this.currentPage() - 1
+            }, {
+                minDate: this.dateFrom(),
+                maxDate: this.dateTo()
+            })
+            .then(data => {
+                console.log(data);
+                this.fixtures(data.list);
+                this.pageCount(data.pageCount);
+            });
     }
 
     selectFixture(fixture) {

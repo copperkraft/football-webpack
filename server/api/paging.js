@@ -1,5 +1,5 @@
 module.exports = (data, paging) => {
-    if (!paging || !data.slice) {
+    if (!paging || !data.list) {
         return data;
     }
 
@@ -7,8 +7,8 @@ module.exports = (data, paging) => {
     const pageNumber = +(paging.number || 0);
 
     return {
-        list: data.slice(pageNumber * pageSize, (pageNumber + 1) * pageSize),
-        pageCount: Math.floor(data.length / pageSize),
+        list: data.list.slice(pageNumber * pageSize, (pageNumber + 1) * pageSize),
+        pageCount: Math.ceil(data.list.length / pageSize),
         pageNumber,
         pageSize
     };
