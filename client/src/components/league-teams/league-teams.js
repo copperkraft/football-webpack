@@ -8,7 +8,7 @@ import {leaguesList} from 'constants/leagues-list';
 import {leagueTeams} from 'providers/league-teams-provider';
 import {favorites} from 'providers/favorites-provider';
 import {userProvider} from 'providers/user-provider';
-import 'bindings/team-link';
+import 'bindings/href';
 
 class LeagueTeamsViewModel {
     constructor() {

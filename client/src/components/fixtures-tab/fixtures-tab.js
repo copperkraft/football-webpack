@@ -47,7 +47,6 @@ class FixturesTabViewModel {
                 maxDate: this.dateTo()
             })
             .then(data => {
-                console.log(data);
                 this.fixtures(data.list);
                 this.pageCount(data.pageCount);
             });

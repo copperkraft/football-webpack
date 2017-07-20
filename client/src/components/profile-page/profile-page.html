@@ -12,7 +12,7 @@
                         data-bind="click: () => $component.toggleFavoriteState($data)">
                     &#9733
                 </button>
-                <a class="team-list__fullName" data-bind="teamLink: id">
+                <a class="team-list__fullName" data-bind="href: {route: 'team', id}">
                     <span data-bind="text: name"></span>
                 </a>
             </li>
