@@ -10,7 +10,7 @@ module.exports = (app, url) => {
             });
     });
     app.post(url, (request, response) => {
-        if(request.body.isFavorite) {
+        if (request.body.isFavorite) {
             user.addFavorite(request.session.userId, {
                 teamName: request.body.name,
                 teamId: request.body.id

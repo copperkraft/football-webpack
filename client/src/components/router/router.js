@@ -16,7 +16,7 @@ class RouterViewModel {
                         name: item.slice(2)
                     } : {
                         type: 'constant',
-                        name:  item.slice(1)
+                        name: item.slice(1)
                     };
                 }),
                 component: route.component
@@ -31,7 +31,7 @@ class RouterViewModel {
         window.addEventListener('hashchange', this.calculateRoute.bind(this));
         window.addEventListener('load', this.calculateRoute.bind(this));
 
-        this.page = ko.pureComputed(function () {
+        this.page = ko.pureComputed(function() {
             const matchingComponent = routedComponents().find(item => {
                 if (item.path.length === this.route().length) {
                     return item.path.every((part, position) => {

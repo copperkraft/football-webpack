@@ -19,8 +19,7 @@ export default [
     }, {
         path: `/${routeNames.profilePage}`,
         component: 'profile-page'
-    }
-    , {
+    }, {
         path: `/${routeNames.profilePage}/edit`,
         component: 'profile-edit'
     }

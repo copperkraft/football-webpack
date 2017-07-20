@@ -36,12 +36,11 @@ class LeagueTeamsViewModel {
                 this.favorites([]);
                 this.displayFavoriteButtons(false);
             }
-
         });
     }
 
     toggleFavoriteState(team) {
-        if(this.isFavorite(team)) {
+        if (this.isFavorite(team)) {
             favorites.remove(team)
                 .then(() => favorites.get())
                 .then(data => this.favorites(data));

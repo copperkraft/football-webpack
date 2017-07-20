@@ -3,9 +3,9 @@ import Pikaday from 'pikaday';
 
 ko.bindingHandlers.calendar = {
     init(element, valueAccessor) {
-        let value = ko.unwrap(valueAccessor().value); //value can be observable or not
-        value = value || new Date(); //default value is current date
-        value = value instanceof Date ? value : new Date(value); //value can be string or Date object
+        let value = ko.unwrap(valueAccessor().value);
+        value = value || new Date();
+        value = value instanceof Date ? value : new Date(value);
 
         element.value = value.toDateString();
 

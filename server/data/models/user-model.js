@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATEONLY
         },
         password: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         salt: {
             type: DataTypes.STRING

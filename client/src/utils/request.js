@@ -1,5 +1,5 @@
 export default {
-    get (url) {
+    get(url) {
         return fetch(url, {
             credentials: 'include'
         }).then(response => {
@@ -11,14 +11,13 @@ export default {
                 case 200:
                     return response.json();
                 default:
-                    return;
             }
         }).catch(error => {
             console.log(error);
             throw error;
         });
     },
-    post (url, data) {
+    post(url, data) {
         return fetch(url, {
             method: 'post',
             headers: {
@@ -36,7 +35,6 @@ export default {
                 case 200:
                     return response.json();
                 default:
-                    return;
             }
         }).catch(error => {
             console.log(error);

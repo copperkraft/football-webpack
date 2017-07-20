@@ -36,7 +36,7 @@ class UserActionsViewModel {
     }
 
     submit() {
-        if(!this.isDataValid()) {
+        if (!this.isDataValid()) {
             showErrorAlert('invalid input');
             return;
         }

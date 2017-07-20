@@ -6,7 +6,7 @@ ko.bindingHandlers.spinner = {
         element.spinner = new Spinner();
     },
     update(element, valueAccessor) {
-        if(!valueAccessor()()) {
+        if (!valueAccessor()()) {
             element.spinner.spin(element);
         } else {
             element.spinner.stop();

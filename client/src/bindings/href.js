@@ -6,8 +6,7 @@ const routes = {
 
 ko.bindingHandlers.href = {
     update(element, valueAccessor) {
-        element.href =
-            routes[valueAccessor().route]
-                .replace(/:(\w+)/g, (match, template) => valueAccessor()[template]);
+        element.href = routes[valueAccessor().route]
+            .replace(/:(\w+)/g, (match, template) => valueAccessor()[template]);
     }
 };

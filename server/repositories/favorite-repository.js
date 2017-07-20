@@ -2,7 +2,7 @@ const database = require('../data');
 
 const mapper = databaseEntity => ({
     id: databaseEntity.dataValues.teamId,
-    name: databaseEntity.dataValues.teamName,
+    name: databaseEntity.dataValues.teamName
 });
 
 module.exports = {
@@ -72,5 +72,5 @@ module.exports = {
                 user.removeFavorite(team);
             });
         });
-    },
+    }
 };

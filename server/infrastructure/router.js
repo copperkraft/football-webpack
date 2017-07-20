@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const apiRegistrator = require('../api/registrator');
 
-module.exports = function (app) {
+module.exports = function(app) {
     app.use(session({
         secret: 'cat name',
         resave: false,

@@ -10,6 +10,7 @@
   "scripts": {
     "precommit": "npm run lint",
     "lint": "eslint server/**/*.js client/src/**/*.js",
+    "lint-fix": "eslint server/**/*.js client/src/**/*.js --fix",
     "dev": "webpack -d -w",
     "start": "node server/app.js",
     "heroku-postbuild": "webpack -d"

@@ -2,7 +2,7 @@ const rp = require('request-promise-native');
 
 const keys = {
     consumer_key: 'Qu6V0uhsDglEwSGL825maZk1x',
-    consumer_secret: 'iS7t0xhts6GmwTZajcUfLAe5zoStcaX5FZG5H79X9m2fMSlzd1',
+    consumer_secret: 'iS7t0xhts6GmwTZajcUfLAe5zoStcaX5FZG5H79X9m2fMSlzd1'
 };
 
 const b64Credentials = new Buffer(keys.consumer_key + ':' + keys.consumer_secret).toString('base64');

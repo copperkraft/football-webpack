@@ -1,6 +1,6 @@
 const http = require('http');
 
-module.exports = function listenSince (port, app) {
+module.exports = function listenSince(port, app) {
     console.log(`listen ${port}`);
 
     const server = http.createServer(app).listen(port);

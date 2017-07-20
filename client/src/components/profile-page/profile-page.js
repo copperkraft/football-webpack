@@ -8,7 +8,6 @@ import {userProvider} from 'providers/user-provider';
 import {favorites} from 'providers/favorites-provider';
 
 class ProfilePageViewModel {
-
     constructor() {
         this.user = userProvider.currentUser;
         userProvider.get();

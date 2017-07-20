@@ -27,7 +27,6 @@ class PlayerListViewModel {
         teamPlayers.get(this.id, {size: this.pageSize(), number: this.currentPage()})
             .then(data => this.players(data));
     }
-
 }
 
 register('players-list', template, PlayerListViewModel);

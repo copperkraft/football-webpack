@@ -5,7 +5,7 @@ const mapper = databaseEntity => ({
     id: databaseEntity.dataValues.id,
     email: databaseEntity.dataValues.email,
     birthDate: databaseEntity.dataValues.birthDate,
-    name: databaseEntity.dataValues.name,
+    name: databaseEntity.dataValues.name
 });
 
 module.exports = {
