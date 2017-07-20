@@ -10,7 +10,7 @@ import 'bindings/date';
 
 class PlayerListViewModel {
     constructor(params) {
-        this.players = ko.observable([]);
+        this.players = ko.observable();
         this.pageCount = ko.observable(5);
         this.currentPage = ko.observable(1);
         this.pageSize = ko.observable(5);
@@ -24,6 +24,7 @@ class PlayerListViewModel {
     }
 
     loadPlayers() {
+        this.players(null);
         teamPlayers.get(this.id, {size: this.pageSize(), number: this.currentPage()})
             .then(data => this.players(data));
     }

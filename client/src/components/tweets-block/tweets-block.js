@@ -9,7 +9,7 @@ import {tweets} from 'providers/tweets-provider';
 class TwitterBlockViewModel {
     constructor(params) {
         this.tag = params.tag;
-        this.tweets = ko.observable([]);
+        this.tweets = ko.observable();
         tweets.get(this.tag).then(data => this.tweets(data));
     }
 }

@@ -1,7 +1,7 @@
 
 <list-paginator params="currentPage: currentPage, pageCount: pageCount, pageSize: pageSize">
 </list-paginator>
-<div class="players-list" data-bind="foreach: players">
+<div class="players-list" data-bind="foreach: players, spinner: players">
     <div class="players-list__element">
         <div class="players-list__title">
             <span data-bind="text: jerseyNumber"></span>
