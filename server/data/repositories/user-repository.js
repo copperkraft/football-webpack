@@ -1,5 +1,5 @@
-const database = require('../data');
-const encryptor = require('../utils/passwordEncryptor');
+const database = require('../index');
+const encryptor = require('../../utils/passwordEncryptor');
 
 const mapper = databaseEntity => ({
     id: databaseEntity.dataValues.id,

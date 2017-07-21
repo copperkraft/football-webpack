@@ -1,5 +1,5 @@
-const userRepository = require('../repositories/user-repository');
-const favoriteRepository = require('../repositories/favorite-repository');
+const userRepository = require('../data/repositories/user-repository');
+const favoriteRepository = require('../data/repositories/favorite-repository');
 
 module.exports = {
     get(id) {

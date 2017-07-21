@@ -1,4 +1,4 @@
-const database = require('../data');
+const database = require('../index');
 
 const mapper = databaseEntity => ({
     id: databaseEntity.dataValues.teamId,
@@ -7,21 +7,12 @@ const mapper = databaseEntity => ({
 
 module.exports = {
     get(id) {
-        return new Promise((resolve, reject) => {
-            database.user.findById(id)
-                .then(user => {
-                    if (user) {
-                        resolve(user);
-                    } else {
-                        reject();
-                    }
-                })
-                .catch(err => reject(err));
-        }).then(user => {
-            console.log(user); //todo: maybe there is a way to do this better
-            return user.getFavorites()
-                .then(values => values.map(mapper));
-        });
+        return database.favorite.findAll({
+            include: [{
+                model: database.user,
+                where: {id: +id}
+            }]
+        }).then(values => values.map(mapper));
     },
     add(id, teamData) {
         return new Promise((resolve, reject) => {
@@ -61,7 +52,7 @@ module.exports = {
                 .catch(err => reject(err));
         }).then(user => {
             return database.favorite
-            .findOne({ //todo: check this first if error occurs
+            .findOne({
                 where: {
                     teamId: teamData.teamId,
                     teamName: teamData.teamName

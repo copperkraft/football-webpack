@@ -1,4 +1,4 @@
-const user = require('../../models/user');
+const user = require('../../services/user');
 
 module.exports = (app, url) => {
     app.post(url, (request, response) => {
@@ -12,7 +12,7 @@ module.exports = (app, url) => {
             })
             .catch(error => {
                 console.log('an error occur in login handler. ' + error);
-                response.sendStatus(403);
+                response.sendStatus(422);
             });
     });
 };

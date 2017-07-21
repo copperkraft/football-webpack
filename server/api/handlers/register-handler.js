@@ -1,4 +1,4 @@
-const user = require('../../models/user');
+const user = require('../../services/user');
 
 module.exports = (app, url) => {
     app.post(url, (request, response) => {
