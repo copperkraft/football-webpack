@@ -14,7 +14,7 @@ module.exports = (app, url) => {
             })
             .catch(error => {
                 console.log('an error occur in register handler. ' + error);
-                response.sendStatus(403);
+                response.sendStatus(500);
             });
     });
 };

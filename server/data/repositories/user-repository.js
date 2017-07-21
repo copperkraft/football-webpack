@@ -40,10 +40,10 @@ module.exports = {
                 if (encryptor.check(loginData.password, user.salt, user.password)) {
                     return (mapper(user));
                 } else {
-                    throw 'wrong password';
+                    throw new Error('wrong password');
                 }
             } else {
-                throw 'wrong email';
+                throw new Error('wrong email');
             }
         });
     },
@@ -58,7 +58,7 @@ module.exports = {
             if (user) {
                 return mapper(user);
             } else {
-                throw 'registration error';
+                throw new Error('unable to create user');
             }
         });
     }
