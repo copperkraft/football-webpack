@@ -8,5 +8,6 @@ module.exports = {
         return {
             list: data.players.sort((left, right) => left > right ? 1 : -1)
         };
-    }
+    },
+    paging: true
 };

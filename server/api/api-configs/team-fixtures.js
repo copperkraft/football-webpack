@@ -27,5 +27,6 @@ module.exports = {
                     !(filters.maxDate && new Date(item.date) > new Date(filters.maxDate));
             })
         };
-    }
+    },
+    paging: true
 };
