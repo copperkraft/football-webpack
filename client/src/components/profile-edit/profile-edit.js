@@ -1,6 +1,5 @@
 import ko from 'knockout';
 
-import './profile-edit.less';
 import template from 'components/profile-edit/profile-edit.html';
 import register from 'components/component-registrator';
 

@@ -1,4 +1,4 @@
-<div class="pagination">
+<div class="pagination" data-bind="css: {'pagination--disabled': pageCount() <= 1}">
     <label class="pagination__page">
         <select data-bind="options: pageSizes, value: pageSize"></select>
     </label>
