@@ -18,7 +18,7 @@ class UserActionsViewModel {
         this.password = ko.observable('').extend({required: true, minLength: 3.5});
         this.email = ko.observable('').extend({required: true, email: true});
         this.name = ko.observable('').extend({required: true});
-        this.isDataValid = ko.computed(() => {
+        this.isDataValid = ko.pureComputed(() => {
             return this.password.isValid() && this.email.isValid() &&
             (this.name.isValid() || !this.isSignUp());
         });

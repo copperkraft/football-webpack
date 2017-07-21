@@ -26,15 +26,20 @@ class FixturesTabViewModel {
         this.currentPage = ko.observable(1);
         this.pageSize = ko.observable(5);
 
-        this.dateFrom.subscribe(this.loadFixtures.bind(this));
-        this.dateTo.subscribe(this.loadFixtures.bind(this));
-        this.currentPage.subscribe(this.loadFixtures.bind(this));
-        this.pageSize.subscribe(this.loadFixtures.bind(this));
+        this.disposables = [];
+        this.disposables.push(this.dateFrom.subscribe(this.loadFixtures.bind(this)));
+        this.disposables.push(this.dateTo.subscribe(this.loadFixtures.bind(this)));
+        this.disposables.push(this.currentPage.subscribe(this.loadFixtures.bind(this)));
+        this.disposables.push(this.pageSize.subscribe(this.loadFixtures.bind(this)));
 
         this.selectedFixture = ko.observable();
         this.id = params.id;
 
         this.loadFixtures();
+    }
+
+    dispose() {
+        this.disposables.forEach(disposable => disposable.dispose());
     }
 
     loadFixtures() {

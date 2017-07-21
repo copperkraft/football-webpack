@@ -14,11 +14,15 @@ class HeadToHeadViewModel {
             this.fixture(data)
         );
 
-        params.fixture.subscribe(fixture =>
+        this.fixtureSubscription = params.fixture.subscribe(fixture =>
             fixtureInfo.get(fixture.id).then(data =>
                 this.fixture(data)
             )
         );
+    }
+
+    dispose() {
+        this.fixtureSubscription.dispose();
     }
 }
 

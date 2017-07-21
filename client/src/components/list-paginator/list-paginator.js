@@ -11,7 +11,11 @@ class ListPaginatorViewModel {
         this.currentPage = params.currentPage;
         this.pageCount = params.pageCount;
         this.pageSize = params.pageSize;
-        this.pageSize.subscribe(() => this.currentPage(initialPage));
+        this.pageSizeSubscription = this.pageSize.subscribe(() => this.currentPage(initialPage));
+    }
+
+    dispose() {
+        this.pageSizeSubscription.dispose();
     }
 
     goToPreviousPage() {

@@ -8,16 +8,21 @@ import {showSuccessAlert, showErrorAlert} from 'utils/notifications';
 
 class ProfileEditViewModel {
     constructor() {
-        this.user = userProvider.currentUser;
         userProvider.get();
+        this.user = userProvider.currentUser;
+
         this.name = ko.observable();
         this.birthDate = ko.observable();
-        this.user.subscribe(value => {
+        this.fixtureSubscription = this.user.subscribe(value => {
             if (value) {
                 this.name(value.name);
                 this.birthDate(value.birthDate);
             }
         });
+    }
+
+    dispose() {
+        this.fixtureSubscription.dispose();
     }
 
     save() {
