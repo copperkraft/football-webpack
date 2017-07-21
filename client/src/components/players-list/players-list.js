@@ -8,15 +8,14 @@ import {teamPlayers} from 'providers/team-players-provider';
 import 'components/list-paginator/list-paginator';
 import 'bindings/date';
 
-const defaultPageSize = 5;
-const defaultPage = 1;
+import {initialPage, defaultPagesize} from 'constants/pagination';
 
 class PlayerListViewModel {
     constructor(params) {
         this.players = ko.observable();
         this.pageCount = ko.observable();
-        this.currentPage = ko.observable(defaultPage);
-        this.pageSize = ko.observable(defaultPageSize);
+        this.currentPage = ko.observable(initialPage);
+        this.pageSize = ko.observable(defaultPagesize);
 
         this.currentPage.subscribe(this.loadPlayers.bind(this));
         this.pageSize.subscribe(this.loadPlayers.bind(this));
@@ -28,7 +27,7 @@ class PlayerListViewModel {
 
     loadPlayers() {
         this.players(null);
-        teamPlayers.get(this.id, {size: this.pageSize(), number: this.currentPage()})
+        teamPlayers.get(this.id, {size: this.pageSize(), number: this.currentPage() - 1})
             .then(data => {
                 this.pageCount(data.pageCount);
                 this.players(data.list);
