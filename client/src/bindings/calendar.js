@@ -23,7 +23,6 @@ ko.bindingHandlers.calendar = {
         });
 
         element.addEventListener('change', () => {
-            console.log('element value callback');
             valueAccessor().value(element.value);
         });
     }
