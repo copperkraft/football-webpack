@@ -6,7 +6,7 @@
             <span data-bind="text: email"></span>
             <a href="#user/edit">Edit profile</a>
         </h1>
-        <ul class="team-list team-list--favorite" data-bind="foreach: $component.favorites, visible: $component.favorites().length">
+        <ul class="team-list" data-bind="foreach: $component.favorites, visible: $component.favorites().length">
             <li class="team-list__element">
                 <button class="favorite-button favorite-button--selected"
                         data-bind="click: () => $component.toggleFavoriteState($data)">
