@@ -8,8 +8,6 @@ module.exports = {
         return data.fixtures;
     },
     filter(data, filters) {
-        //.then(data => config.filter ? config.filter(request.query.filters) : data)
-        console.log(filters);
         if (!filters) {
             return {
                 list: data

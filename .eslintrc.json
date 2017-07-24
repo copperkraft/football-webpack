@@ -362,7 +362,9 @@
             {"int32Hint": false}
         ],
         "no-console": [
-            "off"
+            "warn", {
+                "allow": ["warn", "error"]
+            }
         ],
         "object-shorthand": [
             "error",

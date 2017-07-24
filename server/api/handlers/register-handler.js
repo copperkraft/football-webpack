@@ -2,7 +2,6 @@ const user = require('../../services/user');
 
 module.exports = (app, url) => {
     app.post(url, (request, response) => {
-        console.log(request.body);
         user.register({
             email: request.body.email,
             password: request.body.password,
@@ -13,7 +12,7 @@ module.exports = (app, url) => {
                 response.send(user);
             })
             .catch(error => {
-                console.log('an error occur in register handler. ' + error);
+                console.error('an error occur in register handler. ' + error);
                 response.sendStatus(500);
             });
     });

@@ -8,6 +8,6 @@ module.exports = (config) => (request, response) => {
             .then(data => config.filter ? config.filter(data, request.query.filters) : data)
             .then(data => config.paging ? paging(data, request.query.paging) : data)
             .then(data => response.send(data))
-            .catch(err => console.log(err.message + ' ...while fetching data from api ' + params));
+            .catch(err => console.error(err.message + ' ...while fetching data from api ' + params));
     });
 };

@@ -9,7 +9,7 @@ module.exports = (app, url) => {
         user.getFavorites(request.session.userId)
             .then(favorites => response.send(favorites))
             .catch(error => {
-                console.log('an error occur in favorite handler. ' + error);
+                console.error('an error occur in favorite handler. ' + error);
                 response.sendStatus(500);
             });
     });

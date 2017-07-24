@@ -2,7 +2,6 @@ import request from 'utils/request';
 
 export const teamPlayersRepository = {
     get(teamId, pagination) {
-        console.log(`api/teams/${teamId}/players?paging[size]=${pagination.size}&paging[number]=${pagination.number}`);
         return request.get(`api/teams/${teamId}/players?paging[size]=${pagination.size}&paging[number]=${pagination.number}`)
             .then(response => {
                 return {

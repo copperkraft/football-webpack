@@ -14,7 +14,7 @@ module.exports = (app, url) => {
                 if (error.message === 'wrong email' || error.message === 'wrong password') {
                     response.sendStatus(406);
                 }
-                console.log('an error occur in login handler. ' + error);
+                console.error('an error occur in login handler. ' + error);
                 response.sendStatus(500);
             });
     });

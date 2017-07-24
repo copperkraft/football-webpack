@@ -20,7 +20,6 @@ module.exports = {
             });
     },
     set(userId, data) {
-        console.log(data);
         return database.user.findById(userId)
             .then(user => {
                 if (user) {
