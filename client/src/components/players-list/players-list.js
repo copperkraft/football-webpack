@@ -18,7 +18,7 @@ class PlayerListViewModel {
         this.pageSize = ko.observable(defaultPagesize);
 
         this.currentPageSubscription = this.currentPage.subscribe(this.loadPlayers.bind(this));
-        this.pageSizeSubscription = this.pageSize.subscribe(this.loadPlayers.bind(this));
+        this.pageCountSubscription = this.pageSize.subscribe(this.loadPlayers.bind(this));
 
         this.id = params.id;
 
@@ -27,7 +27,7 @@ class PlayerListViewModel {
 
     dispose() {
         this.currentPageSubscription.dispose();
-        this.pageSizeSubscription.dispose();
+        this.pageCountSubscription.dispose();
     }
 
     loadPlayers() {
