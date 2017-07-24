@@ -13,7 +13,7 @@
         </div>
         <div class="signing-form__group">
             <p class="signing-form__description">birthDate</p>
-            <input data-bind="calendar: {value: birthDate, to: new Date()}" class="signing-form__input">
+            <input data-bind="calendar: {value: birthDate, to: (new Date())}" class="signing-form__input">
         </div>
         <button class="signing-form__submit" data-bind="click: save">Save new info</button>
     </div>
