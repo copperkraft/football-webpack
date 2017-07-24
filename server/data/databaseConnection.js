@@ -6,7 +6,8 @@ const databaseConnection = new Sequelize(config.get('databaseUrl'), { //todo: co
     protocol: 'postgres',
     dialectOptions: {
         ssl: config.get('usingSsl')
-    }
+    },
+    logging: false
 });
 
 databaseConnection
