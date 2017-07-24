@@ -11,7 +11,7 @@
             <p class="signing-form__description">name</p>
             <input data-bind="value: name" class="signing-form__input">
         </div>
-        <div class="signing-form__group">
+        <div class="signing-form__group" data-bind="if: birthDate">
             <p class="signing-form__description">birthDate</p>
             <input data-bind="calendar: {value: birthDate, to: (new Date())}" class="signing-form__input">
         </div>

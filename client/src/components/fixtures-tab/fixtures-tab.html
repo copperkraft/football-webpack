@@ -1,7 +1,7 @@
 <div data-bind="if: selectedFixture">
     <head-to-head params="fixture: selectedFixture"></head-to-head>
 </div>
-<div class="date-select">
+<div class="date-select" data-bind="if: dateFrom() && dateTo()">
     From: <input data-bind="calendar: {from: dateFrom, to: dateTo, value: dateFrom}">
     <br>
     To: <input data-bind="calendar: {from: dateFrom, to: dateTo, value: dateTo}">

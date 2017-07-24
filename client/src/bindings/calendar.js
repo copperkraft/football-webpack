@@ -3,12 +3,17 @@ import Pikaday from 'pikaday';
 
 ko.bindingHandlers.calendar = {
     init(element, valueAccessor) {
-        element.value = ko.unwrap(valueAccessor().value) || new Date();
+        let {from, to, value} = valueAccessor();
+        [from, to, value] = [from, to, value].map(item => ko.unwrap(item));
+
+        element.value = value.toDateString();
 
         element.picker = new Pikaday({
             yearRange: [1900, 2020],
             field: element,
-            defaultDate: element.value,
+            defaultDate: value,
+            minDate: from,
+            maxDate: to,
             toString: date => date ? date.toDateString() : '',
             parse: dateString => new Date(dateString)
         });
@@ -18,15 +23,8 @@ ko.bindingHandlers.calendar = {
         });
 
         element.addEventListener('change', () => {
+            console.log('element value callback');
             valueAccessor().value(element.value);
         });
-    },
-    update(element, valueAccessor) {
-        let {value, from, to} = valueAccessor();
-        [value, from, to] = [value, from, to].map(item => ko.unwrap(item));
-
-        value && element.picker.setDate(value, false);
-        from && element.picker.setMinDate(from);
-        to && element.picker.setMaxDate(to);
     }
 };

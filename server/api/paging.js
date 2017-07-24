@@ -3,13 +3,10 @@ module.exports = (data, paging) => {
         return data;
     }
 
-    const pageSize = +(paging.size || 10);
-    const pageNumber = +(paging.number || 0);
+    data.pageSize = +(paging.size || 10);
+    data.pageNumber = +(paging.number || 0);
+    data.pageCount = Math.ceil(data.list.length / data.pageSize);
+    data.list = data.list.slice(data.pageNumber * data.pageSize, (data.pageNumber + 1) * data.pageSize);
 
-    return {
-        list: data.list.slice(pageNumber * pageSize, (pageNumber + 1) * pageSize),
-        pageCount: Math.ceil(data.list.length / pageSize),
-        pageNumber,
-        pageSize
-    };
+    return data;
 };

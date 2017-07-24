@@ -14,16 +14,31 @@ module.exports = {
             };
         }
 
-        data.filter(item => {
-            return !(filters.minDate && new Date(item.date) < new Date(filters.minDate)) &&
-                !(filters.maxDate && new Date(item.date) > new Date(filters.maxDate));
+        let minDate = new Date();
+        let maxDate = new Date();
+
+        data.forEach(fixture => {
+            const currentDate = new Date(fixture.date);
+            minDate = minDate > currentDate ? currentDate : minDate;
+            maxDate = maxDate < currentDate ? currentDate : maxDate;
         });
 
         return {
             list: data.filter(item => {
-                return !(filters.minDate && new Date(item.date) < new Date(filters.minDate)) &&
-                    !(filters.maxDate && new Date(item.date) > new Date(filters.maxDate));
-            })
+                if (filters.minDate) {
+                    if (new Date(item.date) < new Date(filters.minDate)) {
+                        return false;
+                    }
+                }
+                if (filters.maxDate) {
+                    if (new Date(item.date) > new Date(filters.maxDate)) {
+                        return false;
+                    }
+                }
+                return true;
+            }),
+            minDate,
+            maxDate
         };
     },
     paging: true

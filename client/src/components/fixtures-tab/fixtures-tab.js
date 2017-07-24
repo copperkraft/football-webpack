@@ -14,13 +14,9 @@ import 'bindings/date';
 
 class FixturesTabViewModel {
     constructor(params) {
-        this.season = { //todo: fetch data from server
-            from: new Date('08.01.2017'),
-            to: new Date('05.31.2018')
-        };
+        this.dateFrom = ko.observable();
+        this.dateTo = ko.observable();
 
-        this.dateFrom = ko.observable(this.season.from.toDateString());
-        this.dateTo = ko.observable(this.season.to.toDateString());
         this.fixtures = ko.observable();
         this.pageCount = ko.observable(5);
         this.currentPage = ko.observable(1);
@@ -55,6 +51,9 @@ class FixturesTabViewModel {
             .then(data => {
                 this.fixtures(data.list);
                 this.pageCount(data.pageCount);
+
+                this.dateFrom() || this.dateFrom(data.minDate);
+                this.dateTo() || this.dateTo(data.maxDate);
             });
     }
 
