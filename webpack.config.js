@@ -3,13 +3,22 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-    entry: path.resolve(__dirname + '/client/src/app.js'),
+    entry: path.resolve(__dirname + '/client/src/index.js'),
     output: {
         path: path.resolve(__dirname + '/client/dist'),
         filename: 'app.bundle.js'
     },
     module: {
         rules: [
+            {
+                test: /\.jsx?$/, // определяем тип файлов
+                exclude: /(node_modules)/,
+                loader: 'babel-loader',
+                options: {
+                    babelrc: false,
+                    presets: ['es2015', 'react']
+                }
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -36,7 +45,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'football',
-            template:  path.resolve(__dirname, 'client/src/index.ejs')
+            template: path.resolve(__dirname, 'client/src/index.ejs')
         }),
         new ExtractTextPlugin('styles.css')
     ],
@@ -52,7 +61,7 @@ module.exports = {
             providers: path.resolve(__dirname, 'client/src/providers/'),
             constants: path.resolve(__dirname, 'client/src/constants/'),
             utils: path.resolve(__dirname, 'client/src/utils/'),
-            bindings: path.resolve(__dirname, 'client/src/bindings/')
+            containers: path.resolve(__dirname, 'client/src/containers/')
         }
     }
 };

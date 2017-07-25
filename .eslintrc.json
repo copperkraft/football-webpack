@@ -27,7 +27,7 @@
         ],
         "block-spacing": [
             "error",
-            "always"
+            "never"
         ],
         "brace-style": [
             "error",
@@ -213,7 +213,7 @@
             }
         ],
         "no-unused-vars": [
-            "error",
+            0,
             {
                 "vars": "all",
                 "args": "none",
