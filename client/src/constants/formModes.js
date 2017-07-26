@@ -1,4 +1,3 @@
 export default [
-    'sign-in',
-    'sign-up'
+    'sign-in', 'sign-up'
 ];

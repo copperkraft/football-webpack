@@ -12,7 +12,8 @@ class HeaderNavigationViewModel {
             {
                 text: 'league table',
                 reference: `#${routes.leagueTablePage}`
-            }, {
+            },
+            {
                 text: 'teams',
                 reference: `#${routes.leagueTeamsPage}`
             }

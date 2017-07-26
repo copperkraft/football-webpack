@@ -27,16 +27,16 @@ module.exports = {
                 .catch(err => reject(err));
         }).then(user => {
             return database.favorite
-            .findOrCreate({
-                where: {
-                    teamId: teamData.teamId,
-                    teamName: teamData.teamName
-                },
-                include: database.user
-            })
-            .then(teams => {
-                user.addFavorite(teams[0]);
-            });
+                .findOrCreate({
+                    where: {
+                        teamId: teamData.teamId,
+                        teamName: teamData.teamName
+                    },
+                    include: database.user
+                })
+                .then(teams => {
+                    user.addFavorite(teams[0]);
+                });
         });
     },
     remove(id, teamData) {
@@ -52,16 +52,16 @@ module.exports = {
                 .catch(err => reject(err));
         }).then(user => {
             return database.favorite
-            .findOne({
-                where: {
-                    teamId: teamData.teamId,
-                    teamName: teamData.teamName
-                },
-                include: database.user
-            })
-            .then(team => {
-                user.removeFavorite(team);
-            });
+                .findOne({
+                    where: {
+                        teamId: teamData.teamId,
+                        teamName: teamData.teamName
+                    },
+                    include: database.user
+                })
+                .then(team => {
+                    user.removeFavorite(team);
+                });
         });
     }
 };

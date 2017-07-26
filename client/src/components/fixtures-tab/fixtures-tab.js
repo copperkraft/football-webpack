@@ -42,10 +42,12 @@ class FixturesTabViewModel {
     loadFixtures() {
         this.fixtures(null);
         fixturesList.get(
-            this.id, {
+            this.id,
+            {
                 size: this.pageSize(),
                 number: this.currentPage() - 1
-            }, {
+            },
+            {
                 minDate: this.dateFrom(),
                 maxDate: this.dateTo()
             })
