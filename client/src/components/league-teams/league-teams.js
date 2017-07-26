@@ -23,12 +23,11 @@ class LeagueTeamsViewModel {
         leagueTeams.get(this.selectedLeagueName())
             .then(data => this.selectedLeagueTeams(data));
 
-        this.currentUserSubscription = this.selectedLeagueName.subscribe((value) => {
-            leagueTeams.get(value)
-                .then(data => this.selectedLeagueTeams(data));
-        });
+        this.currentUserSubscription = this.selectedLeagueName.subscribe(() =>
+            this.loadTeams()
+        );
 
-        this.selectedLeagueNameSubscription = userProvider.currentUser.subscribe((user) => {
+        this.selectedLeagueNameSubscription = userProvider.currentUser.subscribe(user => {
             if (user) {
                 this.displayFavoriteButtons(true);
                 favorites.get().then(data => this.favorites(data));
@@ -37,6 +36,11 @@ class LeagueTeamsViewModel {
                 this.displayFavoriteButtons(false);
             }
         });
+    }
+
+    loadTeams() {
+        leagueTeams.get(this.selectedLeagueName())
+            .then(data => this.selectedLeagueTeams(data));
     }
 
     dispose() {
