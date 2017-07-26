@@ -12,7 +12,7 @@ import {initialPage, defaultPagesize} from 'constants/pagination';
 
 class PlayerListViewModel {
     constructor(params) {
-        this.players = ko.observable();
+        this.players = ko.observableArray();
         this.pageCount = ko.observable();
         this.currentPage = ko.observable(initialPage);
         this.pageSize = ko.observable(defaultPagesize);
