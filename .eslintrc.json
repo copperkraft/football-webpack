@@ -147,8 +147,7 @@
         "no-extra-bind": "error",
         "no-extra-boolean-cast": "error",
         "no-extra-parens": [
-            "error",
-            "functions"
+            "error"
         ],
         "no-fallthrough": "error",
         "no-floating-decimal": "error",

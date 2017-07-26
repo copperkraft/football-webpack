@@ -37,7 +37,7 @@ module.exports = {
         }).then(user => {
             if (user) {
                 if (encryptor.check(loginData.password, user.salt, user.password)) {
-                    return (mapper(user));
+                    return mapper(user);
                 } else {
                     throw new Error('wrong password');
                 }
