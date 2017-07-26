@@ -13,7 +13,7 @@ class ProfileEditViewModel {
 
         this.name = ko.observable();
         this.birthDate = ko.observable();
-        this.fixtureSubscription = this.user.subscribe(value => {
+        this.userSubscription = this.user.subscribe(value => {
             if (value) {
                 this.name(value.name);
                 this.birthDate(value.birthDate);
@@ -22,7 +22,7 @@ class ProfileEditViewModel {
     }
 
     dispose() {
-        this.fixtureSubscription.dispose();
+        this.userSubscription.dispose();
     }
 
     save() {
