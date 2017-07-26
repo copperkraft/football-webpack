@@ -10,13 +10,13 @@ export default class Header extends Component {
                 <div className="header__logo">Football stats</div>
                 <nav className="header__navigation">
                     <NavLink className="header__link"
-                             to={`/${routes.leagueTablePage}`}
-                             activeClassName="header__link--selected">
+                        to={`/${routes.leagueTablePage}`}
+                        activeClassName="header__link--selected">
                         Table
                     </NavLink>
                     <NavLink className="header__link"
-                             to={`/${routes.leagueTeamsPage}`}
-                             activeClassName="header__link--selected">
+                        to={`/${routes.leagueTeamsPage}`}
+                        activeClassName="header__link--selected">
                         Teams
                     </NavLink>
                 </nav>
