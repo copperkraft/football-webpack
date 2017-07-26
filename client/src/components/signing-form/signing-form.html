@@ -7,17 +7,23 @@
     </div>
 
     <div class="signing-form__group">
-        <input placeholder="email" data-bind="textInput: email, css: {'signing-form__submit--invalid': email.isValid()}"
+        <input placeholder="email"
+               data-bind="textInput: email"
                class="signing-form__input"
                type="email">
     </div>
 
     <div class="signing-form__group">
-        <input placeholder="password" data-bind="textInput: password" class="signing-form__input" type="password">
+        <input placeholder="password"
+               data-bind="textInput: password"
+               class="signing-form__input"
+               type="password">
     </div>
 
     <div class="signing-form__group" data-bind="if: isSignUp()">
-        <input placeholder="name" data-bind="textInput: name" class="signing-form__input">
+        <input placeholder="name"
+               data-bind="textInput: name"
+               class="signing-form__input">
     </div>
     <br>
 
