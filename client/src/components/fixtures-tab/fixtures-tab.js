@@ -9,8 +9,9 @@ import {fixturesList} from 'providers/fixtures-list-provider';
 
 import 'components/head-to-head/head-to-head';
 import 'components/list-paginator/list-paginator';
-
 import 'bindings/date';
+
+import {initialPage, defaultPagesize} from 'constants/pagination';
 
 class FixturesTabViewModel {
     constructor(params) {
@@ -18,9 +19,9 @@ class FixturesTabViewModel {
         this.dateTo = ko.observable();
 
         this.fixtures = ko.observable();
-        this.pageCount = ko.observable(5);
-        this.currentPage = ko.observable(1);
-        this.pageSize = ko.observable(5);
+        this.pageCount = ko.observable();
+        this.currentPage = ko.observable(initialPage);
+        this.pageSize = ko.observable(defaultPagesize);
 
         this.disposables = [];
         this.disposables.push(this.dateFrom.subscribe(this.loadFixtures.bind(this)));
