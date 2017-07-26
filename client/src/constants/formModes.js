@@ -1,3 +1,4 @@
-export default [
-    'sign-in', 'sign-up'
-];
+export default {
+    signIn: 'sign-in',
+    signUp: 'sign-up'
+};

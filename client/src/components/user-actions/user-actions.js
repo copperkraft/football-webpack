@@ -13,7 +13,7 @@ class UserActionsViewModel {
     constructor() {
         this.user = userProvider.currentUser;
         this.isFormOpened = ko.observable(false);
-        this.formMode = ko.observable('sign-in');
+        this.formMode = ko.observable(modes.signIn);
         userProvider.get();
         this.userSubscription = this.user.subscribe(value => {
             if (value) {
@@ -31,12 +31,12 @@ class UserActionsViewModel {
     }
 
     openSignInForm() {
-        this.formMode(modes[0]);
+        this.formMode(modes.signIn);
         this.isFormOpened(true);
     }
 
     openSignUpForm() {
-        this.formMode(modes[1]);
+        this.formMode(modes.signUp);
         this.isFormOpened(true);
     }
 }
