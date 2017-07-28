@@ -1,0 +1,33 @@
+.select-tabs {
+    display: table;
+    width: 100%;
+    font-size: 20px;
+    transition: 200ms;
+
+    .select-tabs__tab {
+        cursor: pointer;
+        display: table-cell;
+        text-align: center;
+
+        color: lighten(#209030, 80%); /*lighten(#209030, 80%)*/
+        padding: 0.5em;
+
+        background-color: fade(#209030, 80%); /*fade(#209030, 80%)*/
+
+        border-right: 0.5em solid white;
+
+        &:hover {
+            background-color: fade(#209030, 90%)
+        }
+
+        &:last-child {
+            border-right: none;
+        }
+
+        &.select-tabs__tab--selected {
+            color: #ffffff;
+            background-color: #209030;
+            cursor: default;
+        }
+    }
+}

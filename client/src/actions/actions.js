@@ -1,31 +1,47 @@
+import {leagueTable} from '../providers/league-table-provider';
+
 export const SELECT_LEAGUE = 'SELECT_LEAGUE';
-export function selectLeague(league) {
+export function selectLeague(leagueName) {
     return {
         type: SELECT_LEAGUE,
-        payload: league
+        payload: leagueName
     };
 }
 
-export const INVALIDATE_LEAGUE = 'INVALIDATE_LEAGUE';
-export function invalidateLeague(league) {
-    return {
-        type: INVALIDATE_LEAGUE,
-        payload: league
-    };
-}
-
-export const REQUEST_TABLE = 'REQUEST_POSTS';
-export function requestTable(table) {
+export const REQUEST_TABLE = 'REQUEST_TABLE';
+function requestTable(leagueName) {
     return {
         type: REQUEST_TABLE,
-        payload: table
+        payload: leagueName
     };
 }
 
-export const RECEIVE_TABLE = 'RECEIVE_POSTS';
-export function receiveTable(table, data) {
+export const RECEIVE_TABLE = 'RECEIVE_TABLE';
+function receiveTable(leagueName, table) {
     return {
         type: RECEIVE_TABLE,
-        payload: table
+        payload: {
+            leagueName,
+            table
+        }
+    };
+}
+
+export const INVALIDATE_TABLE = 'INVALIDATE_TABLE';
+function invalidateTable(leagueName) {
+    return {
+        type: RECEIVE_TABLE,
+        payload: {
+            leagueName
+        }
+    };
+}
+
+export function fetchTable(leagueName) {
+    return function(dispatch) {
+        dispatch(requestTable(leagueName));
+        return leagueTable.get(leagueName).then(table => {
+            dispatch(receiveTable(leagueName, table));
+        });
     };
 }

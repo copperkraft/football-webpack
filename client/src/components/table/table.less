@@ -1,27 +1,23 @@
-.league-table {
+.table {
     width: 100%;
+    min-height: 100px;
 
     text-align: center;
+    border: 2px solid #209030;
 
-    .league-table__head {
+    .table__head {
+        background: #209030;
+    }
+    .table__head-item {
+        padding: 0.5em 1em;
         color: #ffffff;
-        background: #888888;
     }
-    .league-table__head-item {
-        border: 1px solid #000000;
-    }
-    .league-table__row {
+    .table__row {
         &:nth-child(2n) {
             background: #eeeeee;
         }
     }
-    .league-table__item {
-        width: 10%;
-
-        border: 1px solid #000000;
-
-        &.league-table__item--wide {
-            width: 20%;
-        }
+    .table__item {
+        padding: 0.5em 1em;
     }
 }

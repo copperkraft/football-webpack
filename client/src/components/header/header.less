@@ -1,42 +1,36 @@
 .header {
-    box-sizing: border-box;
-    max-width: 1020px;
-    margin: 0 auto;
-    padding: 2em;
 
-    border-radius: 0 0 1em 1em;
-    background: #eeeeee;
+    background: #209030;
 
     .header__logo {
-        font-size: 30px;
-
+        font-size: 40px;
+        padding: 0 1em;
         display: inline-block;
 
-        color: #aaaaaa;
+        color: #ffffff;
     }
 
     .header__navigation {
         display: inline-block;
-
-        padding-left: 2em;
     }
 
     .header__link {
-        font-size: 20px;
-
-        transition: 100ms;
+        display: inline-block;
+        font-size: 30px;
+        margin-left: 0.5em;
+        padding: 1em;
+        transition: 200ms;
         text-decoration: none;
-
-        color: #888888;
-
-        &.header__link--selected {
-            text-decoration: underline;
-
-            color: #444444;
-        }
+        color: #b2dfbb;
 
         &:hover {
-            color: #000000;
+            color: #ffffff;
+        }
+
+        &.header__link--selected {
+            color: #ffffff;
+            cursor: default;
+            background: rgba(0, 0, 0, 0.3);
         }
     }
 }

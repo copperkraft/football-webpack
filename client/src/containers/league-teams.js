@@ -4,10 +4,10 @@ import {connect} from 'react-redux';
 import Title from 'components/title/title';
 import Table from '../components/table/table';
 import {fetchTable, selectLeague} from '../actions/actions';
+import Select from '../components/select/select';
 import {leaguesList} from '../constants/leagues-list';
-import SelectTabs from '../components/select-tabs/select-tabs';
 
-class LeagueTable extends Component {
+class LeagueTeams extends Component {
     constructor() {
         super();
 
@@ -34,7 +34,8 @@ class LeagueTable extends Component {
     render() {
         return (
             <div className="container">
-                <SelectTabs values={leaguesList}
+                <Title text={this.props.selectedLeague}/>
+                <Select values={leaguesList}
                     onChange={this.onLeagueChange}
                     initial={this.props.selectedLeague}/>
                 <Table array={this.props.leagueTable.items}/>
@@ -47,4 +48,4 @@ function mapStateToProps(state) {
     return ({leagueTable: state.leagueTable, selectedLeague: state.selectedLeague});
 }
 
-export default connect(mapStateToProps)(LeagueTable);
+export default connect(mapStateToProps)(LeagueTeams);
