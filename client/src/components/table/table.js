@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './table.less';
 import Spin from '../spinner/spinner';
+import InternalLink from '../internal-link/internal-link';
 
 export default class Table extends Component {
     render() {
@@ -26,7 +27,11 @@ export default class Table extends Component {
                         {array.map(row => (
                             <tr key={row.position} className="table__row">
                                 <td className="table__item">{row.position}</td>
-                                <td className="table__item">{row.name}</td>
+                                <td className="table__item">
+                                    <InternalLink route="team" parameters={{id: row.id}}>
+                                        {row.name}
+                                    </InternalLink>
+                                </td>
                                 <td className="table__item">{row.games}</td>
                                 <td className="table__item">{row.wins}</td>
                                 <td className="table__item">{row.draws}</td>
