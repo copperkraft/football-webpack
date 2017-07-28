@@ -1,4 +1,4 @@
-import {SELECT_LEAGUE} from '../actions/actions';
+import {SELECT_LEAGUE} from '../actions/league-actions';
 
 const initialState = 'English Premier League';
 
