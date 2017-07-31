@@ -5,7 +5,6 @@ import TeamCard from '../team-card/team-card';
 
 export default class TeamList extends Component {
     render() {
-        console.log(this.props);
         const teamList = this.props.teamList;
         if (teamList) {
             return (

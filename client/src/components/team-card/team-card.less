@@ -1,24 +1,30 @@
 .team-card {
+    width: 500px;
     padding: 1em;
-    border-bottom: 1px solid #888888;
+    margin-bottom: 1em;
+    background-color: #eeeeee;
+
     &:after {
         display: table;
         clear: both;
 
         content: '';
     }
-    &:last-child {
-        border-bottom: none;
-    }
-    .team-card__fullName {
-        font-size: 20px;
 
-        color: #888888;
+    &:last-child {
+        margin-bottom: 0;
     }
+
+    .team-card__full-name {
+        width: 100%;
+        font-size: 30px;
+        color: #000000;
+    }
+
     .team-card__image {
         float: left;
-
-        width: 5em;
+        width: 100px;
+        height: 100px;
         margin-right: 1em;
     }
 }

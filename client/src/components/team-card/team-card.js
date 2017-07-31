@@ -9,16 +9,13 @@ export default class TeamCard extends Component {
         if (team) {
             return (
                 <div className="team-card">
-                    <div>
-                        <button className="favorite-button"> </button>
-                    </div>
+                    <img className="team-card__image" src={team.imageUrl}/>
 
-                    <div className="team-card__image-container">
-                        <img className="team-card__image" src={team.imageUrl}/>
+                    <div className="team-card__full-name">
+                        <InternalLink className="team-card__full-name" route="team" parameters={{id: team.id}}>
+                            {team.fullName}
+                        </InternalLink>
                     </div>
-                    <InternalLink className="team-card__fullName" route="team" parameters={{id: team.id}}>
-                        {team.fullName}
-                    </InternalLink>
                     <div data-bind="visible: name" className="team-card__name">
                         short name: {team.name}
                     </div>
