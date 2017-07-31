@@ -28,7 +28,7 @@ export default class SelectTabs extends Component {
 }
 
 SelectTabs.propTypes = {
-    values: PropTypes.arrayOf(PropTypes.string),
+    values: PropTypes.arrayOf(PropTypes.string).isRequired,
     onChange: PropTypes.func.isRequired,
     initial: PropTypes.string
 };
