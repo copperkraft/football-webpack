@@ -1,22 +1,38 @@
 import React, { Component } from 'react';
-import './internal-link.less';
 import PropTypes from 'prop-types';
+import {NavLink} from 'react-router-dom';
+
+import './internal-link.less';
+
 import {routes} from 'constants/routes';
-import {Link} from 'react-router-dom';
 
 export default class InternalLink extends Component {
     render() {
-        const {route} = this.props;
-        const href = routes[route].replace(/:(\w+)/g, (match, template) => this.props.parameters[template]);
+        const {
+            route,
+            parameters,
+            className,
+            activeClassName
+        } = this.props;
+
+        const href = '/' + routes[route].replace(/:(\w+)/g, (match, template) => parameters[template]);
+
         return (
-            <Link className="nav-link" to={href}>
+            <NavLink className={className} activeClassName={activeClassName} to={href}>
                 {this.props.children}
-            </Link>
+            </NavLink>
         );
     }
 }
 
 InternalLink.propTypes = {
     route: PropTypes.string,
-    parameters: PropTypes.object
+    parameters: PropTypes.object,
+    className: PropTypes.string,
+    activeClassName: PropTypes.string
+};
+
+InternalLink.defaultProps = {
+    className: 'nav-link',
+    activeClassName: 'nav-link--active'
 };

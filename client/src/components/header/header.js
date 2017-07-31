@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './header.less';
 import {NavLink } from 'react-router-dom';
 import {routes} from 'constants/routes';
+import InternalLink from 'components/internal-link/internal-link';
 
 export default class Header extends Component {
     render() {
@@ -9,16 +10,12 @@ export default class Header extends Component {
             <div className="header">
                 <div className="header__logo">Football statistics</div>
                 <nav className="header__navigation">
-                    <NavLink className="header__link"
-                        to={`/${routes.leagueTablePage}`}
-                        activeClassName="header__link--selected">
-                        league table
-                    </NavLink>
-                    <NavLink className="header__link"
-                        to={`/${routes.leagueTeamsPage}`}
-                        activeClassName="header__link--selected">
-                        league teams
-                    </NavLink>
+                    <InternalLink route="leagueTablePage" className="header__link" activeClassName="header__link--selected">
+                        table
+                    </InternalLink>
+                    <InternalLink route="leagueTeamsPage" className="header__link" activeClassName="header__link--selected">
+                        teams
+                    </InternalLink>
                 </nav>
             </div>
         );
