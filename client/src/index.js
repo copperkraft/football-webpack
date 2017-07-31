@@ -19,7 +19,7 @@ render(
             <div>
                 <Header/>
                 {routedComponents.map(item => (
-                    <Route key={item.path} path={item.path} component={item.component}/>
+                    <Route key={item.path} exact path={item.path} component={item.component}/>
                 ))}
                 <Redirect from="/" to={defaultRoute}/>
             </div>
