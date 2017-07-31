@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+
 import './header.less';
-import {NavLink } from 'react-router-dom';
-import {routes} from 'constants/routes';
+
 import InternalLink from 'components/internal-link/internal-link';
 
 export default class Header extends Component {
