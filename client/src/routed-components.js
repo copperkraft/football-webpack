@@ -12,3 +12,5 @@ export const routedComponents = [
         component: LeagueTeams
     }
 ];
+
+export const defaultRoute = `/${routes.leagueTablePage}`;
