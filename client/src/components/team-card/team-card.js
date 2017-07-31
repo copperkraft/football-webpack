@@ -31,5 +31,5 @@ export default class TeamCard extends Component {
 }
 
 TeamCard.propTypes = {
-    teamList: PropTypes.instanceOf(Team)
+    team: PropTypes.instanceOf(Team)
 };

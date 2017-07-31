@@ -13,7 +13,7 @@ export default class TeamList extends Component {
         if (teamList) {
             return (
                 <div className="team-list">
-                    {teamList.map(team => <TeamCard team={team}/>)}
+                    {teamList.map(team => <TeamCard key={team.id} team={team}/>)}
                 </div>
             );
         } else {
