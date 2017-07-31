@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import './team-list.less';
-import Title from '../title/title';
-import TeamCard from '../team-card/team-card';
+
+import Team from 'models/team/team';
+import TeamCard from 'components/team-card/team-card';
+import Spin from 'components/spinner/spinner';
 
 export default class TeamList extends Component {
     render() {
@@ -13,7 +17,11 @@ export default class TeamList extends Component {
                 </div>
             );
         } else {
-            return <Title text="wait..."/>;
+            return <Spin/>;
         }
     }
 }
+
+TeamList.propTypes = {
+    teamList: PropTypes.arrayOf(PropTypes.instanceOf(Team))
+};

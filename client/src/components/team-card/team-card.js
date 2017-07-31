@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './team-card.less';
 
-import InternalLink from '../internal-link/internal-link';
+import InternalLink from 'components/internal-link/internal-link';
 import Spin from 'components/spinner/spinner';
+import Team from 'models/team/team';
 
 export default class TeamCard extends Component {
     render() {
@@ -27,3 +29,7 @@ export default class TeamCard extends Component {
         }
     }
 }
+
+TeamCard.propTypes = {
+    teamList: PropTypes.instanceOf(Team)
+};
