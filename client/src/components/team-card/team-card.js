@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+
 import './team-card.less';
-import Title from '../title/title';
+
 import InternalLink from '../internal-link/internal-link';
+import Spin from 'components/spinner/spinner';
 
 export default class TeamCard extends Component {
     render() {
@@ -10,21 +12,20 @@ export default class TeamCard extends Component {
             return (
                 <div className="team-card">
                     <img className="team-card__image" src={team.imageUrl}/>
-
                     <div className="team-card__full-name">
-                        <InternalLink className="team-card__full-name" route="team" parameters={{id: team.id}}>
+                        <InternalLink route="team" parameters={{id: team.id}}>
                             {team.fullName}
                         </InternalLink>
                     </div>
-                    <div data-bind="visible: name" className="team-card__name">
+                    <div className="team-card__info">
                         short name: {team.name}
                     </div>
-                    <div className="team-card__value" data-bind="visible: squadMarketValue">
-                        squad Market Value: <span data-bind="text: squadMarketValue"> </span>
-                    </div>
+                    {team.squadMarketValue && <div className="team-card__info">
+                        squad Market Value: {team.squadMarketValue}
+                    </div>}
                 </div>);
         } else {
-            return <Title text="wait..."/>;
+            return <Spin/>;
         }
     }
 }
