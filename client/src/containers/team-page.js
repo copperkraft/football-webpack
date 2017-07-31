@@ -5,8 +5,24 @@ import Title from 'components/title/title';
 import {fetchTeamInfo} from '../actions/team-info-actions';
 import TeamCard from 'components/team-card/team-card';
 import Spin from 'components/spinner/spinner';
+import SelectTabs from 'components/select-tabs/select-tabs';
+
+const tabs = {
+    players: 'players',
+    fixtures: 'fixtures'
+};
 
 class TeamPage extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            selectedTab: tabs.players
+        };
+
+        this.onTabChange = this.onTabChange.bind(this);
+    }
+
     componentDidMount() {
         const {dispatch} = this.props;
         dispatch(fetchTeamInfo(this.props.match.params.id));
@@ -18,12 +34,29 @@ class TeamPage extends Component {
             dispatch(fetchTeamInfo(this.props.match.params.id));
         }
     }
+
+    onTabChange(tab) {
+        this.setState({selectedTab: tab});
+    }
+
     render() {
         return (
             <div className="container">
                 {this.props.teamInfo.isFetching
                     ? <Spin/>
                     : <TeamCard team={this.props.teamInfo.team}/>
+                }
+                <SelectTabs
+                    values={[tabs.players, tabs.fixtures]}
+                    onChange={this.onTabChange}
+                    initial={this.state.selectedTab}/>
+                {
+                    this.state.selectedTab === tabs.players &&
+                        <Title text={tabs.players}/>
+                }
+                {
+                    this.state.selectedTab === tabs.fixtures &&
+                        <Title text={tabs.fixtures}/>
                 }
             </div>
         );
@@ -35,35 +68,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(TeamPage);
-
-/*
-import {teamInfo} from 'providers/team-info-provider';
-
-class TeamPageViewModel {
-    constructor(params) {
-        this.team = ko.observable();
-        teamInfo.get(params.id).then(data => this.team(data));
-
-        this.selectedTab = ko.observable('fixtures-tab');
-
-        this.tab = ko.pureComputed(function() {
-            return {
-                name: this.selectedTab,
-                params: {
-                    id: params.id,
-                    name: this.team() ? this.team().name : ''
-                }
-            };
-        }, this);
-    }
-
-    setSelection(select) {
-        this.selectedTab(select);
-    }
-
-    isSelected(tab) {
-        return this.selectedTab() === tab;
-    }
-}
-
-register('team-page', template, TeamPageViewModel);*/
