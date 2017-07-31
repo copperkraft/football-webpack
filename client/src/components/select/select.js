@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './select.less';
 import PropTypes from 'prop-types';
+
+import './select.less';
 
 export default class Select extends Component {
     constructor() {
@@ -22,7 +23,7 @@ export default class Select extends Component {
 }
 
 Select.propTypes = {
-    values: PropTypes.arrayOf(PropTypes.string),
+    values: PropTypes.arrayOf(PropTypes.string).isRequired,
     onChange: PropTypes.func.isRequired,
     initial: PropTypes.string
 };
