@@ -12,11 +12,9 @@ export default class TeamCard extends Component {
             return (
                 <div className="team-card">
                     <img className="team-card__image" src={team.imageUrl}/>
-                    <div className="team-card__full-name">
-                        <InternalLink route="team" parameters={{id: team.id}}>
-                            {team.fullName}
-                        </InternalLink>
-                    </div>
+                    <InternalLink route="team" className="team-card__full-name" parameters={{id: team.id}}>
+                        {team.fullName}
+                    </InternalLink>
                     <div className="team-card__info">
                         short name: {team.name}
                     </div>
