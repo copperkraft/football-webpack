@@ -19,16 +19,6 @@ export function receiveLeagueTable(leagueName, table) {
     };
 }
 
-export const INVALIDATE_LEAGUE_TABLE = 'INVALIDATE_LEAGUE_TABLE';
-export function invalidateLeagueTable(leagueName) {
-    return {
-        type: RECEIVE_LEAGUE_TABLE,
-        payload: {
-            leagueName
-        }
-    };
-}
-
 export function fetchLeagueTable(leagueName) {
     return function(dispatch) {
         dispatch(requestLeagueTable(leagueName));
