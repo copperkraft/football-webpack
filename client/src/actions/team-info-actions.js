@@ -20,7 +20,6 @@ export function fetchTeamInfo(teamId) {
     return function(dispatch) {
         dispatch(requestTeamInfo(teamId));
         return teamInfo.get(teamId).then(team => {
-            console.log(team);
             dispatch(receiveTeamInfo(team));
         });
     };
