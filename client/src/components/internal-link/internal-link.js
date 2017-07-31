@@ -6,23 +6,21 @@ import './internal-link.less';
 
 import {routes} from 'constants/routes';
 
-export default class InternalLink extends Component {
-    render() {
-        const {
-            route,
-            parameters,
-            className,
-            activeClassName
-        } = this.props;
+export default function InternalLink() {
+    const {
+        route,
+        parameters,
+        className,
+        activeClassName
+    } = this.props;
 
-        const href = '/' + routes[route].replace(/:(\w+)/g, (match, template) => parameters[template]);
+    const href = '/' + routes[route].replace(/:(\w+)/g, (match, template) => parameters[template]);
 
-        return (
-            <NavLink className={className} activeClassName={activeClassName} to={href}>
-                {this.props.children}
-            </NavLink>
-        );
-    }
+    return (
+        <NavLink className={className} activeClassName={activeClassName} to={href}>
+            {this.props.children}
+        </NavLink>
+    );
 }
 
 InternalLink.propTypes = {

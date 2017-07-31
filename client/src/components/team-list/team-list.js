@@ -7,18 +7,16 @@ import Team from 'models/team/team';
 import TeamCard from 'components/team-card/team-card';
 import Spin from 'components/spinner/spinner';
 
-export default class TeamList extends Component {
-    render() {
-        const teamList = this.props.teamList;
-        if (teamList) {
-            return (
-                <div className="team-list">
-                    {teamList.map(team => <TeamCard key={team.id} team={team}/>)}
-                </div>
-            );
-        } else {
-            return <Spin/>;
-        }
+export function TeamList() {
+    const teamList = this.props.teamList;
+    if (teamList) {
+        return (
+            <div className="team-list">
+                {teamList.map(team => <TeamCard key={team.id} team={team}/>)}
+            </div>
+        );
+    } else {
+        return <Spin/>;
     }
 }
 
