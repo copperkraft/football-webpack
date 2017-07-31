@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import Table from '../components/table/table';
-import {fetchLeagueTable} from '../actions/league-table-actions';
 import {leaguesList} from '../constants/leagues-list';
-import SelectTabs from '../components/select-tabs/select-tabs';
+import {fetchLeagueTable} from '../actions/league-table-actions';
 import {selectLeague} from '../actions/league-actions';
+import SelectTabs from '../components/select-tabs/select-tabs';
+import ScoreTable from '../components/score-table/score-table';
 
 class LeagueTable extends Component {
     constructor() {
@@ -37,7 +37,7 @@ class LeagueTable extends Component {
                 <SelectTabs values={leaguesList}
                     onChange={this.onLeagueChange}
                     initial={this.props.selectedLeague}/>
-                <Table array={this.props.leagueTable.items}/>
+                <ScoreTable array={this.props.leagueTable.items}/>
             </div>
         );
     }

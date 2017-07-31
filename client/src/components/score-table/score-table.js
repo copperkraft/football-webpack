@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import './table.less';
-import Spin from '../spinner/spinner';
-import InternalLink from '../internal-link/internal-link';
 
-export default class Table extends Component {
+import './score-table.less';
+
+import Spin from 'components/spinner/spinner';
+import InternalLink from 'components/internal-link/internal-link';
+
+export default class ScoreTable extends Component {
     render() {
-        const array = this.props.array; //todo: move fields to constant array
+        const array = this.props.array;
         if (array && array.map) {
             return (
                 <table className="table"
@@ -51,3 +53,4 @@ export default class Table extends Component {
         }
     }
 }
+
