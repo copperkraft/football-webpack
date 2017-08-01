@@ -7,8 +7,8 @@ import InternalLink from 'components/internal-link/internal-link';
 import Spin from 'components/spinner/spinner';
 import Team from 'models/team/team';
 
-export default function TeamCard() {
-    const team = this.props.team;
+export default function TeamCard(props) {
+    const team = props.team;
     if (team) {
         return (
             <div className="team-card">

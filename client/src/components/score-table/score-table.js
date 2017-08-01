@@ -5,8 +5,8 @@ import './score-table.less';
 import Spin from 'components/spinner/spinner';
 import InternalLink from 'components/internal-link/internal-link';
 
-export default function ScoreTable() {
-    const array = this.props.array;
+export default function ScoreTable(props) {
+    const array = props.array;
     if (array && array.map) {
         return (
             <table className="table">

@@ -6,19 +6,19 @@ import './internal-link.less';
 
 import {routes} from 'constants/routes';
 
-export default function InternalLink() {
+export default function InternalLink(props) {
     const {
         route,
         parameters,
         className,
         activeClassName
-    } = this.props;
+    } = props;
 
     const href = '/' + routes[route].replace(/:(\w+)/g, (match, template) => parameters[template]);
 
     return (
         <NavLink className={className} activeClassName={activeClassName} to={href}>
-            {this.props.children}
+            {props.children}
         </NavLink>
     );
 }

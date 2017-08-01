@@ -1,8 +1,8 @@
 import {routes} from './constants/routes';
 
-import LeagueTable from './containers/league-table';
-import LeagueTeams from './containers/league-teams';
-import TeamPage from './containers/team-page';
+import LeagueTable from 'containers/league-table';
+import LeagueTeams from 'containers/league-teams';
+import TeamPage from 'containers/team-page';
 
 export const routedComponents = [
     {

@@ -9,7 +9,7 @@ import {fetchLeagueTeams} from '../actions/league-teams-actions';
 import {leaguesList} from '../constants/leagues-list';
 
 import {selectLeague} from '../actions/league-actions';
-import TeamList from '../components/team-list/team-list';
+import {TeamList} from '../components/team-list/team-list';
 
 class LeagueTeams extends Component {
     constructor() {
@@ -53,3 +53,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(LeagueTeams);
+

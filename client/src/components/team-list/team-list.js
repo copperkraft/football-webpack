@@ -7,8 +7,8 @@ import Team from 'models/team/team';
 import TeamCard from 'components/team-card/team-card';
 import Spin from 'components/spinner/spinner';
 
-export function TeamList() {
-    const teamList = this.props.teamList;
+export function TeamList(props) {
+    const teamList = props.teamList;
     if (teamList) {
         return (
             <div className="team-list">
