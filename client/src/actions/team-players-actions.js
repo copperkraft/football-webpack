@@ -4,9 +4,7 @@ export const REQUEST_TEAM_PLAYERS = 'REQUEST_TEAM_PLAYERS';
 export function requestTeamPlayers(teamId) {
     return {
         type: REQUEST_TEAM_PLAYERS,
-        payload: {
-            teamId
-        }
+        payload: teamId
     };
 }
 

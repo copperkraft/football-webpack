@@ -5,7 +5,9 @@ export const teamPlayers = {
     get(teamId, pagination) {
         return teamPlayersRepository.get(teamId, pagination).then(data => ({
             list: data.list.map(playerMapper),
-            pageCount: data.pageCount
+            pageCount: data.pageCount,
+            page: data.page,
+            pageSize: data.pageSize
         }));
     }
 };
