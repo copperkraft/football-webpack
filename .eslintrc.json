@@ -29,6 +29,14 @@
             "error",
             "never"
         ],
+        "object-curly-spacing": [
+            "error",
+            "never"
+        ],
+        "array-element-newline": [
+            "warn",
+            {"multiline": true}
+        ],
         "brace-style": [
             "error",
             "1tbs",
@@ -139,8 +147,7 @@
         "no-extra-bind": "error",
         "no-extra-boolean-cast": "error",
         "no-extra-parens": [
-            "error",
-            "functions"
+            "error"
         ],
         "no-fallthrough": "error",
         "no-floating-decimal": "error",

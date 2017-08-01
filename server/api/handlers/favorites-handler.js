@@ -1,4 +1,4 @@
-const user = require('../../services/user');
+const user = require('../../services/favorite-service');
 
 module.exports = (app, url) => {
     app.get(url, (request, response) => {
