@@ -6,7 +6,8 @@ import register from 'components/component-registrator';
 
 import {leaguesList} from 'constants/leagues-list';
 import {leagueTable} from 'providers/league-table-provider';
-import 'bindings/team-link';
+import 'bindings/spinner';
+import 'bindings/href';
 
 class LeagueTableViewModel {
     constructor() {
@@ -14,10 +15,15 @@ class LeagueTableViewModel {
         this.selectedLeagueName = ko.observable(leaguesList[0]);
         this.selectedLeague = ko.observable();
 
-        this.selectedLeagueName.subscribe(() => {
+        this.leagueNameSubscription = this.selectedLeagueName.subscribe(() => {
+            this.selectedLeague(undefined);
             leagueTable.get(this.selectedLeagueName())
                 .then(data => this.selectedLeague(data));
         });
+    }
+
+    dispose() {
+        this.leagueNameSubscription.dispose();
     }
 }
 

@@ -8,7 +8,7 @@
                     data-bind="click: () => $component.toggleFavoriteState($data)">
                 &#9733
             </button>
-            <a class="team-list__fullName" data-bind="teamLink: id">
+            <a class="team-list__fullName" data-bind="href: {route: 'team', id}">
                 <span data-bind="text: name"></span>
             </a>
         </li>
@@ -16,15 +16,18 @@
     <div>
         <ul class="team-list" data-bind="foreach: selectedLeagueTeams()">
             <li class="team-list__element">
-                <button class="favorite-button"
-                        data-bind="click: () => $component.toggleFavoriteState($data),
+                <div data-bind="if: $component.displayFavoriteButtons">
+                    <button class="favorite-button"
+                            data-bind="click: () => $component.toggleFavoriteState($data),
                         css: {'favorite-button--selected': $component.isFavorite($data)}">
-                    &#9733
-                </button>
+                        &#9733
+                    </button>
+                </div>
+
                 <div class="team-list__image-container">
                     <img class="team-list__image" data-bind="attr: {src: imageUrl}">
                 </div>
-                <a class="team-list__fullName" data-bind="teamLink: id">
+                <a class="team-list__fullName" data-bind="href: {route: 'team', id}">
                     <span data-bind="text: fullName"></span>
                 </a>
                 <div data-bind="visible: name" class="team-list__name">

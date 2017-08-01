@@ -1,7 +1,7 @@
 <div class="container">
     <h1 class="title"><span data-bind="text: selectedLeagueName"></span> table</h1>
     <select class="select" data-bind="options: leagues, value: selectedLeagueName"></select>
-    <table class="league-table">
+    <table class="league-table" data-bind="spinner: selectedLeague">
         <thead>
         <tr class="league-table__head">
             <th class="league-table__head-item">Position</th>
@@ -19,7 +19,7 @@
         <tr class="league-table__row">
             <td class="league-table__item" data-bind="text: position"></td>
             <td class="league-table__item league-table__item--wide">
-                <a data-bind="teamLink: id">
+                <a data-bind="href: {route: 'team', id: id}">
                     <span data-bind="text: name"></span>
                 </a>
             </td>

@@ -4,19 +4,22 @@
   "description": "webpack football app",
   "repository": "https://github.com/copperkraft/football-webpack.git",
   "main": "server/app.js",
+  "engines": {
+    "node": "6.9.4"
+  },
   "scripts": {
-    "precommit": "npm test",
-    "prepush": "npm test",
+    "precommit": "npm run lint",
     "lint": "eslint server/**/*.js client/src/**/*.js",
-    "server": "node server/app.js",
+    "lint-fix": "eslint server/**/*.js client/src/**/*.js --fix",
     "dev": "webpack -d -w",
-    "start": "webpack -d && node server/app.js"
+    "start": "node server/app.js",
+    "heroku-postbuild": "webpack -d"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^0.28.4",
-    "eslint": "^3.19.0",
+    "eslint": "^4.3.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "html-loader": "^0.4.5",
     "html-webpack-plugin": "^2.28.0",
@@ -28,13 +31,21 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "config": "^1.26.1",
+    "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "express-session": "^1.15.3",
     "knockout": "^3.4.2",
+    "knockout.validation": "^2.0.3",
+    "notie": "^4.3.1",
     "pg": "^6.4.0",
     "pg-hstore": "^2.3.2",
     "pikaday": "^1.6.1",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4",
-    "sequelize": "^4.2.0"
+    "sequelize": "^4.2.0",
+    "spin": "0.0.1",
+    "toastr": "^2.1.2"
   }
 }

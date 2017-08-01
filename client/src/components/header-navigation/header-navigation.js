@@ -3,17 +3,19 @@ import ko from 'knockout';
 import template from 'components/header-navigation/header-navigation.html';
 import register from 'components/component-registrator';
 
-import routeNames from 'constants/routes';
+import {routes} from 'constants/routes';
+import 'components/user-actions/user-actions';
 
 class HeaderNavigationViewModel {
     constructor() {
         this.links = [
             {
                 text: 'league table',
-                reference: `#${routeNames.leagueTablePage}`
-            },{
+                reference: `#${routes.leagueTablePage}`
+            },
+            {
                 text: 'teams',
-                reference: `#${routeNames.leagueTeamsPage}`
+                reference: `#${routes.leagueTeamsPage}`
             }
         ];
         this.url = ko.observable(location.hash);

@@ -1,0 +1,21 @@
+<div class="container" data-bind="if: user">
+    <div data-bind="with: user">
+        <h1 class="title">
+            <span data-bind="text: name"></span>
+            @
+            <span data-bind="text: email"></span>
+        </h1>
+    </div>
+    <div class="signing-form">
+        <div class="signing-form__group">
+            <p class="signing-form__description">name</p>
+            <input data-bind="value: name" class="signing-form__input">
+        </div>
+        <div class="signing-form__group" data-bind="if: birthDate">
+            <p class="signing-form__description">birthDate</p>
+            <input data-bind="calendar: {value: birthDate, to: new Date()}" class="signing-form__input">
+        </div>
+        <button class="signing-form__submit" data-bind="click: save">Save new info</button>
+    </div>
+
+</div>

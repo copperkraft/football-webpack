@@ -1,0 +1,16 @@
+<div class="user-actions">
+    <div data-bind="if: user()">
+        Hello, <a href="#/user" data-bind="text: user().name"></a>
+        <button data-bind="click: logOut">log out</button>
+    </div>
+    <div data-bind="if: !user()">
+        <button data-bind="click: () => openSignInForm()">Sign in</button>
+        or
+        <button data-bind="click: () => openSignUpForm()">Sign up</button>
+    </div>
+</div>
+<modal params="visible: isFormOpened, comp: $component">
+    <signing-form params="mode: $component.comp.formMode, user: $component.comp.user"></signing-form>
+</modal>
+
+

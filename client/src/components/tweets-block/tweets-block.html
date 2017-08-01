@@ -1,6 +1,6 @@
 <div class="tweets-block">
     <div class="title  title--wide">Tweets for #<span data-bind="text: tag"></span></div>
-    <ul class="tweets-block__list" data-bind="foreach: tweets">
+    <ul class="tweets-block__list" data-bind="foreach: tweets, spinner: tweets">
         <li class="tweets-block__tweet">
             <p class="tweets-block__info">
                 <span data-bind="text: user"></span>

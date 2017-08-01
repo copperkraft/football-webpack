@@ -1,14 +1,15 @@
 <div data-bind="if: selectedFixture">
     <head-to-head params="fixture: selectedFixture"></head-to-head>
 </div>
-<div class="date-select">
+<div class="date-select" data-bind="if: dateFrom() && dateTo()">
     From: <input data-bind="calendar: {from: dateFrom, to: dateTo, value: dateFrom}">
     <br>
     To: <input data-bind="calendar: {from: dateFrom, to: dateTo, value: dateTo}">
 </div>
 
-<list-paginator class="fixtures-list" params="array: relevantFixtures, parentComponent: $component">
-    <div class="fixtures-list__element" data-bind="click: () => $component.parentComponent.selectFixture($data)">
+<list-paginator params="currentPage: currentPage, pageCount: pageCount, pageSize: pageSize"></list-paginator>
+<div class="fixtures-list" data-bind="foreach: fixtures, spinner: fixtures">
+    <div class="fixtures-list__element" data-bind="click: () => $component.selectFixture($data)">
         <div class="fixtures-list__title">
             <span data-bind="text: homeTeamName"></span>
             -
@@ -22,4 +23,6 @@
         <div class="fixtures-list__date" data-bind="date: date">
         </div>
     </div>
-</list-paginator>
+</div>
+<list-paginator params="currentPage: currentPage, pageCount: pageCount, pageSize: pageSize"></list-paginator>
+

@@ -1,6 +1,5 @@
 import ko from 'knockout';
 
-
 import './fixtures-tab.less';
 import template from './fixtures-tab.html';
 import register from 'components/component-registrator';
@@ -10,34 +9,55 @@ import {fixturesList} from 'providers/fixtures-list-provider';
 
 import 'components/head-to-head/head-to-head';
 import 'components/list-paginator/list-paginator';
-
 import 'bindings/date';
+
+import {initialPage, defaultPagesize} from 'constants/pagination';
 
 class FixturesTabViewModel {
     constructor(params) {
-        this.season = { //todo: fetch data from server
-            from: new Date('08.01.2017'),
-            to: new Date('05.31.2018')
-        };
-
-        this.dateFrom = ko.observable(this.season.from.toDateString());
-        this.dateTo = ko.observable(this.season.to.toDateString());
+        this.dateFrom = ko.observable();
+        this.dateTo = ko.observable();
 
         this.fixtures = ko.observable();
-        fixturesList.get(params.id).then(data => this.fixtures(data));
+        this.pageCount = ko.observable();
+        this.currentPage = ko.observable(initialPage);
+        this.pageSize = ko.observable(defaultPagesize);
 
-        this.relevantFixtures = ko.pureComputed(() => {
-            if (this.fixtures()) {
-                return this.fixtures().filter(fixture => {
-                    return fixture.date > new Date(this.dateFrom()) &&
-                        fixture.date < new Date(this.dateTo());
-                });
-            }
-            return [];
-        });
+        this.disposables = [];
+        this.disposables.push(this.dateFrom.subscribe(this.loadFixtures.bind(this)));
+        this.disposables.push(this.dateTo.subscribe(this.loadFixtures.bind(this)));
+        this.disposables.push(this.currentPage.subscribe(this.loadFixtures.bind(this)));
+        this.disposables.push(this.pageSize.subscribe(this.loadFixtures.bind(this)));
 
         this.selectedFixture = ko.observable();
         this.id = params.id;
+
+        this.loadFixtures();
+    }
+
+    dispose() {
+        this.disposables.forEach(disposable => disposable.dispose());
+    }
+
+    loadFixtures() {
+        this.fixtures(null);
+        fixturesList.get(
+            this.id,
+            {
+                size: this.pageSize(),
+                number: this.currentPage() - 1
+            },
+            {
+                minDate: this.dateFrom(),
+                maxDate: this.dateTo()
+            })
+            .then(data => {
+                this.fixtures(data.list);
+                this.pageCount(data.pageCount);
+
+                this.dateFrom() || this.dateFrom(data.minDate);
+                this.dateTo() || this.dateTo(data.maxDate);
+            });
     }
 
     selectFixture(fixture) {

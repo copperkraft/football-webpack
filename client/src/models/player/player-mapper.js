@@ -6,6 +6,6 @@ export default dataObject => dataObject ? new Player({
     jerseyNumber: dataObject.jerseyNumber,
     position: dataObject.position,
     dateOfBirth: new Date(dataObject.dateOfBirth),
-    marketValue: dataObject.marketValue,
+    marketValue: dataObject.marketValue
 }) : null;
 

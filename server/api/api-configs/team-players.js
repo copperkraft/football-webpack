@@ -5,6 +5,9 @@ module.exports = {
         return paramsBuilder(`teams/${params.id}/players`, true);
     },
     mapper(data) {
-        return data.players.sort((left, right) => left > right ? 1 : -1);
-    }
+        return {
+            list: data.players.sort((left, right) => left > right ? 1 : -1)
+        };
+    },
+    paging: true
 };

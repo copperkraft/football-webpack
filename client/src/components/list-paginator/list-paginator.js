@@ -1,25 +1,28 @@
-import ko from 'knockout';
-
 import './list-paginator.less';
 import template from 'components/list-paginator/list-paginator.html';
 import register from 'components/component-registrator';
 
+import {pageSizes, initialPage} from 'constants/pagination';
+
 class ListPaginatorViewModel {
     constructor(params) {
-        if (params.array) {
-            this.array = params.array;
-        }
-        this.parentComponent = params.parentComponent;
-        this.pageSizes = [5, 10, 15, 20];
-        this.pageSize =  ko.observable(this.pageSizes[0]);
-        this.currentPage = ko.observable(1);
-        this.displayedItems = ko.pureComputed(() => {
-            const first = (this.currentPage() - 1) * this.pageSize();
-            return this.array().slice(first, first + this.pageSize());
+        this.pageSizes = pageSizes;
+
+        this.currentPage = params.currentPage;
+        this.pageCount = params.pageCount;
+        this.pageSize = params.pageSize;
+
+        this.pageCountSubscription = this.pageCount.subscribe(() => {
+            this.goToFirstPage();
         });
-        this.pageCount = ko.pureComputed(() => {
-            return Math.ceil(this.array().length / this.pageSize());
+        this.pageSizeSubscription = this.pageSize.subscribe(() => {
+            this.goToFirstPage();
         });
+    }
+
+    dispose() {
+        this.pageCountSubscription.dispose();
+        this.pageSizeSubscription.dispose();
     }
 
     goToPreviousPage() {
@@ -35,7 +38,7 @@ class ListPaginatorViewModel {
     }
 
     goToFirstPage() {
-        this.currentPage(1);
+        this.currentPage(initialPage);
     }
 
     goToLastPage() {

@@ -1,27 +1,21 @@
-import {storage} from 'utils/local-storage-access';
-
-const favoritesStorageName = 'favorites';
+import request from 'utils/request';
 
 export const favoriteData = {
     add(team) {
-        return storage.get(favoritesStorageName).then(currentState => {
-            if(!currentState.some(item => item.name === team.name)) {
-                currentState.push(team);
-            }
-
-            storage.put(favoritesStorageName, currentState);
+        return request.post('api/favorites', {
+            name: team.name,
+            id: team.id,
+            isFavorite: true
         });
     },
     remove(team) {
-        return storage.get(favoritesStorageName).then(currentState => {
-            if (currentState.some(item => item.name === team.name)) {
-                currentState.splice(currentState.findIndex(item => item.name === team.name), 1);
-            }
-
-            storage.put(favoritesStorageName, currentState);
+        return request.post('api/favorites', {
+            name: team.name,
+            id: team.id,
+            isFavorite: false
         });
     },
     get() {
-        return storage.get(favoritesStorageName);
+        return request.get('api/favorites');
     }
 };
