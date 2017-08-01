@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import {leaguesList} from '../constants/leagues-list';
@@ -44,7 +44,7 @@ class LeagueTable extends Component {
 }
 
 function mapStateToProps(state) {
-    return ({leagueTable: state.leagueTable, selectedLeague: state.selectedLeague});
+    return {leagueTable: state.leagueTable, selectedLeague: state.selectedLeague};
 }
 
 export default connect(mapStateToProps)(LeagueTable);

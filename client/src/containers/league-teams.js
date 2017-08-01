@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import Title from 'components/title/title';
@@ -49,7 +49,7 @@ class LeagueTeams extends Component {
 }
 
 function mapStateToProps(state) {
-    return ({leagueTeams: state.leagueTeams, selectedLeague: state.selectedLeague});
+    return {leagueTeams: state.leagueTeams, selectedLeague: state.selectedLeague};
 }
 
 export default connect(mapStateToProps)(LeagueTeams);

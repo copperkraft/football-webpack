@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import Title from 'components/title/title';
@@ -64,7 +64,7 @@ class TeamPage extends Component {
 }
 
 function mapStateToProps(state) {
-    return ({teamInfo: state.teamInfo});
+    return {teamInfo: state.teamInfo};
 }
 
 export default connect(mapStateToProps)(TeamPage);

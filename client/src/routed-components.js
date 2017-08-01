@@ -8,10 +8,12 @@ export const routedComponents = [
     {
         path: `/${routes.leagueTablePage}`,
         component: LeagueTable
-    }, {
+    },
+    {
         path: `/${routes.team}`,
         component: TeamPage
-    }, {
+    },
+    {
         path: `/${routes.leagueTeamsPage}`,
         component: LeagueTeams
     }

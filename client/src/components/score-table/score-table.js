@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import './score-table.less';
 
@@ -24,7 +24,7 @@ export default function ScoreTable(props) {
                     </tr>
                 </thead>
                 <tbody data-bind="foreach: selectedLeague()">
-                    {array.map(row => (
+                    {array.map(row => 
                         <tr key={row.position} className="table__row">
                             <td className="table__item">{row.position}</td>
                             <td className="table__item">
@@ -40,7 +40,7 @@ export default function ScoreTable(props) {
                             <td className="table__item">{row.goalsAgainst}</td>
                             <td className="table__item">{row.points}</td>
                         </tr>
-                    ))}
+                    )}
                 </tbody>
             </table>
         );

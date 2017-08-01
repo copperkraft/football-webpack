@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './select-tabs.less';
 import PropTypes from 'prop-types';
 

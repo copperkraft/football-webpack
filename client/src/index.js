@@ -18,9 +18,9 @@ render(
         <Router>
             <div>
                 <Header/>
-                {routedComponents.map(item => (
+                {routedComponents.map(item => 
                     <Route key={item.path} exact path={item.path} component={item.component}/>
-                ))}
+                )}
                 <Redirect from="/" to={defaultRoute}/>
             </div>
         </Router>
