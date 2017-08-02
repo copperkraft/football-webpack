@@ -8,30 +8,24 @@ import Spin from 'components/spinner/spinner';
 import Player from 'models/player/player';
 
 export default function PlayerCard(props) {
-    const team = props.team;
-    if (team) {
-        return (
-            <div className="team-card">
-                <img className="team-card__image" src={team.imageUrl}/>
-                <InternalLink
-                    route="team"
-                    className="team-card__full-name"
-                    activeClassName="team-card__full-name--current"
-                    parameters={{id: team.id}}>
-                    {team.fullName}
-                </InternalLink>
-                <div className="team-card__info">
-                    short name: {team.name}
-                </div>
-                {team.squadMarketValue && <div className="team-card__info">
-                    squad Market Value: {team.squadMarketValue}
-                </div>}
-            </div>);
-    } else {
-        return <Spin/>;
-    }
+    const player = props.player;
+    return (
+        <div className="team-card">
+            <div className="team-card__full-name">
+                {player.jerseyNumber}: {player.name}
+            </div>
+            <div className="team-card__info">
+                position: {player.position}
+            </div>
+            <div className="team-card__info">
+                date of birth: {player.dateOfBirth.toDateString()}
+            </div>
+            {player.marketValue && <div className="team-card__info">
+                Market Value: {player.marketValue}
+            </div>}
+        </div>);
 }
 
 PlayerCard.propTypes = {
-    player: PropTypes.instanceOf(Player)
+    player: PropTypes.instanceOf(Player).isRequired
 };
