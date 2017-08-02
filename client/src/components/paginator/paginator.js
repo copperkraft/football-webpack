@@ -45,17 +45,18 @@ export default class Paginator extends Component {
     render() {
         return (
             <div className="pagination">
-                <select className="pagination__select" onChange={this.handleSizeChange} defaultValue={this.props.pageSize}>
-                    {pageSizes.map(size => <option key={size} value={size}>{size}</option>)}
-                </select>
-
-                <div onClick={this.goToFirstPage} className="pagination__page">First</div>
-                <div onClick={this.goToPreviousPage} className="pagination__page">Prev</div>
-                <div className="pagination__page">
+                <label className="pagination__item">
+                    <select className="pagination__select" onChange={this.handleSizeChange} defaultValue={this.props.pageSize}>
+                        {pageSizes.map(size => <option key={size} value={size}>{size}</option>)}
+                    </select>
+                </label>
+                <div onClick={this.goToFirstPage} className="pagination__item">first</div>
+                <div onClick={this.goToPreviousPage} className="pagination__item">prev</div>
+                <div className="pagination__item">
                     {this.props.page}/{this.props.maxPage}
                 </div>
-                <div onClick={this.goToNextPage} className="pagination__page">Next</div>
-                <div onClick={this.goToLastPage} className="pagination__page">Last</div>
+                <div onClick={this.goToNextPage} className="pagination__item">next</div>
+                <div onClick={this.goToLastPage} className="pagination__item">last</div>
             </div>
         );
     }
