@@ -9,7 +9,7 @@ import './app.less';
 import Header from './components/header/header';
 
 import configureStore from './store/configureStore';
-import {routedComponents, defaultRoute} from './routed-components';
+import {routedComponents} from './routed-components';
 
 const store = configureStore();
 
@@ -21,7 +21,6 @@ render(
                 {routedComponents.map(item => 
                     <Route key={item.path} exact path={item.path} component={item.component}/>
                 )}
-                <Redirect from="/" to={defaultRoute}/>
             </div>
         </Router>
     </Provider>,
