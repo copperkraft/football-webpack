@@ -6,6 +6,7 @@ import {fetchTeamInfo} from '../actions/team-info-actions';
 import TeamCard from 'components/team-card/team-card';
 import Spin from 'components/spinner/spinner';
 import SelectTabs from 'components/select-tabs/select-tabs';
+import TeamPlayers from 'containers/team-players';
 
 const tabs = {
     players: 'players',
@@ -52,7 +53,7 @@ class TeamPage extends Component {
                     initial={this.state.selectedTab}/>
                 {
                     this.state.selectedTab === tabs.players &&
-                        <Title text={tabs.players}/>
+                        <TeamPlayers teamId={+this.props.match.params.id}/>
                 }
                 {
                     this.state.selectedTab === tabs.fixtures &&

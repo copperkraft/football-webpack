@@ -1,8 +1,29 @@
-.select {
-    display: block;
-    font-size: 20px;
-    background-color: #eeeeee;
-    border: none;
+.pagination {
+    display: table;
+
+    box-sizing: border-box;
+    width: 400px;
+    margin-top: 1em;
     margin-bottom: 1em;
-    padding: 0.5em;
+
+    border: 1px solid #444444;
+    .pagination__page {
+        display: table-cell;
+
+        padding: 0.8em;
+
+        cursor: pointer;
+        text-align: center;
+        &:hover {
+            text-decoration: underline;
+        }
+        &.pagination__page--disabled {
+            text-decoration: none;
+
+            color: #aaaaaa;
+        }
+    }
+    &.pagination--disabled {
+        display: none;
+    }
 }

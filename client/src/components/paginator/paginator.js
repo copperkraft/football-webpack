@@ -2,11 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import './paginator.less';
-import {defaultPageSize, initialPage, pageSizes} from 'constants/pagination';
-
-/*export const defaultPagesize = 5;
-export const pageSizes = [5, 10, 15, 20];
-export const initialPage = 1;*/
+import {initialPage, pageSizes} from 'constants/pagination';
 
 export default class Paginator extends Component {
     constructor() {
@@ -20,36 +16,36 @@ export default class Paginator extends Component {
     }
 
     handleSizeChange(event) {
-        this.props.onSizeChange(event.target.value);
+        this.props.onSizeChange(+event.target.value);
     }
 
     goToPreviousPage() {
         const {page} = this.props;
-        if (page > 1) {
-            this.props.onSizeChange(page - 1);
+        if (page > 0) {
+            this.props.onPageChange(page - 1);
         }
     }
 
     goToNextPage() {
         const {page, maxPage} = this.props;
         if (maxPage > page) {
-            this.props.onSizeChange(page + 1);
+            this.props.onPageChange(page + 1);
         }
     }
 
     goToFirstPage() {
-        this.props.onSizeChange(initialPage);
+        this.props.onPageChange(initialPage);
     }
 
     goToLastPage() {
         const {maxPage} = this.props;
-        this.props.onSizeChange(maxPage);
+        this.props.onPageChange(maxPage);
     }
 
     render() {
         return (
             <div className="pagination">
-                <select className="pagination__select" onChange={this.handleSizeChange} defaultValue={defaultPageSize}>
+                <select className="pagination__select" onChange={this.handleSizeChange} defaultValue={this.props.pageSize}>
                     {pageSizes.map(size => <option key={size} value={size}>{size}</option>)}
                 </select>
 
@@ -69,5 +65,6 @@ Paginator.propTypes = {
     onSizeChange: PropTypes.func,
     onPageChange: PropTypes.func,
     page: PropTypes.number,
-    maxPage: PropTypes.number
+    maxPage: PropTypes.number,
+    pageSize: PropTypes.number
 };

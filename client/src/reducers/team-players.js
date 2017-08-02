@@ -1,25 +1,30 @@
 import {
     RECEIVE_TEAM_PLAYERS,
-    REQUEST_LEAGUE_TEAMS
-} from '../actions/league-teams-actions';
+    REQUEST_TEAM_PLAYERS
+} from '../actions/team-players-actions';
+import {initialPage} from 'constants/pagination';
 
 const initialState = {
     isFetching: false,
-    items: []
+    items: [],
+    page: initialPage,
+    pageCount: 1
 };
 
-export function leagueTeams(state = initialState, action) {
+export function teamPlayers(state = initialState, action) {
     switch (action.type) {
-        case REQUEST_LEAGUE_TEAMS:
-            return {
+        case REQUEST_TEAM_PLAYERS:
+            return Object.assign({}, state, {
                 isFetching: true,
-                items: null
-            };
-        case RECEIVE_LEAGUE_TEAMS:
-            return {
+                items: null,
+                page: action.payload.page
+            });
+        case RECEIVE_TEAM_PLAYERS:
+            return Object.assign({}, state, {
                 isFetching: false,
-                items: action.payload.table
-            };
+                items: action.payload.players,
+                pageCount: action.payload.pageCount
+            });
         default:
             return state;
     }

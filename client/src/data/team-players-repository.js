@@ -9,7 +9,7 @@ export const teamPlayersRepository = {
                     list: response.list.sort((a, b) => a.jerseyNumber > b.jerseyNumber ? 1 : -1),
                     pageCount: response.pageCount,
                     pageSize: response.pageSize,
-                    pageNumber: response.pageNumber
+                    page: response.pageNumber
                 };
             });
     }

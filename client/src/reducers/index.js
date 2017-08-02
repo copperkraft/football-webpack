@@ -5,11 +5,13 @@ import {leagueTable} from './league-table';
 import {leagueTeams} from './league-teams';
 import {teamInfo} from './team-info';
 import {pageSize} from './page-size';
+import {teamPlayers} from './team-players';
 
 export default combineReducers({
     selectedLeague,
     leagueTable,
     leagueTeams,
     teamInfo,
-    pageSize
+    pageSize,
+    teamPlayers
 });
