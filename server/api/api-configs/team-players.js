@@ -6,7 +6,7 @@ module.exports = {
     },
     mapper(data) {
         return {
-            list: data.players.sort((left, right) => left > right ? 1 : -1)
+            list: data.players.sort((left, right) => left.jerseyNumber > right.jerseyNumber ? 1 : -1)
         };
     },
     paging: true

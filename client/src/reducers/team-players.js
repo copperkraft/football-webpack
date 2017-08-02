@@ -16,7 +16,7 @@ export function teamPlayers(state = initialState, action) {
         case REQUEST_TEAM_PLAYERS:
             return Object.assign({}, state, {
                 isFetching: true,
-                items: null,
+                items: [],
                 page: action.payload.page
             });
         case RECEIVE_TEAM_PLAYERS:

@@ -6,7 +6,7 @@ export const teamPlayersRepository = {
         return request.get(composeUrl(`api/teams/${teamId}/players`, {paging}))
             .then(response => {
                 return {
-                    list: response.list.sort((a, b) => a.jerseyNumber > b.jerseyNumber ? 1 : -1),
+                    list: response.list,
                     pageCount: response.pageCount,
                     pageSize: response.pageSize,
                     page: response.pageNumber
