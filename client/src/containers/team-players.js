@@ -7,6 +7,7 @@ import {fetchTeamPlayers} from '../actions/team-players-actions';
 import Paginator from 'components/paginator/paginator';
 import Title from 'components/title/title';
 import PlayerCard from 'components/player-card/player-card';
+import {PlayerList} from 'components/player-list/player-list';
 
 class TeamPlayers extends Component {
     constructor() {
@@ -50,10 +51,7 @@ class TeamPlayers extends Component {
                     onSizeChange={this.changePageSize}
                     onPageChange={this.changePage}
                 />
-                <div>
-                    {teamPlayers.items.map(player => <PlayerCard key={player.id} player={player}/>)}
-                </div>
-
+                <PlayerList playerList={teamPlayers.items}/>
             </div>
         );
     }
