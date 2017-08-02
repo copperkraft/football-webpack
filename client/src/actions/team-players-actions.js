@@ -23,7 +23,7 @@ export function receiveTeamPlayers(players, pageCount, page) {
 export function fetchTeamPlayers(teamId, page, size) {
     return function(dispatch) {
         dispatch(requestTeamPlayers(page));
-        return teamPlayers.get(teamId, {page, size}).then(data => {
+        return teamPlayers.get(teamId, {number: page, size}).then(data => {
             dispatch(receiveTeamPlayers(data.list, data.pageCount, data.page));
         });
     };

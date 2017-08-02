@@ -20,11 +20,16 @@ export function teamPlayers(state = initialState, action) {
                 page: action.payload.page
             });
         case RECEIVE_TEAM_PLAYERS:
-            return Object.assign({}, state, {
-                isFetching: false,
-                items: action.payload.players,
-                pageCount: action.payload.pageCount
-            });
+            console.log(action.payload.page, state.page);
+            if (action.payload.page === state.page) {
+                return Object.assign({}, state, {
+                    isFetching: false,
+                    items: action.payload.players,
+                    pageCount: action.payload.pageCount
+                });
+            } else {
+                return state;
+            }
         default:
             return state;
     }
