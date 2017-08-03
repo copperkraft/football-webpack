@@ -1,27 +1,32 @@
 .select-tabs {
-    display: table;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
     font-size: 20px;
-    transition: 200ms;
+
 
     .select-tabs__tab {
         cursor: pointer;
-        display: table-cell;
         text-align: center;
 
-        color: lighten(#209030, 80%); /*lighten(#209030, 80%)*/
+        color: #000000; /*lighten(#209030, 80%)*/
         padding: 0.5em;
 
-        background-color: fade(#209030, 80%); /*fade(#209030, 80%)*/
+        transition: 200ms;
 
-        border-right: 0.5em solid white;
+        background-color: fade(#209030, 20%); /*fade(#209030, 80%)*/
+
+        margin-right: 0.5em;
+
+        flex-grow: 1;
 
         &:hover {
-            background-color: fade(#209030, 90%)
+            background-color: fade(#209030, 30%)
         }
 
         &:last-child {
-            border-right: none;
+            margin-right: 0;
         }
 
         &.select-tabs__tab--selected {
