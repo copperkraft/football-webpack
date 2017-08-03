@@ -25,35 +25,36 @@ class TeamPlayers extends Component {
     }
 
     changePage(page) {
-        const {dispatch, teamPlayers} = this.props;
-        dispatch(changePlayerPagination(page, teamPlayers.pagination.pageSize));
+        const {dispatch, pagination} = this.props;
+        dispatch(changePlayerPagination(page, pagination.pageSize));
     }
 
     componentDidMount() {
-        const {teamPlayers, teamId, dispatch} = this.props;
-        dispatch(fetchTeamPlayers(teamId, teamPlayers.pagination.page, teamPlayers.pagination.pageSize));
+        const {pagination, teamId, dispatch} = this.props;
+        dispatch(fetchTeamPlayers(teamId, pagination.page, pagination.pageSize));
     }
 
     componentWillReceiveProps(nextProps) {
-        const {teamPlayers, teamId, dispatch} = nextProps;
-        if (this.props.teamPlayers.pagination.page !== teamPlayers.pagination.page) {
-            dispatch(fetchTeamPlayers(teamId, teamPlayers.pagination.page, teamPlayers.pagination.pageSize));
+        const {pagination: newPagination, teamId, dispatch} = nextProps;
+        const {pagination: oldPagination} = this.props;
+        if (newPagination.page !== oldPagination.page || newPagination.pageSize !== oldPagination.pageSize) {
+            dispatch(fetchTeamPlayers(teamId, newPagination.page, newPagination.pageSize));
         }
     }
 
     render() {
-        const {teamPlayers, teamId} = this.props;
+        const {players, pagination, teamId} = this.props;
         return (
             <div className="container">
                 <Title text={'players of team #' + teamId}/>
                 <Paginator
-                    page={teamPlayers.pagination.page}
-                    pageSize={teamPlayers.pagination.pageSize}
-                    maxPage={teamPlayers.pagination.pageCount}
+                    page={pagination.page}
+                    pageSize={pagination.pageSize}
+                    maxPage={pagination.pageCount}
                     onSizeChange={this.changePageSize}
                     onPageChange={this.changePage}
                 />
-                <PlayerList playerList={teamPlayers.players.items}/>
+                <PlayerList playerList={players.items}/>
             </div>
         );
     }
@@ -64,7 +65,7 @@ TeamPlayers.propTypes = {
 };
 
 function mapStateToProps(state) {
-    return {teamPlayers: state.teamPlayers};
+    return {pagination: state.teamPlayers.pagination, players: state.teamPlayers.players};
 }
 
 export default connect(mapStateToProps)(TeamPlayers);

@@ -13,10 +13,10 @@ const initialPlayers = {
 
 export function players(state = initialPlayers, action) {
     switch (action.type) {
-        case CHANGE_PLAYERS_PAGINATION:
+        /*case CHANGE_PLAYERS_PAGINATION:
             return Object.assign({}, state, {
                 items: null
-            });
+            });*/
         case REQUEST_TEAM_PLAYERS:
             return Object.assign({}, state, {
                 isFetching: true,

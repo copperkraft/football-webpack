@@ -34,12 +34,17 @@ export default class Paginator extends Component {
     }
 
     goToFirstPage() {
-        this.props.onPageChange(initialPage);
+        const {page} = this.props;
+        if (page !== initialPage) {
+            this.props.onPageChange(initialPage);
+        }
     }
 
     goToLastPage() {
-        const {maxPage} = this.props;
-        this.props.onPageChange(maxPage);
+        const {page, maxPage} = this.props;
+        if (page !== maxPage) {
+            this.props.onPageChange(maxPage);
+        }
     }
 
     render() {
