@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
 
-import {
-    CHANGE_PLAYERS_PAGINATION,
-    RECEIVE_TEAM_PLAYERS,
-    REQUEST_TEAM_PLAYERS
-} from '../actions/team-players-actions';
 import {defaultPageSize, initialPage} from 'constants/pagination';
+import {
+    CHANGE_FIXTURES_PAGINATION,
+    RECEIVE_TEAM_FIXTURES,
+    REQUEST_TEAM_FIXTURES
+} from '../actions/team-fixtures-actions';
 
 const initialPlayers = {
     isFetching: false,
@@ -13,21 +13,17 @@ const initialPlayers = {
     pageCount: 0
 };
 
-export function players(state = initialPlayers, action) {
+export function fixtures(state = initialPlayers, action) {
     switch (action.type) {
-        /*case CHANGE_PLAYERS_PAGINATION:
-            return Object.assign({}, state, {
-                items: null
-            });*/
-        case REQUEST_TEAM_PLAYERS:
+        case REQUEST_TEAM_FIXTURES:
             return Object.assign({}, state, {
                 isFetching: true,
                 items: null
             });
-        case RECEIVE_TEAM_PLAYERS:
+        case RECEIVE_TEAM_FIXTURES:
             return Object.assign({}, state, {
                 isFetching: false,
-                items: action.payload.players
+                items: action.payload.fixtures
             });
         default:
             return state;
@@ -42,12 +38,12 @@ const initialPagination = {
 
 export function pagination(state = initialPagination, action) {
     switch (action.type) {
-        case CHANGE_PLAYERS_PAGINATION:
+        case CHANGE_FIXTURES_PAGINATION:
             return Object.assign({}, state, {
                 page: action.payload.page,
                 pageSize: action.payload.size
             });
-        case RECEIVE_TEAM_PLAYERS:
+        case RECEIVE_TEAM_FIXTURES:
             return Object.assign({}, state, {
                 isFetching: false,
                 items: action.payload.players,
@@ -58,4 +54,4 @@ export function pagination(state = initialPagination, action) {
     }
 }
 
-export default combineReducers({players, pagination});
+export default combineReducers({fixtures, pagination});
