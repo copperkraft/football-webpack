@@ -1,12 +1,13 @@
 .header {
-
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.5);
     background: #209030;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.5);
 
     .header__logo {
         font-size: 40px;
-        padding: 0 1em;
+
         display: inline-block;
+
+        padding: 0 1em;
 
         color: #ffffff;
     }
@@ -16,12 +17,16 @@
     }
 
     .header__link {
-        display: inline-block;
         font-size: 30px;
+
+        display: inline-block;
+
         margin-left: 0.5em;
         padding: 1em;
+
         transition: 200ms;
         text-decoration: none;
+
         color: #b2dfbb;
 
         &:hover {
@@ -29,8 +34,9 @@
         }
 
         &.header__link--selected {
-            color: #ffffff;
             cursor: default;
+
+            color: #ffffff;
             background: rgba(0, 0, 0, 0.3);
         }
     }

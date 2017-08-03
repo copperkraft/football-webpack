@@ -9,7 +9,7 @@ export function TeamList(props) {
     const teamList = props.teamList;
     if (teamList) {
         return (
-            <div className="team-list">
+            <div className="row">
                 {teamList.map(team => <TeamCard key={team.id} team={team}/>)}
             </div>
         );

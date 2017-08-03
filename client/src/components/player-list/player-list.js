@@ -9,7 +9,7 @@ export function PlayerList(props) {
     const playerList = props.playerList;
     if (playerList && playerList.length) {
         return (
-            <div className="team-list">
+            <div>
                 {playerList.map(player => <PlayerCard key={player.id} player={player}/>)}
             </div>
         );
