@@ -7,6 +7,7 @@ import TeamCard from 'components/team-card/team-card';
 import Spin from 'components/spinner/spinner';
 import SelectTabs from 'components/select-tabs/select-tabs';
 import TeamPlayers from 'containers/team-players';
+import TwitterBlock from 'containers/twitter-block';
 
 const tabs = {
     players: 'players',
@@ -56,6 +57,11 @@ class TeamPage extends Component {
                 {
                     this.state.selectedTab === tabs.players &&
                         <TeamPlayers teamId={+this.props.match.params.id}/>
+                }
+                {
+                    !this.props.teamInfo.team
+                        ? <Spin/>
+                        : <TwitterBlock tag={this.props.teamInfo.team.name.toLowerCase()}/>
                 }
                 {
                     this.state.selectedTab === tabs.fixtures &&
