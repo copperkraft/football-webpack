@@ -44,6 +44,7 @@ class TeamPage extends Component {
     render() {
         return (
             <div className="container">
+
                 {this.props.teamInfo.isFetching
                     ? <Spin/>
                     : <TeamCard team={this.props.teamInfo.team}>
@@ -54,19 +55,24 @@ class TeamPage extends Component {
                         />
                     </TeamCard>
                 }
-                {
-                    this.state.selectedTab === tabs.players &&
-                        <TeamPlayers teamId={+this.props.match.params.id}/>
-                }
-                {
-                    !this.props.teamInfo.team
-                        ? <Spin/>
-                        : <TwitterBlock tag={this.props.teamInfo.team.name.toLowerCase()}/>
-                }
-                {
-                    this.state.selectedTab === tabs.fixtures &&
-                        <Title text={tabs.fixtures}/>
-                }
+                <div className="row">
+                    <div className="column">
+                        {
+                            this.state.selectedTab === tabs.players
+                                ? <TeamPlayers teamId={+this.props.match.params.id}/>
+                                : <Title text="Fixtures..."/>
+                        }
+                    </div>
+                    <div className="column">
+                        {
+                            this.state.selectedTab === tabs.players
+                                ? this.props.teamInfo.team
+                                    ? <TwitterBlock tag={this.props.teamInfo.team.name.toLowerCase()}/>
+                                    : <Spin/>
+                                : <Title text="Fixtures..."/>
+                        }
+                    </div>
+                </div>
             </div>
         );
     }

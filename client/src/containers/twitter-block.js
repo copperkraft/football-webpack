@@ -16,7 +16,7 @@ class TwitterBlock extends Component {
     render() {
         const {tweets, tag} = this.props;
         return (
-            <div className="container">
+            <div>
                 <Title text={'Tweets for tag #' + tag}/>
                 {tweets.isFetching
                     ? <Spin/>
