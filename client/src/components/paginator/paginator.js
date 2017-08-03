@@ -48,20 +48,40 @@ export default class Paginator extends Component {
     }
 
     render() {
+        const {page, maxPage, pageSize} = this.props;
         return (
             <div className="pagination">
                 <label className="pagination__item">
-                    <select className="pagination__select" onChange={this.handleSizeChange} defaultValue={this.props.pageSize}>
+                    <select
+                        className="pagination__select"
+                        onChange={this.handleSizeChange}
+                        defaultValue={pageSize}>
                         {pageSizes.map(size => <option key={size} value={size}>{size}</option>)}
                     </select>
                 </label>
-                <div onClick={this.goToFirstPage} className="pagination__item">first</div>
-                <div onClick={this.goToPreviousPage} className="pagination__item">prev</div>
-                <div className="pagination__item">
+                <div
+                    onClick={this.goToFirstPage}
+                    className={'pagination__item ' + (page === initialPage ? 'pagination__page--disabled' : '')}>
+                    first
+                </div>
+                <div
+                    onClick={this.goToPreviousPage}
+                    className={'pagination__item ' + (page === initialPage ? 'pagination__page--disabled' : '')}>
+                    prev
+                </div>
+                <div className="pagination__item pagination__page--disabled">
                     {this.props.page}/{this.props.maxPage}
                 </div>
-                <div onClick={this.goToNextPage} className="pagination__item">next</div>
-                <div onClick={this.goToLastPage} className="pagination__item">last</div>
+                <div
+                    onClick={this.goToNextPage}
+                    className={'pagination__item ' + (page === maxPage ? 'pagination__page--disabled' : '')}>
+                    next
+                </div>
+                <div
+                    onClick={this.goToLastPage}
+                    className={'pagination__item ' + (page === maxPage ? 'pagination__page--disabled' : '')}>
+                    last
+                </div>
             </div>
         );
     }
