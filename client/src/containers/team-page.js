@@ -45,12 +45,14 @@ class TeamPage extends Component {
             <div className="container">
                 {this.props.teamInfo.isFetching
                     ? <Spin/>
-                    : <TeamCard team={this.props.teamInfo.team}/>
+                    : <TeamCard team={this.props.teamInfo.team}>
+                        <SelectTabs
+                            values={[tabs.players, tabs.fixtures]}
+                            onChange={this.onTabChange}
+                            initial={this.state.selectedTab}
+                        />
+                    </TeamCard>
                 }
-                <SelectTabs
-                    values={[tabs.players, tabs.fixtures]}
-                    onChange={this.onTabChange}
-                    initial={this.state.selectedTab}/>
                 {
                     this.state.selectedTab === tabs.players &&
                         <TeamPlayers teamId={+this.props.match.params.id}/>

@@ -26,6 +26,9 @@ export default function TeamCard(props) {
                 {team.squadMarketValue && <div className="team-card__info">
                     squad Market Value: {team.squadMarketValue}
                 </div>}
+                <div className="team-card__actions">
+                    {props.children}
+                </div>
             </div>);
     } else {
         return <Spin/>;

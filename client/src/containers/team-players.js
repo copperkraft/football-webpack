@@ -46,7 +46,6 @@ class TeamPlayers extends Component {
         const {players, pagination, teamId} = this.props;
         return (
             <div className="container">
-                <Title text={'players of team #' + teamId}/>
                 <Paginator
                     page={pagination.page}
                     pageSize={pagination.pageSize}
