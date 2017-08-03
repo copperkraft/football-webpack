@@ -21,7 +21,7 @@ export default class Paginator extends Component {
 
     goToPreviousPage() {
         const {page} = this.props;
-        if (page > 0) {
+        if (page > 1) {
             this.props.onPageChange(page - 1);
         }
     }
