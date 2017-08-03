@@ -1,9 +1,11 @@
-.team-card {
+.player-card {
     width: 500px;
     box-sizing: border-box;
     padding: 1em;
     margin-bottom: 1em;
     background-color: #eeeeee;
+
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.5);
 
     &:after {
         display: table;
@@ -16,12 +18,12 @@
         margin-bottom: 0;
     }
 
-    .team-card__full-name {
+    .player-card__full-name {
         font-size: 30px;
         color: #000000;
     }
     
-    .team-card__t-shirt {
+    .player-card__t-shirt {
         height: 100px;
         width: 100px;
         background: url("http://www.clker.com/cliparts/c/2/5/7/11971220161720633624ryanlerch_white_t-shirt.svg") no-repeat center;
@@ -33,21 +35,10 @@
         color: #000000;
         float: right;
     }
-    .team-card__full-name--current {
-        text-decoration: none;
-        cursor: default;
-    }
 
-    .team-card__info {
+    .player-card__info {
         margin-top: 0.3em;
         font-size: 20px;
-    }
-
-    .team-card__image {
-        float: left;
-        width: 100px;
-        height: 100px;
-        margin-right: 1em;
     }
 }
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './player-list.less';
-
 import Spin from 'components/spinner/spinner';
 import PlayerCard from 'components/player-card/player-card';
 import Player from 'models/player/player';

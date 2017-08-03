@@ -1,7 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-
-import './team-list.less';
 
 import Team from 'models/team/team';
 import TeamCard from 'components/team-card/team-card';

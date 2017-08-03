@@ -10,20 +10,20 @@ import Player from 'models/player/player';
 export default function PlayerCard(props) {
     const player = props.player;
     return (
-        <div className="team-card">
-            <div className="team-card__t-shirt">
+        <div className="player-card">
+            <div className="player-card__t-shirt">
                 {player.jerseyNumber ? player.jerseyNumber : '?'}
             </div>
-            <div className="team-card__full-name">
+            <div className="player-card__full-name">
                 {player.name}
             </div>
-            <div className="team-card__info">
+            <div className="player-card__info">
                 position: {player.position}
             </div>
-            <div className="team-card__info">
+            <div className="player-card__info">
                 date of birth: {player.dateOfBirth.toDateString()}
             </div>
-            {player.marketValue && <div className="team-card__info">
+            {player.marketValue && <div className="player-card__info">
                 Market Value: {player.marketValue}
             </div>}
         </div>);
