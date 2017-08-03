@@ -42,6 +42,11 @@ class TeamPlayers extends Component {
         }
     }
 
+    componentWillUnmount() {
+        const {dispatch, pagination} = this.props;
+        dispatch(changePlayerPagination(initialPage, pagination.pageSize));
+    }
+
     render() {
         const {players, pagination, teamId} = this.props;
         return (
