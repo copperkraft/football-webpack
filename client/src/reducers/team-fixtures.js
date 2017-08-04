@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 
 import {defaultPageSize, initialPage} from 'constants/pagination';
 import {
+    CHANGE_FIXTURES_FILTERS,
     CHANGE_FIXTURES_PAGINATION,
     RECEIVE_TEAM_FIXTURES,
     REQUEST_TEAM_FIXTURES
@@ -45,8 +46,6 @@ export function pagination(state = initialPagination, action) {
             });
         case RECEIVE_TEAM_FIXTURES:
             return Object.assign({}, state, {
-                isFetching: false,
-                items: action.payload.players,
                 pageCount: action.payload.pageCount
             });
         default:
@@ -54,4 +53,31 @@ export function pagination(state = initialPagination, action) {
     }
 }
 
-export default combineReducers({fixtures, pagination});
+const initialFilters = {
+    minDate: null,
+    maxDate: null,
+    startDate: null,
+    endDate: null
+};
+
+export function filters(state = initialFilters, action) {
+    switch (action.type) {
+        case CHANGE_FIXTURES_FILTERS:
+            return Object.assign({}, state, {
+                startDate: action.payload.startDate || state.startDate,
+                endDate: action.payload.endDate || state.endDate
+            });
+        case RECEIVE_TEAM_FIXTURES:
+            return Object.assign({}, state, {
+                isFetching: false,
+                startDate: state.startDate || action.payload.minDate,
+                endDate: state.endDate || action.payload.maxDate,
+                minDate: action.payload.minDate,
+                maxDate: action.payload.endDate
+            });
+        default:
+            return state;
+    }
+}
+
+export default combineReducers({fixtures, pagination, filters});

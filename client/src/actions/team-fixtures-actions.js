@@ -13,12 +13,16 @@ export function requestTeamFixtures(page, size) {
 }
 
 export const RECEIVE_TEAM_FIXTURES = 'RECEIVE_TEAM_FIXTURES';
-export function receiveTeamFixtures(fixtures, pageCount) {
+export function receiveTeamFixtures(fixtures, pageCount, page, size, minDate, maxDate) {
     return {
         type: RECEIVE_TEAM_FIXTURES,
         payload: {
             fixtures,
-            pageCount
+            pageCount,
+            page,
+            size,
+            minDate,
+            maxDate
         }
     };
 }
@@ -34,11 +38,29 @@ export function changeFixturesPagination(page, size) {
     };
 }
 
-export function fetchTeamFixtures(teamId, page, size) {
+export const CHANGE_FIXTURES_FILTERS = 'CHANGE_FIXTURES_FILTERS';
+export function changeFixturesFilters(startDate, endDate) {
+    return {
+        type: CHANGE_FIXTURES_FILTERS,
+        payload: {
+            startDate,
+            endDate
+        }
+    };
+}
+
+export function fetchTeamFixtures(teamId, page, size, minDate, maxDate) {
     return function(dispatch) {
         dispatch(requestTeamFixtures(page, size));
-        return fixturesList.get(teamId, {number: page, size}).then(data => {
-            dispatch(receiveTeamFixtures(data.list, data.pageCount, data.page, size));
-        });
+        return fixturesList.get(teamId, {number: page, size}, {minDate, maxDate})
+            .then(data =>
+                dispatch(receiveTeamFixtures(
+                    data.list,
+                    data.pageCount,
+                    page,
+                    size,
+                    data.minDate,
+                    data.maxDate
+                )));
     };
 }

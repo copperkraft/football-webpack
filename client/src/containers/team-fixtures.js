@@ -7,10 +7,12 @@ import Title from 'components/title/title';
 
 import {initialPage} from 'constants/pagination';
 import {
+    changeFixturesFilters,
     changeFixturesPagination,
     fetchTeamFixtures
 } from '../actions/team-fixtures-actions';
 import {FixturesList} from 'components/fixtures-list/fixtures-list';
+import DateRangeSelect from 'components/date-range-select/date-range-select';
 
 class TeamFixtures extends Component {
     constructor() {
@@ -18,6 +20,7 @@ class TeamFixtures extends Component {
 
         this.changePageSize = this.changePageSize.bind(this);
         this.changePage = this.changePage.bind(this);
+        this.changeFilters = this.changeFilters.bind(this);
     }
 
     changePageSize(size) {
@@ -28,6 +31,11 @@ class TeamFixtures extends Component {
     changePage(page) {
         const {dispatch, pagination} = this.props;
         dispatch(changeFixturesPagination(page, pagination.pageSize));
+    }
+
+    changeFilters(minDate, maxDate) {
+        const {dispatch} = this.props;
+        dispatch(changeFixturesFilters(minDate, maxDate));
     }
 
     componentDidMount() {
@@ -49,10 +57,16 @@ class TeamFixtures extends Component {
     }
 
     render() {
-        const {fixtures, pagination} = this.props;
+        const {fixtures, pagination, filters} = this.props;
         return (
             <div>
                 <Title text="Fixtures"/>
+                <DateRangeSelect
+                    minDate={filters.minDate}
+                    maxDate={filters.maxDate}
+                    startDate={filters.startDate}
+                    endDate={filters.endDate}
+                    onChange={this.changeFilters}/>
                 <Paginator
                     page={pagination.page}
                     pageSize={pagination.pageSize}
@@ -71,7 +85,11 @@ TeamFixtures.propTypes = {
 };
 
 function mapStateToProps(state) {
-    return {pagination: state.teamFixtures.pagination, fixtures: state.teamFixtures.fixtures};
+    return {
+        pagination: state.teamFixtures.pagination,
+        fixtures: state.teamFixtures.fixtures,
+        filters: state.teamFixtures.filters
+    };
 }
 
 export default connect(mapStateToProps)(TeamFixtures);
