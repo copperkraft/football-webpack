@@ -43,11 +43,25 @@ class TeamFixtures extends Component {
         dispatch(fetchTeamFixtures(teamId, pagination.page, pagination.pageSize));
     }
 
+    isRequestParamsChanged(current, next) { //todo: avoid deep comparison. They must be immutable objects!!!
+        if (current.pagination.page !== next.pagination.page) return true;
+        if (current.pagination.pageSize !== next.pagination.pageSize) return true;
+        if (!current.filters || current.filters.startDate !== next.filters.startDate) return true;
+        if (!current.filters || current.filters.endDate !== next.filters.endDate) return true;
+        return current.teamId !== next.teamId;
+    }
+
     componentWillReceiveProps(nextProps) {
-        const {pagination: newPagination, teamId, dispatch} = nextProps;
-        const {pagination: oldPagination} = this.props;
-        if (newPagination.page !== oldPagination.page || newPagination.pageSize !== oldPagination.pageSize) {
-            dispatch(fetchTeamFixtures(teamId, newPagination.page, newPagination.pageSize));
+        if (this.isRequestParamsChanged(this.props, nextProps)) {
+            this.props.dispatch(
+                fetchTeamFixtures(
+                    nextProps.teamId,
+                    nextProps.pagination.page,
+                    nextProps.pagination.pageSize,
+                    nextProps.filters.startDate,
+                    nextProps.filters.endDate
+                )
+            );
         }
     }
 
