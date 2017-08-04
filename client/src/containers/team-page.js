@@ -7,6 +7,7 @@ import TeamCard from 'components/team-card/team-card';
 import Spin from 'components/spinner/spinner';
 import SelectTabs from 'components/select-tabs/select-tabs';
 import TeamPlayers from 'containers/team-players';
+import TeamFixtures from 'containers/team-fixtures';
 import TwitterBlock from 'containers/twitter-block';
 
 const tabs = {
@@ -19,7 +20,7 @@ class TeamPage extends Component {
         super();
 
         this.state = {
-            selectedTab: tabs.players
+            selectedTab: tabs.fixtures
         };
 
         this.onTabChange = this.onTabChange.bind(this);
@@ -60,7 +61,7 @@ class TeamPage extends Component {
                         {
                             this.state.selectedTab === tabs.players
                                 ? <TeamPlayers teamId={+this.props.match.params.id}/>
-                                : <Title text="Fixtures..."/>
+                                : <TeamFixtures teamId={+this.props.match.params.id}/>
                         }
                     </div>
                     <div className="column">
