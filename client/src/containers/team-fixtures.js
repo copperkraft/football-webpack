@@ -43,16 +43,10 @@ class TeamFixtures extends Component {
         dispatch(fetchTeamFixtures(teamId, pagination.page, pagination.pageSize));
     }
 
-    isRequestParamsChanged(current, next) { //todo: avoid deep comparison. They must be immutable objects!!!
-        if (current.pagination.page !== next.pagination.page) return true;
-        if (current.pagination.pageSize !== next.pagination.pageSize) return true;
-        if (!current.filters || current.filters.startDate !== next.filters.startDate) return true;
-        if (!current.filters || current.filters.endDate !== next.filters.endDate) return true;
-        return current.teamId !== next.teamId;
-    }
-
     componentWillReceiveProps(nextProps) {
-        if (this.isRequestParamsChanged(this.props, nextProps)) {
+        const {filters: currentFilters, pagination: currentPagination} = this.props;
+        const {filters: nextFilters, pagination: nextPagination} = nextProps;
+        if (currentFilters !== nextFilters || currentPagination !== nextPagination) {
             this.props.dispatch(
                 fetchTeamFixtures(
                     nextProps.teamId,
@@ -76,15 +70,15 @@ class TeamFixtures extends Component {
             <div>
                 <Title text="Fixtures"/>
                 <DateRangeSelect
-                    minDate={filters.minDate}
-                    maxDate={filters.maxDate}
-                    startDate={filters.startDate}
-                    endDate={filters.endDate}
+                    minDate={fixtures.minDate}
+                    maxDate={fixtures.maxDate}
+                    startDate={filters.startDate || fixtures.minDate}
+                    endDate={filters.endDate || fixtures.maxDate}
                     onChange={this.changeFilters}/>
                 <Paginator
                     page={pagination.page}
                     pageSize={pagination.pageSize}
-                    maxPage={pagination.pageCount}
+                    maxPage={fixtures.pageCount}
                     onSizeChange={this.changePageSize}
                     onPageChange={this.changePage}
                 />

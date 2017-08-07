@@ -11,7 +11,9 @@ import {
 const initialPlayers = {
     isFetching: false,
     items: null,
-    pageCount: 0
+    pageCount: 0,
+    minDate: null,
+    maxDate: null
 };
 
 export function fixtures(state = initialPlayers, action) {
@@ -24,7 +26,10 @@ export function fixtures(state = initialPlayers, action) {
         case RECEIVE_TEAM_FIXTURES:
             return Object.assign({}, state, {
                 isFetching: false,
-                items: action.payload.fixtures
+                items: action.payload.fixtures,
+                pageCount: action.payload.pageCount,
+                minDate: action.payload.minDate,
+                maxDate: action.payload.maxDate
             });
         default:
             return state;
@@ -33,8 +38,7 @@ export function fixtures(state = initialPlayers, action) {
 
 const initialPagination = {
     page: initialPage,
-    pageSize: defaultPageSize,
-    pageCount: 0
+    pageSize: defaultPageSize
 };
 
 export function pagination(state = initialPagination, action) {
@@ -44,18 +48,12 @@ export function pagination(state = initialPagination, action) {
                 page: action.payload.page,
                 pageSize: action.payload.size
             });
-        case RECEIVE_TEAM_FIXTURES:
-            return Object.assign({}, state, {
-                pageCount: action.payload.pageCount
-            });
         default:
             return state;
     }
 }
 
 const initialFilters = {
-    minDate: null,
-    maxDate: null,
     startDate: null,
     endDate: null
 };
@@ -66,14 +64,6 @@ export function filters(state = initialFilters, action) {
             return Object.assign({}, state, {
                 startDate: action.payload.startDate || state.startDate,
                 endDate: action.payload.endDate || state.endDate
-            });
-        case RECEIVE_TEAM_FIXTURES:
-            return Object.assign({}, state, {
-                isFetching: false,
-                startDate: state.startDate || action.payload.minDate,
-                endDate: state.endDate || action.payload.maxDate,
-                minDate: action.payload.minDate,
-                maxDate: action.payload.endDate
             });
         default:
             return state;

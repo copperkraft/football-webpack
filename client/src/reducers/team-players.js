@@ -15,10 +15,6 @@ const initialPlayers = {
 
 export function players(state = initialPlayers, action) {
     switch (action.type) {
-        /*case CHANGE_PLAYERS_PAGINATION:
-            return Object.assign({}, state, {
-                items: null
-            });*/
         case REQUEST_TEAM_PLAYERS:
             return Object.assign({}, state, {
                 isFetching: true,
@@ -27,7 +23,8 @@ export function players(state = initialPlayers, action) {
         case RECEIVE_TEAM_PLAYERS:
             return Object.assign({}, state, {
                 isFetching: false,
-                items: action.payload.players
+                items: action.payload.players,
+                pageCount: action.payload.pageCount
             });
         default:
             return state;
@@ -36,8 +33,7 @@ export function players(state = initialPlayers, action) {
 
 const initialPagination = {
     page: initialPage,
-    pageSize: defaultPageSize,
-    pageCount: 0
+    pageSize: defaultPageSize
 };
 
 export function pagination(state = initialPagination, action) {
@@ -46,12 +42,6 @@ export function pagination(state = initialPagination, action) {
             return Object.assign({}, state, {
                 page: action.payload.page,
                 pageSize: action.payload.size
-            });
-        case RECEIVE_TEAM_PLAYERS:
-            return Object.assign({}, state, {
-                isFetching: false,
-                items: action.payload.players,
-                pageCount: action.payload.pageCount
             });
         default:
             return state;

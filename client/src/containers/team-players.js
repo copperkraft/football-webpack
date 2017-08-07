@@ -37,7 +37,7 @@ class TeamPlayers extends Component {
     componentWillReceiveProps(nextProps) {
         const {pagination: newPagination, teamId, dispatch} = nextProps;
         const {pagination: oldPagination} = this.props;
-        if (newPagination.page !== oldPagination.page || newPagination.pageSize !== oldPagination.pageSize) {
+        if (newPagination !== oldPagination) {
             dispatch(fetchTeamPlayers(teamId, newPagination.page, newPagination.pageSize));
         }
     }
@@ -55,7 +55,7 @@ class TeamPlayers extends Component {
                 <Paginator
                     page={pagination.page}
                     pageSize={pagination.pageSize}
-                    maxPage={pagination.pageCount}
+                    maxPage={players.pageCount}
                     onSizeChange={this.changePageSize}
                     onPageChange={this.changePage}
                 />
