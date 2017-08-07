@@ -60,7 +60,7 @@ export function registerUser(info) {
 export function logInUser(info) {
     return function(dispatch) {
         dispatch(requestUser());
-        return userProvider.register(info)
+        return userProvider.logIn(info)
             .then(user => {
                 dispatch(receiveUser(user));
             })

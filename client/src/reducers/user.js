@@ -8,7 +8,7 @@ import {
 const initialState = {
     isFetching: false,
     isFailed: false,
-    user: null
+    data: null
 };
 
 export function user(state = initialState, action) {
@@ -16,25 +16,25 @@ export function user(state = initialState, action) {
         case REQUEST_USER:
             return {
                 isFetching: true,
-                user: null,
+                data: null,
                 isFailed: false
             };
         case RECEIVE_USER:
             return {
                 isFetching: false,
-                user: action.payload,
+                data: action.payload,
                 isFailed: false
             };
         case USER_LOGOUT:
             return {
                 isFetching: false,
-                user: null,
+                data: null,
                 isFailed: false
             };
         case FAILED_RECEIVE_USER:
             return {
                 isFetching: false,
-                user: null,
+                data: null,
                 isFailed: true
             };
         default:

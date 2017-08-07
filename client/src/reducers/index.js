@@ -7,6 +7,7 @@ import {teamInfo} from './team-info';
 import teamPlayers from './team-players';
 import teamFixtures from './team-fixtures';
 import {tweets} from './tweets';
+import {user} from './user';
 
 export default combineReducers({
     selectedLeague,
@@ -15,5 +16,6 @@ export default combineReducers({
     teamInfo,
     teamPlayers,
     teamFixtures,
-    tweets
+    tweets,
+    user
 });

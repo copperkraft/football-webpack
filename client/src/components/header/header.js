@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import './header.less';
 
 import InternalLink from 'components/internal-link/internal-link';
+import SigningForm, {actionTypes} from 'components/singning-form/signing-form';
+import ProfileActions from 'containers/profile-actions';
 
 export default function Header() {
     return (
@@ -16,6 +18,7 @@ export default function Header() {
                     teams
                 </InternalLink>
             </nav>
+            <ProfileActions/>
         </div>
     );
 }
