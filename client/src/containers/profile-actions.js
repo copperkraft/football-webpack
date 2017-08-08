@@ -9,6 +9,7 @@ import SigningForm, {actionTypes} from 'components/singning-form/signing-form';
 import Modal from 'react-modal';
 import UserWelcome from 'components/user-welcome/user-welcome';
 import SigningControls from 'components/signing-controls/signing-controls';
+import {modalStyles} from 'constants/modal-styles';
 
 class ProfileActions extends Component {
     constructor() {
@@ -85,22 +86,7 @@ class ProfileActions extends Component {
                     <Modal
                         onRequestClose={this.closeForm}
                         isOpen={this.state.isFormOpened}
-                        style={{
-                            content: {
-                                top: '50%',
-                                left: '50%',
-                                right: 'auto',
-                                bottom: 'auto',
-                                transform: 'translate(-50%, -50%)',
-                                padding: 0,
-                                border: 'none',
-                                borderRadius: 0,
-                                background: 'none'
-                            },
-                            overlay: {
-                                backgroundColor: 'rgba(0, 0, 0, 0.75)'
-                            }
-                        }}
+                        style={modalStyles}
                         contentLabel="Modal">
                         <SigningForm
                             action={this.state.formMode}
