@@ -30,8 +30,8 @@ export default class SigningForm extends Component {
         const {action} = this.props;
 
         return (
-            <div className="card">
-                <div className="card__title"> {
+            <div className="signing-form">
+                <div className="signing-form__title"> {
                     action === actionTypes.signIn
                         ? 'Sign in'
                         : action === actionTypes.signUp
@@ -41,16 +41,31 @@ export default class SigningForm extends Component {
                                 : ''
                 } </div>
 
-                <div className="card__text">email</div>
-                <input onChange={(event) => this.setState({email: event.target.value})} className="card__text"/>
+                <input
+                    onChange={(event) => this.setState({email: event.target.value})}
+                    className="signing-form__input"
+                    placeholder="email"
+                />
 
-                <div className="card__text">password</div>
-                <input onChange={(event) => this.setState({password: event.target.value})} className="card__text"/>
+                <input
+                    type="password"
+                    onChange={(event) => this.setState({password: event.target.value})}
+                    className="signing-form__input"
+                    placeholder="password"
+                />
 
-                <div className="card__text">
-                    <button onClick={this.onSubmit} className="card__text">Submit</button>
-                    Don't have an account?
-                    <button onClick={this.props.onChangeAction} className="card__text">
+                <div className="signing-form__text">
+                    <button onClick={this.onSubmit} className="signing-form__text">Submit</button>
+                    {action === actionTypes.signIn
+                        ? 'Don\'t have an account?'
+                        : action === actionTypes.signUp
+                            ? 'Sign up'
+                            : action === actionTypes.edit
+                                ? 'Edit profile'
+                                : ''
+                    }
+
+                    <button onClick={this.props.onChangeAction} className="signing-form__text">
                         Sign up
                     </button>
                 </div>

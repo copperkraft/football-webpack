@@ -7,7 +7,7 @@ import {
 
 const initialState = {
     isFetching: false,
-    isFailed: false,
+    signed: false,
     data: null
 };
 
@@ -17,25 +17,25 @@ export function user(state = initialState, action) {
             return {
                 isFetching: true,
                 data: null,
-                isFailed: false
+                signed: false
             };
         case RECEIVE_USER:
             return {
                 isFetching: false,
                 data: action.payload,
-                isFailed: false
+                signed: true
             };
         case USER_LOGOUT:
             return {
                 isFetching: false,
                 data: null,
-                isFailed: false
+                signed: false
             };
         case FAILED_RECEIVE_USER:
             return {
                 isFetching: false,
                 data: null,
-                isFailed: true
+                signed: false
             };
         default:
             return state;

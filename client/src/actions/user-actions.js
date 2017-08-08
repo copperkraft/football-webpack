@@ -74,6 +74,7 @@ export function logInUser(info) {
 export function logOutUser() {
     return function(dispatch) {
         dispatch(userLogout());
+        userProvider.logout();
     };
 }
 

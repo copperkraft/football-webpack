@@ -1,17 +1,27 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {fetchUser, logInUser} from '../actions/user-actions';
+import {
+    fetchUser, logInUser, logOutUser,
+    registerUser
+} from '../actions/user-actions';
 import SigningForm, {actionTypes} from 'components/singning-form/signing-form';
+import Modal from 'react-modal';
+import UserWelcome from 'components/user-welcome/user-welcome';
+import SigningControls from 'components/signing-controls/signing-controls';
 
 class ProfileActions extends Component {
     constructor() {
         super();
 
-        this.state = {formMode: actionTypes.signIn};
+        this.state = {formMode: actionTypes.signIn, isFormOpened: false};
 
         this.submitHandler = this.submitHandler.bind(this);
         this.toggleActionType = this.toggleActionType.bind(this);
+        this.signOutHandler = this.signOutHandler.bind(this);
+        this.openSignUp = this.openSignUp.bind(this);
+        this.openSignIn = this.openSignIn.bind(this);
+        this.closeForm = this.closeForm.bind(this);
     }
 
     componentDidMount() {
@@ -20,20 +30,37 @@ class ProfileActions extends Component {
         dispatch(fetchUser());
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.user.data) {
-            this.setState({formMode: actionTypes.edit});
-        }
-    }
-
     submitHandler(info) {
         const {dispatch} = this.props;
 
-        dispatch(logInUser(info));
+        if (this.state.formMode === actionTypes.signIn) {
+            dispatch(logInUser(info));
+        } else if (this.state.formMode === actionTypes.signUp) {
+            dispatch(registerUser(info));
+        }
+
+        this.closeForm();
+    }
+
+    signOutHandler() {
+        const {dispatch} = this.props;
+
+        dispatch(logOutUser());
+    }
+
+    openSignIn() {
+        this.setState({formMode: actionTypes.signIn, isFormOpened: true});
+    }
+
+    openSignUp() {
+        this.setState({formMode: actionTypes.signUp, isFormOpened: true});
+    }
+
+    closeForm() {
+        this.setState({isFormOpened: false});
     }
 
     toggleActionType() {
-        console.log(this.state);
         this.setState(prevState => {
             if (prevState.formMode === actionTypes.signUp) {
                 return Object.assign({}, prevState, {formMode: actionTypes.signIn});
@@ -49,12 +76,40 @@ class ProfileActions extends Component {
         const {user} = this.props;
         if (user.data) {
             return (
-                <div>
-                    {user.data.name}
-                </div>
+                <UserWelcome name={user.data.name} onSignOut={this.signOutHandler}/>
             );
         } else {
-            return <SigningForm action={this.state.formMode} onSubmit={this.submitHandler} onChangeAction={this.toggleActionType}/>;
+            return (
+                <div>
+                    <SigningControls onSignIn={this.openSignIn} onSignUp={this.openSignUp}/>
+                    <Modal
+                        onRequestClose={this.closeForm}
+                        isOpen={this.state.isFormOpened}
+                        style={{
+                            content: {
+                                top: '50%',
+                                left: '50%',
+                                right: 'auto',
+                                bottom: 'auto',
+                                transform: 'translate(-50%, -50%)',
+                                padding: 0,
+                                border: 'none',
+                                borderRadius: 0,
+                                background: 'none'
+                            },
+                            overlay: {
+                                backgroundColor: 'rgba(0, 0, 0, 0.75)'
+                            }
+                        }}
+                        contentLabel="Modal">
+                        <SigningForm
+                            action={this.state.formMode}
+                            onSubmit={this.submitHandler}
+                            onChangeAction={this.toggleActionType}
+                        />
+                    </Modal>
+                </div>
+            );
         }
     }
 }
