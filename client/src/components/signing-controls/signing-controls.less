@@ -6,14 +6,18 @@
     color: #ffffff;
 
     .signing-controls__button {
-        transition: 100ms;
         font-size: inherit;
+
         margin: 0 0.5em;
-        border: none;
-        background-color: #ffffff;
-        color: #209030;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.5);
         padding: 0.5em 1em;
+
+        transition: 100ms;
+
+        color: #209030;
+        border: none;
+        outline: none;
+        background-color: #ffffff;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.5);
 
         &:hover {
             color: #000000;
@@ -22,7 +26,5 @@
         &:active {
             box-shadow: inset 0 1px 1px 0 rgba(0,0,0,0.8);
         }
-
-        outline: none;
     }
 }
