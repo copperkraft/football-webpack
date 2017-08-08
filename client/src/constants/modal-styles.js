@@ -11,6 +11,7 @@ export const modalStyles = {
         background: 'none'
     },
     overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.75)'
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        zIndex: 1
     }
 };

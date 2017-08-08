@@ -89,9 +89,9 @@ class ProfileActions extends Component {
                         style={modalStyles}
                         contentLabel="Modal">
                         <SigningForm
-                            action={this.state.formMode}
+                            formMode={this.state.formMode}
                             onSubmit={this.submitHandler}
-                            onChangeAction={this.toggleActionType}
+                            onToggleFormMode={this.toggleActionType}
                         />
                     </Modal>
                 </div>
