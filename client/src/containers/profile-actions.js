@@ -31,6 +31,12 @@ class ProfileActions extends Component {
         dispatch(fetchUser());
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.user.signed) {
+            this.setState({isFormOpened: false});
+        }
+    }
+
     submitHandler(info) {
         const {dispatch} = this.props;
 

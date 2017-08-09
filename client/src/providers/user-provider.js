@@ -1,5 +1,3 @@
-import ko from 'knockout';
-
 import {userRepository} from 'data/user-repository';
 import userMapper from 'models/user/user-mapper';
 

@@ -19,89 +19,87 @@ export default class SigningForm extends Component {
             password: ''
         };
 
-        this.onSubmit = this.onSubmit.bind(this);
+        this.submit = this.submit.bind(this);
+        this.toggleMode = this.toggleMode.bind(this);
     }
 
-    onSubmit() {
+    toggleMode() {
+        this.setState(() => {
+            return {
+                email: '',
+                name: '',
+                password: ''
+            };
+        });
+        this.props.onToggleFormMode();
+    }
+
+    submit() {
         this.props.onSubmit(this.state);
     }
 
     render() {
-        const {formMode, onToggleFormMode} = this.props;
+        const {formMode} = this.props;
 
-        if (formMode === actionTypes.signIn) {
-            return (
-                <div className="signing-form">
-                    <div key="title" className="signing-form__title">Sign in</div>
+        return (
+            <div className="signing-form">
+                <div key="title" className="signing-form__title">
+                    {formMode === actionTypes.signIn && 'Sign in'}
+                    {formMode === actionTypes.signUp && 'Sign up'}
+                </div>
 
-                    <input
-                        key="email"
-                        onChange={(event) => this.setState({email: event.target.value})}
-                        className="signing-form__input"
-                        placeholder="email"/>
+                <input
+                    key="email"
+                    value={this.state.email}
+                    onChange={(event) => this.setState({email: event.target.value})}
+                    className="signing-form__input"
+                    placeholder="email"/>
 
-                    <input
-                        key="password"
-                        type="password"
-                        onChange={(event) => this.setState({password: event.target.value})}
-                        className="signing-form__input"
-                        placeholder="password"/>
+                <input
+                    key="password"
+                    type="password"
+                    value={this.state.password}
+                    onChange={(event) => this.setState({password: event.target.value})}
+                    className="signing-form__input"
+                    placeholder="password"/>
 
-                    <button
-                        key="submit"
-                        onClick={this.onSubmit}
-                        className="signing-form__button">
-                        Submit
-                    </button>
-
-                    <div className="signing-form__text">
-                        Don't have an account?
-                        <button className="signing-form__link" onClick={onToggleFormMode}>
-                            sign up for free
-                        </button>
-                    </div>
-                </div>);
-        }
-        if (formMode === actionTypes.signUp) {
-            return (
-                <div className="signing-form">
-                    <div key="title" className="signing-form__title">Sign up</div>
-
-                    <input
-                        key="email"
-                        onChange={(event) => this.setState({email: event.target.value})}
-                        className="signing-form__input"
-                        placeholder="email"/>
-
-                    <input
-                        key="password"
-                        type="password"
-                        onChange={(event) => this.setState({password: event.target.value})}
-                        className="signing-form__input"
-                        placeholder="password"/>
-
+                {
+                    formMode === actionTypes.signUp &&
                     <input
                         key="name"
+                        value={this.state.name}
                         onChange={(event) => this.setState({name: event.target.value})}
                         className="signing-form__input"
                         placeholder="name"/>
+                }
 
-                    <button
-                        key="submit"
-                        onClick={this.onSubmit}
-                        className="signing-form__button">
-                        Submit
-                    </button>
-
+                <button
+                    key="submit"
+                    onClick={this.submit}
+                    className="signing-form__button">
+                    Submit
+                </button>
+                {formMode === actionTypes.signIn &&
+                    <div className="signing-form__text">
+                        Don't have an account?
+                        <button
+                            className="signing-form__link"
+                            onClick={this.toggleMode}>
+                            sign up for free
+                        </button>
+                    </div>
+                }
+                {formMode === actionTypes.signUp &&
                     <div className="signing-form__text">
                         Already have an account?
-                        <button className="signing-form__link" onClick={onToggleFormMode}>
+                        <button
+                            className="signing-form__link"
+                            onClick={this.toggleMode}>
                             sign in
                         </button>
                     </div>
-                </div>);
-        }
-
+                }
+            </div>);
     }
 }
 

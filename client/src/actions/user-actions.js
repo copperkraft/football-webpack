@@ -1,4 +1,5 @@
 import {userProvider} from 'providers/user-provider';
+import {showErrorAlert} from 'utils/notifications';
 
 export const USER_LOGOUT = 'USER_LOGOUT';
 function userLogout() {
@@ -36,8 +37,7 @@ export function fetchUser() {
             .then(user => {
                 dispatch(receiveUser(user));
             })
-            .catch(error => {
-                console.error(error);
+            .catch(() => {
                 dispatch(failedReceiveUser());
             });
     };
@@ -50,8 +50,8 @@ export function registerUser(info) {
             .then(user => {
                 dispatch(receiveUser(user));
             })
-            .catch(error => {
-                console.error(error);
+            .catch(() => {
+                showErrorAlert('Unable to register new user');
                 dispatch(failedReceiveUser());
             });
     };
@@ -64,8 +64,8 @@ export function logInUser(info) {
             .then(user => {
                 dispatch(receiveUser(user));
             })
-            .catch(error => {
-                console.error(error);
+            .catch(() => {
+                showErrorAlert('Unable to authenticate');
                 dispatch(failedReceiveUser());
             });
     };
