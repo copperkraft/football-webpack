@@ -2,14 +2,14 @@ import 'babel-polyfill';
 import React from 'react';
 import {Provider} from 'react-redux';
 import {render} from 'react-dom';
-import {HashRouter as Router, Redirect, Route} from 'react-router-dom';
+import {HashRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 
 import './app.less';
 
 import Header from './components/header/header';
 
 import configureStore from './store/configureStore';
-import {routedComponents} from './routed-components';
+import {defaultRoute, routedComponents} from './routed-components';
 
 const store = configureStore();
 
@@ -18,9 +18,12 @@ render(
         <Router>
             <div>
                 <Header/>
-                {routedComponents.map(item => 
-                    <Route key={item.path} exact path={item.path} component={item.component}/>
-                )}
+                <Switch>
+                    {routedComponents.map(item =>
+                        <Route key={item.path} exact path={item.path} component={item.component}/>
+                    )}
+                    <Redirect from="/" to={defaultRoute}/>
+                </Switch>
             </div>
         </Router>
     </Provider>,
