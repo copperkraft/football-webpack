@@ -13,9 +13,10 @@ module.exports = (app, url) => {
             .catch(error => {
                 if (error.message === 'wrong email' || error.message === 'wrong password') {
                     response.sendStatus(406);
+                } else {
+                    response.sendStatus(500);
                 }
                 console.error('an error occur in login handler. ' + error);
-                response.sendStatus(500);
             });
     });
 };
