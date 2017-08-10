@@ -32,6 +32,7 @@
     "less-loader": "^4.0.4",
     "react-modal": "^2.2.2",
     "style-loader": "^0.18.1",
+    "validator": "^8.0.0",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   },

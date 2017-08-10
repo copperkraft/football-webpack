@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import validator from 'validator';
 
 import './singning-form.less';
 
-/*import ValidatedInput from 'components/validated-input/validated-input';*/
+import ValidatedInput from 'components/validated-input/validated-input';
+import {showErrorAlert} from 'utils/notifications';
 
 export const actionTypes = {
     signIn: 'signIn',
@@ -16,9 +18,9 @@ export default class SigningForm extends Component {
         super();
 
         this.state = {
-            email: '',
-            name: '',
-            password: ''
+            email: null,
+            name: null,
+            password: null
         };
 
         this.submit = this.submit.bind(this);
@@ -28,29 +30,32 @@ export default class SigningForm extends Component {
     toggleMode() {
         this.setState(() => {
             return {
-                email: '',
-                name: '',
-                password: ''
+                email: null,
+                name: null,
+                password: null
             };
         });
         this.props.onToggleFormMode();
     }
 
-    submit() {
-        this.props.onSubmit(this.state);
+    isInputsValid() {
+        const {email, name, password} = this.state;
+        return validator.isEmail(email) &&
+            !validator.isEmail(password) &&
+            (!validator.isEmpty(name) || this.props.formMode === actionTypes.signIn);
     }
-    /*ValidatedInput.propTypes = {
-    type: PropTypes.string,
-    isValid: PropTypes.bool.isRequired,
-    className: PropTypes.string,
-    classNameInvalid: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
-    errorMessage: PropTypes.string
-}; 
-*/
+
+    submit() {
+        if (this.isInputsValid()) {
+            this.props.onSubmit(this.state);
+        } else {
+            showErrorAlert();
+        }
+    }
 
     render() {
         const {formMode} = this.props;
+        const {email, name, password} = this.state;
 
         return (
             <div className="signing-form">
@@ -59,35 +64,40 @@ export default class SigningForm extends Component {
                     {formMode === actionTypes.signUp && 'Sign up'}
                 </div>
 
-                <input
+                <ValidatedInput
                     key="email"
-                    value={this.state.email}
+                    placeholder="email"
+                    value={email}
+                    isValid={email === null || validator.isEmail(email)}
                     onChange={(event) => this.setState({email: event.target.value})}
-                    className="signing-form__input"
-                    placeholder="email"/>
+                />
 
-                <input
-                    key="password"
+                <ValidatedInput
                     type="password"
-                    value={this.state.password}
+                    key="password"
+                    placeholder="password"
+                    value={password}
+                    isValid={password === null || !validator.isEmpty(password)}
                     onChange={(event) => this.setState({password: event.target.value})}
-                    className="signing-form__input"
-                    placeholder="password"/>
+                />
 
                 {
                     formMode === actionTypes.signUp &&
-                    <input
-                        key="name"
-                        value={this.state.name}
-                        onChange={(event) => this.setState({name: event.target.value})}
-                        className="signing-form__input"
-                        placeholder="name"/>
+                     <ValidatedInput
+                         type="name"
+                         key="name"
+                         placeholder="name"
+                         value={name}
+                         isValid={password === null || !validator.isEmpty(name)}
+                         onChange={(event) => this.setState({name: event.target.value})}
+                     />
                 }
 
                 <button
                     key="submit"
                     onClick={this.submit}
-                    className="signing-form__button">
+                    className="signing-form__button"
+                >
                     Submit
                 </button>
                 {formMode === actionTypes.signIn &&

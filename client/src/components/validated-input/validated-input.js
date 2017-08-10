@@ -12,15 +12,24 @@ export default class ValidatedInput extends Component {
         this.props.onChange(event.target.value);
     }
     render() {
-        const {type, isValid, className, classNameInvalid, onChange, errorMessage} = this.props;
-        return (
+        const {
+            type, 
+            isValid, 
+            className, 
+            classNameInvalid, 
+            onChange, 
+            placeholder,
+            value
+        } = this.props;
 
+        return (
             <input 
+                value={value}
+                placeholder={placeholder}
                 type={type}
                 onChange={onChange}
                 className={className + ' ' + (!isValid ? classNameInvalid : '')}
             />
-            
         );
     }
 }
@@ -36,5 +45,7 @@ ValidatedInput.propTypes = {
     isValid: PropTypes.bool.isRequired,
     className: PropTypes.string,
     classNameInvalid: PropTypes.string,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+    placeholder: PropTypes.string
 };
