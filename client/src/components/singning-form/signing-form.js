@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import './singning-form.less';
 
+/*import ValidatedInput from 'components/validated-input/validated-input';*/
+
 export const actionTypes = {
     signIn: 'signIn',
     signUp: 'signUp',
@@ -37,6 +39,15 @@ export default class SigningForm extends Component {
     submit() {
         this.props.onSubmit(this.state);
     }
+    /*ValidatedInput.propTypes = {
+    type: PropTypes.string,
+    isValid: PropTypes.bool.isRequired,
+    className: PropTypes.string,
+    classNameInvalid: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    errorMessage: PropTypes.string
+}; 
+*/
 
     render() {
         const {formMode} = this.props;
