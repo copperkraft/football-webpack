@@ -24,7 +24,7 @@ export default class ValidatedInput extends Component {
 
         return (
             <input 
-                value={value}
+                value={value || ''}
                 placeholder={placeholder}
                 type={type}
                 onChange={onChange}

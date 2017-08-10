@@ -40,16 +40,16 @@ export default class SigningForm extends Component {
 
     isInputsValid() {
         const {email, name, password} = this.state;
-        return validator.isEmail(email) &&
-            !validator.isEmail(password) &&
-            (!validator.isEmpty(name) || this.props.formMode === actionTypes.signIn);
+        return email && validator.isEmail(email) &&
+            password &&
+            (name || this.props.formMode === actionTypes.signIn);
     }
 
     submit() {
         if (this.isInputsValid()) {
             this.props.onSubmit(this.state);
         } else {
-            showErrorAlert();
+            showErrorAlert('incorrect form data'); //TODO: error message for diff errors
         }
     }
 
@@ -77,7 +77,7 @@ export default class SigningForm extends Component {
                     key="password"
                     placeholder="password"
                     value={password}
-                    isValid={password === null || !validator.isEmpty(password)}
+                    isValid={password === null || !!password}
                     onChange={(event) => this.setState({password: event.target.value})}
                 />
 
@@ -88,7 +88,7 @@ export default class SigningForm extends Component {
                          key="name"
                          placeholder="name"
                          value={name}
-                         isValid={password === null || !validator.isEmpty(name)}
+                         isValid={name === null || !!name}
                          onChange={(event) => this.setState({name: event.target.value})}
                      />
                 }
