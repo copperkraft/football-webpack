@@ -37,15 +37,16 @@ export default class ValidatedInput extends Component {
 ValidatedInput.defaultProps = {
     type: 'text',
     className: 'validated-input',
-    classNameInvalid: 'validated-input--invalid'
+    classNameInvalid: 'validated-input--invalid',
+    isValid: true
 };
 
 ValidatedInput.propTypes = {
     type: PropTypes.string,
-    isValid: PropTypes.bool.isRequired,
+    isValid: PropTypes.bool,
     className: PropTypes.string,
     classNameInvalid: PropTypes.string,
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     placeholder: PropTypes.string
 };
