@@ -29,7 +29,7 @@ class TeamPlayers extends Component {
         dispatch(changePlayerPagination(page, pagination.pageSize));
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const {pagination, teamId, dispatch} = this.props;
         dispatch(fetchTeamPlayers(teamId, pagination.page, pagination.pageSize));
     }

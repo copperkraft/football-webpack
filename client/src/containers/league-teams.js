@@ -18,7 +18,7 @@ class LeagueTeams extends Component {
         this.onLeagueChange = this.onLeagueChange.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const {dispatch, selectedLeague} = this.props;
         dispatch(fetchLeagueTeams(selectedLeague));
     }

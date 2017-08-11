@@ -26,7 +26,7 @@ class TeamPage extends Component {
         this.onTabChange = this.onTabChange.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const {dispatch} = this.props;
         dispatch(fetchTeamInfo(this.props.match.params.id));
     }

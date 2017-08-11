@@ -25,7 +25,7 @@ class ProfileActions extends Component {
         this.closeForm = this.closeForm.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const {dispatch} = this.props;
 
         dispatch(fetchUser());

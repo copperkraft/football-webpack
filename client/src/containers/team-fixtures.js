@@ -45,7 +45,7 @@ class TeamFixtures extends Component {
         dispatch(fetchFixtureInfo(fixture));
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const {pagination, teamId, dispatch} = this.props;
         dispatch(fetchTeamFixtures(teamId, pagination.page, pagination.pageSize));
     }

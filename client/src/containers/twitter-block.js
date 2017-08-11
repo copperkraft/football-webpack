@@ -8,7 +8,7 @@ import TweetCard from 'components/tweet-card/tweet-card';
 import Spin from 'components/spinner/spinner';
 
 class TwitterBlock extends Component {
-    componentDidMount() {
+    componentWillMount() {
         const {tag, dispatch} = this.props;
         dispatch(fetchTweets(tag));
     }
