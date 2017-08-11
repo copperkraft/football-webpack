@@ -81,7 +81,8 @@ class TeamFixtures extends Component {
                     maxDate={fixtures.maxDate}
                     startDate={filters.startDate || fixtures.minDate}
                     endDate={filters.endDate || fixtures.maxDate}
-                    onChange={this.changeFilters}/>
+                    onChange={this.changeFilters}
+                />
                 <Paginator
                     page={pagination.page}
                     pageSize={pagination.pageSize}

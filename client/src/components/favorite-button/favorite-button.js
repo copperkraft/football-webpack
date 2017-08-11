@@ -14,11 +14,13 @@ export default class Select extends Component {
     render() {
         const {isFavorite, onChange} = this.props;
         return (
-            <button onClick={onChange}>{
-                isFavorite 
-                    ? 'Add to favorites'
-                    : 'Remove from favorites'    
-            }</button>
+            <button onClick={onChange}>
+                {
+                    isFavorite 
+                        ? 'Add to favorites'
+                        : 'Remove from favorites'    
+                }
+            </button>
         );
     }
 }

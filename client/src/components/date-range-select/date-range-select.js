@@ -33,7 +33,8 @@ export default class DateRangeSelect extends Component {
                         selected={startDate}
                         startDate={startDate}
                         endDate={endDate}
-                        onChange={this.handleStartChange}/>
+                        onChange={this.handleStartChange}
+                    />
                 </div>
                 <div className="player-card__info">
                     <DatePicker
@@ -41,7 +42,8 @@ export default class DateRangeSelect extends Component {
                         selected={endDate}
                         startDate={startDate}
                         endDate={endDate}
-                        onChange={this.handleEndChange}/>
+                        onChange={this.handleEndChange}
+                    />
                 </div>
             </div>
         );

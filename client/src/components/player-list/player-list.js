@@ -10,7 +10,9 @@ export function PlayerList(props) {
     if (playerList && playerList.length) {
         return (
             <div>
-                {playerList.map(player => <PlayerCard key={player.id} player={player}/>)}
+                {playerList.map(player => 
+                    <PlayerCard key={player.id} player={player}/>
+                )}
             </div>
         );
     } else {

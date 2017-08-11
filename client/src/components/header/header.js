@@ -10,10 +10,18 @@ export default function Header() {
         <div className="header">
             <div className="header__logo">Football statistics</div>
             <nav className="header__navigation">
-                <InternalLink route="leagueTablePage" className="header__link" activeClassName="header__link--selected">
+                <InternalLink 
+                    route="leagueTablePage" 
+                    className="header__link" 
+                    activeClassName="header__link--selected"
+                >
                     table
                 </InternalLink>
-                <InternalLink route="leagueTeamsPage" className="header__link" activeClassName="header__link--selected">
+                <InternalLink 
+                    route="leagueTeamsPage" 
+                    className="header__link" 
+                    activeClassName="header__link--selected"
+                >
                     teams
                 </InternalLink>
             </nav>

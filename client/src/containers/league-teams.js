@@ -41,7 +41,8 @@ class LeagueTeams extends Component {
                 <Title text={this.props.selectedLeague}/>
                 <Select values={leaguesList}
                     onChange={this.onLeagueChange}
-                    initial={this.props.selectedLeague}/>
+                    initial={this.props.selectedLeague}
+                />
                 <TeamList teamList={this.props.leagueTeams.items}/>
             </div>
         );

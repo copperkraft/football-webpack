@@ -36,7 +36,8 @@ class LeagueTable extends Component {
             <div className="container">
                 <SelectTabs values={leaguesList}
                     onChange={this.onLeagueChange}
-                    initial={this.props.selectedLeague}/>
+                    initial={this.props.selectedLeague}
+                />
                 <ScoreTable array={this.props.leagueTable.items}/>
             </div>
         );

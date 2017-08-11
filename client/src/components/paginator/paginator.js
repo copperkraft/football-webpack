@@ -56,7 +56,9 @@ export default class Paginator extends Component {
                         className="pagination__select"
                         onChange={this.handleSizeChange}
                         defaultValue={pageSize}>
-                        {pageSizes.map(size => <option key={size} value={size}>{size}</option>)}
+                        {pageSizes.map(size => 
+                            <option key={size} value={size}>{size}</option>
+                        )}
                     </select>
                 </label>
                 <div

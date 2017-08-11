@@ -93,7 +93,8 @@ class ProfileActions extends Component {
                         onRequestClose={this.closeForm}
                         isOpen={this.state.isFormOpened}
                         style={modalStyles}
-                        contentLabel="Modal">
+                        contentLabel="Modal"
+                    >
                         <SigningForm
                             formMode={this.state.formMode}
                             onSubmit={this.submitHandler}
