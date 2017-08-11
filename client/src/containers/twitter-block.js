@@ -32,7 +32,9 @@ TwitterBlock.propTypes = {
 };
 
 function mapStateToProps(state) {
-    return {tweets: state.tweets};
+    return {
+        tweets: state.tweets
+    };
 }
 
 export default connect(mapStateToProps)(TwitterBlock);

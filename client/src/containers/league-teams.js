@@ -50,7 +50,10 @@ class LeagueTeams extends Component {
 }
 
 function mapStateToProps(state) {
-    return {leagueTeams: state.leagueTeams, selectedLeague: state.selectedLeague};
+    return {
+        leagueTeams: state.leagueTeams, 
+        selectedLeague: state.selectedLeague
+    };
 }
 
 export default connect(mapStateToProps)(LeagueTeams);

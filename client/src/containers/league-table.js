@@ -45,7 +45,10 @@ class LeagueTable extends Component {
 }
 
 function mapStateToProps(state) {
-    return {leagueTable: state.leagueTable, selectedLeague: state.selectedLeague};
+    return {
+        leagueTable: state.leagueTable, 
+        selectedLeague: state.selectedLeague
+    };
 }
 
 export default connect(mapStateToProps)(LeagueTable);

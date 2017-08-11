@@ -108,7 +108,9 @@ class ProfileActions extends Component {
 }
 
 function mapStateToProps(state) {
-    return {user: state.user};
+    return {
+        user: state.user
+    };
 }
 
 export default connect(mapStateToProps)(ProfileActions);

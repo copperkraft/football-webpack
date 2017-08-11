@@ -70,7 +70,10 @@ TeamPlayers.propTypes = {
 };
 
 function mapStateToProps(state) {
-    return {pagination: state.teamPlayers.pagination, players: state.teamPlayers.players};
+    return {
+        pagination: state.teamPlayers.pagination, 
+        players: state.teamPlayers.players
+    };
 }
 
 export default connect(mapStateToProps)(TeamPlayers);

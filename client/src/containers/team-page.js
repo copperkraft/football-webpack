@@ -80,7 +80,9 @@ class TeamPage extends Component {
 }
 
 function mapStateToProps(state) {
-    return {teamInfo: state.teamInfo};
+    return {
+        teamInfo: state.teamInfo
+    };
 }
 
 export default connect(mapStateToProps)(TeamPage);
