@@ -11,7 +11,9 @@ export function FixturesList(props) {
     if (fixturesList && fixturesList.length) {
         return (
             <div>
-                {fixturesList.map(fixture => <FixtureCard key={fixture.id} fixture={fixture}/>)}
+                {fixturesList.map(fixture => 
+                    <FixtureCard key={fixture.id} fixture={fixture} onClick={() => props.onSelect(fixture.id)}/>
+                )}
             </div>
         );
     } else {
@@ -20,5 +22,6 @@ export function FixturesList(props) {
 }
 
 FixturesList.propTypes = {
-    fixturesList: PropTypes.arrayOf(PropTypes.instanceOf(Fixture))
+    fixturesList: PropTypes.arrayOf(PropTypes.instanceOf(Fixture)),
+    onSelect: PropTypes.func
 };

@@ -8,7 +8,7 @@ import Fixture from 'models/fixture/fixture';
 export default function FixtureCard(props) {
     let fixture = props.fixture;
     return (
-        <div className="player-card">
+        <div className="player-card" onClick={props.onClick}>
             <div className="player-card__info">
                 {fixture.awayTeamName} - {fixture.homeTeamName}
                 {fixture.isFinished && <span>{fixture.goalsAwayTeam} - {fixture.goalsHomeTeam}</span>}

@@ -11,6 +11,7 @@ import {
     changeFixturesPagination,
     fetchTeamFixtures
 } from '../actions/team-fixtures-actions';
+import {fetchFixtureInfo} from '../actions/fixture-info-actions';
 import {FixturesList} from 'components/fixtures-list/fixtures-list';
 import DateRangeSelect from 'components/date-range-select/date-range-select';
 
@@ -21,6 +22,7 @@ class TeamFixtures extends Component {
         this.changePageSize = this.changePageSize.bind(this);
         this.changePage = this.changePage.bind(this);
         this.changeFilters = this.changeFilters.bind(this);
+        this.loadInfo = this.loadInfo.bind(this);
     }
 
     changePageSize(size) {
@@ -36,6 +38,11 @@ class TeamFixtures extends Component {
     changeFilters(minDate, maxDate) {
         const {dispatch} = this.props;
         dispatch(changeFixturesFilters(minDate, maxDate));
+    }
+
+    loadInfo(fixture) {
+        const {dispatch} = this.props;
+        dispatch(fetchFixtureInfo(fixture));
     }
 
     componentDidMount() {
@@ -82,7 +89,7 @@ class TeamFixtures extends Component {
                     onSizeChange={this.changePageSize}
                     onPageChange={this.changePage}
                 />
-                <FixturesList fixturesList={fixtures.items}/>
+                <FixturesList onSelect={this.loadInfo} fixturesList={fixtures.items}/>
             </div>
         );
     }
