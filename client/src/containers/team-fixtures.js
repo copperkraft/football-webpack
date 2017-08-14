@@ -108,7 +108,11 @@ class TeamFixtures extends Component {
                         />
                         {fixtureInfo.isFetching
                             ? <Spin/>
-                            : <FixturesList fixturesList={fixtureInfo.head2head}/>
+                            : <FixturesList 
+                                fixturesList={fixtureInfo.head2head}
+                                onSelect={this.loadInfo}
+                                selected={fixtureInfo.fixture}
+                            />
                         }
                     </div>
                     : <div className = 'column'>

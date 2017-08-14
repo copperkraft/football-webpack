@@ -13,7 +13,6 @@ export function FixturesList(props) {
             <div>
                 {fixturesList.map(fixture => 
                     <FixtureCard 
-                        selectable={!!onSelect}
                         isSelected={selected && selected.id === fixture.id}
                         key={fixture.id || JSON.stringify(fixture)} 
                         fixture={fixture} 
