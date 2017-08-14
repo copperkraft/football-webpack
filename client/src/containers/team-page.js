@@ -56,24 +56,20 @@ class TeamPage extends Component {
                         />
                     </TeamCard>
                 }
-                <div className="row">
-                    <div className="column">
-                        {
-                            this.state.selectedTab === tabs.players
-                                ? <TeamPlayers teamId={+this.props.match.params.id}/>
-                                : <TeamFixtures teamId={+this.props.match.params.id}/>
-                        }
+                {this.state.selectedTab === tabs.players 
+                    ? <div className="row">
+                        <div className="column">
+                            <TeamPlayers teamId={+this.props.match.params.id}/>
+                        </div>
+                        <div className="column">
+                            {this.props.teamInfo.team
+                                ? <TwitterBlock tag={this.props.teamInfo.team.name.toLowerCase()}/>
+                                : <Spin/>
+                            }
+                        </div>
                     </div>
-                    <div className="column">
-                        {
-                            this.state.selectedTab === tabs.players
-                                ? this.props.teamInfo.team
-                                    ? <TwitterBlock tag={this.props.teamInfo.team.name.toLowerCase()}/>
-                                    : <Spin/>
-                                : <Title text="Fixtures..."/>
-                        }
-                    </div>
-                </div>
+                    : <TeamFixtures teamId={+this.props.match.params.id}/>   
+                } 
             </div>
         );
     }

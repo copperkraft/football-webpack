@@ -13,7 +13,9 @@ import {
 } from '../actions/team-fixtures-actions';
 import {fetchFixtureInfo} from '../actions/fixture-info-actions';
 import {FixturesList} from 'components/fixtures-list/fixtures-list';
+import FixtureCard from 'components/fixture-card/fixture-card';
 import DateRangeSelect from 'components/date-range-select/date-range-select';
+import Spin from 'components/spinner/spinner';
 
 class TeamFixtures extends Component {
     constructor() {
@@ -72,26 +74,44 @@ class TeamFixtures extends Component {
     }
 
     render() {
-        const {fixtures, pagination, filters} = this.props;
+        const {fixtures, pagination, filters, fixtureInfo} = this.props;
         return (
-            <div>
-                <Title text="Fixtures"/>
-                <DateRangeSelect
-                    minDate={fixtures.minDate}
-                    maxDate={fixtures.maxDate}
-                    startDate={filters.startDate || fixtures.minDate}
-                    endDate={filters.endDate || fixtures.maxDate}
-                    onChange={this.changeFilters}
-                />
-                <Paginator
-                    page={pagination.page}
-                    pageSize={pagination.pageSize}
-                    maxPage={fixtures.pageCount}
-                    onSizeChange={this.changePageSize}
-                    onPageChange={this.changePage}
-                />
-                <FixturesList onSelect={this.loadInfo} fixturesList={fixtures.items}/>
+            <div className="row">
+                <div className="column">
+                    <Title text="Fixtures"/>
+                    <DateRangeSelect
+                        minDate={fixtures.minDate}
+                        maxDate={fixtures.maxDate}
+                        startDate={filters.startDate || fixtures.minDate}
+                        endDate={filters.endDate || fixtures.maxDate}
+                        onChange={this.changeFilters}
+                    />
+                    <Paginator
+                        page={pagination.page}
+                        pageSize={pagination.pageSize}
+                        maxPage={fixtures.pageCount}
+                        onSizeChange={this.changePageSize}
+                        onPageChange={this.changePage}
+                    />
+                    <FixturesList onSelect={this.loadInfo} fixturesList={fixtures.items}/>
+                </div>
+                {fixtureInfo.isFetching
+                    ? <Spin/>
+                    : fixtureInfo.fixture
+                        ? <div className="column">
+                            <FixtureCard 
+                                fixture={fixtureInfo.fixture} 
+                                stat={fixtureInfo.stat} 
+                                odds={fixtureInfo.odds}
+                            />
+                            <FixturesList fixturesList={fixtureInfo.head2head}/>
+                        </div>
+                        : <div className = 'column'>
+                            <Title text="Select fixture..."/>
+                        </div>
+                }
             </div>
+            
         );
     }
 }
@@ -104,7 +124,8 @@ function mapStateToProps(state) {
     return {
         pagination: state.teamFixtures.pagination,
         fixtures: state.teamFixtures.fixtures,
-        filters: state.teamFixtures.filters
+        filters: state.teamFixtures.filters,
+        fixtureInfo: state.fixtureInfo
     };
 }
 

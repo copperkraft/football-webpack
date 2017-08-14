@@ -12,7 +12,10 @@ export function FixturesList(props) {
         return (
             <div>
                 {fixturesList.map(fixture => 
-                    <FixtureCard key={fixture.id} fixture={fixture} onClick={() => props.onSelect(fixture.id)}/>
+                    <FixtureCard 
+                        key={fixture.id || JSON.stringify(fixture)} 
+                        fixture={fixture} 
+                        onClick={() => props.onSelect(fixture.id)}/>
                 )}
             </div>
         );
