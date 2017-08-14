@@ -6,6 +6,7 @@ module.exports = {
     },
     mapper(data) {
         return {
+            id: data.fixture.id,
             date: data.fixture.date,
             status: data.fixture.status,
             homeTeamName: data.fixture.homeTeamName,
@@ -20,6 +21,7 @@ module.exports = {
             },
             head2head: data.head2head.fixtures.map(fixture => {
                 return {
+                    id: fixture.id,
                     date: fixture.date,
                     homeTeamName: fixture.homeTeamName,
                     awayTeamName: fixture.awayTeamName,

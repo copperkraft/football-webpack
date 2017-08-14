@@ -93,22 +93,27 @@ class TeamFixtures extends Component {
                         onSizeChange={this.changePageSize}
                         onPageChange={this.changePage}
                     />
-                    <FixturesList onSelect={this.loadInfo} fixturesList={fixtures.items}/>
+                    <FixturesList 
+                        onSelect={this.loadInfo} 
+                        fixturesList={fixtures.items}
+                        selected={fixtureInfo.fixture}
+                    />
                 </div>
-                {fixtureInfo.isFetching
-                    ? <Spin/>
-                    : fixtureInfo.fixture
-                        ? <div className="column">
-                            <FixtureCard 
-                                fixture={fixtureInfo.fixture} 
-                                stat={fixtureInfo.stat} 
-                                odds={fixtureInfo.odds}
-                            />
-                            <FixturesList fixturesList={fixtureInfo.head2head}/>
-                        </div>
-                        : <div className = 'column'>
-                            <Title text="Select fixture..."/>
-                        </div>
+                {fixtureInfo.fixture
+                    ? <div className="column">
+                        <FixtureCard 
+                            fixture={fixtureInfo.fixture} 
+                            stat={fixtureInfo.stat} 
+                            odds={fixtureInfo.odds}
+                        />
+                        {fixtureInfo.isFetching
+                            ? <Spin/>
+                            : <FixturesList fixturesList={fixtureInfo.head2head}/>
+                        }
+                    </div>
+                    : <div className = 'column'>
+                        <Title text="Select fixture..."/>
+                    </div>
                 }
             </div>
             

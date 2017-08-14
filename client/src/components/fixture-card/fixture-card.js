@@ -6,9 +6,9 @@ import './fixture-card.less';
 import Fixture from 'models/fixture/fixture';
 
 export default function FixtureCard(props) {
-    const {fixture, odds, stat} = props;
+    const {fixture, odds, stat, isSelected} = props;
     return (
-        <div className="fixture-card" onClick={props.onClick}>
+        <div className={'fixture-card ' + (isSelected ? 'fixture-card--selected' : '')} onClick={props.onClick}>
             <div className="fixture-card__info">
                 {fixture.awayTeamName} - {fixture.homeTeamName}
                 {fixture.isFinished && <span>{fixture.goalsAwayTeam} - {fixture.goalsHomeTeam}</span>}
@@ -39,5 +39,6 @@ export default function FixtureCard(props) {
 FixtureCard.propTypes = {
     fixture: PropTypes.instanceOf(Fixture).isRequired,
     odds: PropTypes.object,
-    stat: PropTypes.object
+    stat: PropTypes.object,
+    isSelected: PropTypes.bool
 };

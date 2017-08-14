@@ -1,10 +1,10 @@
 import {fixtureInfo} from 'providers/fixture-info-provider';
 
 export const REQUEST_FIXTURE_INFO = 'REQUEST_FIXTURE_INFO';
-export function requestFixtureInfo(id) {
+export function requestFixtureInfo(fixture) {
     return {
         type: REQUEST_FIXTURE_INFO,
-        payload: id
+        payload: fixture
     };
 }
 
@@ -21,10 +21,10 @@ export function receiveFixtureInfo(fixture, odds, stat, head2head) {
     };
 }
 
-export function fetchFixtureInfo(fixtureId) {
+export function fetchFixtureInfo(fixture) {
     return function(dispatch) {
-        dispatch(requestFixtureInfo());
-        return fixtureInfo.get(fixtureId)
+        dispatch(requestFixtureInfo(fixture));
+        return fixtureInfo.get(fixture.id)
             .then(data => dispatch(receiveFixtureInfo(
                 data.fixture, 
                 data.odds, 

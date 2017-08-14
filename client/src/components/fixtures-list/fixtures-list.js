@@ -7,15 +7,18 @@ import Fixture from 'models/fixture/fixture';
 import FixtureCard from 'components/fixture-card/fixture-card';
 
 export function FixturesList(props) {
-    const fixturesList = props.fixturesList;
-    if (fixturesList && fixturesList.length) {
+    const {fixturesList, selected, onSelect} = props;
+    if (fixturesList) {
         return (
             <div>
                 {fixturesList.map(fixture => 
                     <FixtureCard 
+                        selectable={!!onSelect}
+                        isSelected={selected && selected.id === fixture.id}
                         key={fixture.id || JSON.stringify(fixture)} 
                         fixture={fixture} 
-                        onClick={() => props.onSelect(fixture.id)}/>
+                        onClick={() => onSelect && onSelect(fixture)}
+                    />
                 )}
             </div>
         );
@@ -26,5 +29,6 @@ export function FixturesList(props) {
 
 FixturesList.propTypes = {
     fixturesList: PropTypes.arrayOf(PropTypes.instanceOf(Fixture)),
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
+    selected: PropTypes.instanceOf(Fixture)
 };
