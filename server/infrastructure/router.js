@@ -21,4 +21,7 @@ module.exports = function(app) {
         res.sendFile(path.resolve(__dirname, '../../client/dist/index.html'));
     });
     apiRegistrator(app);
+    app.use(function(req, res) {
+        res.sendFile(path.resolve(__dirname, '../../client/dist/index.html'));
+    });
 };

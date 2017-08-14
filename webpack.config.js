@@ -6,7 +6,8 @@ module.exports = {
     entry: path.resolve(__dirname + '/client/src/index.js'),
     output: {
         path: path.resolve(__dirname + '/client/dist'),
-        filename: 'app.bundle.js'
+        filename: 'app.bundle.js',
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -21,17 +22,16 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
-            }, {
+                use: ['style-loader', 'css-loader']
+            },
+            {
                 test: /\.less$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: ['css-loader', 'less-loader']
                 })
-            }, {
+            },
+            {
                 test: /\.html$/,
                 use: [{
                     loader: 'html-loader',
@@ -51,7 +51,7 @@ module.exports = {
     ],
     devServer: {
         port: 1000,
-        headers: { 'Access-Control-Allow-Origin': '*' }
+        headers: {'Access-Control-Allow-Origin': '*'}
     },
     resolve: {
         alias: {

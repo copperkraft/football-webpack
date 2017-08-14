@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import {Provider} from 'react-redux';
 import {render} from 'react-dom';
-import {HashRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 
 import './app.less';
 
