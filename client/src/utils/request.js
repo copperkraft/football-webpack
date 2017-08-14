@@ -1,6 +1,6 @@
 export default {
     get(url) {
-        return fetch(url, {
+        return fetch('/' + url, {
             credentials: 'include'
         }).then(response => {
             switch (response.status) {
@@ -14,7 +14,7 @@ export default {
         });
     },
     post(url, data) {
-        return fetch(url, {
+        return fetch('/' + url, {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
