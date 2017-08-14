@@ -13,7 +13,8 @@
     "lint-fix": "eslint server/**/*.js client/src/**/*.js --fix",
     "dev": "webpack -d -w",
     "start": "node server/app.js",
-    "heroku-postbuild": "webpack -d"
+    "heroku-postbuild": "webpack -d",
+    "dev-server": "start npm start && start npm run dev"
   },
   "author": "",
   "license": "MIT",
