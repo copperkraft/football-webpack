@@ -23,3 +23,13 @@ export function fetchFavorites() {
         });
     };
 }
+
+export function addFavorite() {
+    return function(dispatch) {
+        dispatch(requestFavorites());
+        return favorites.get().then(favorites => {
+            dispatch(receiveFavorites(favorites));
+        });
+    };
+}
+

@@ -1,5 +1,34 @@
+@duration: 800ms;
+
 .spinner {
-    width: 100px;
-    height: 100px;
+    padding: 30px;
     margin: 0 auto;
+    text-align: center;
+
+    .spinner__circle {
+        width: 30px;
+        height: 30px;
+        background-color: #209030;
+    
+        border-radius: 100%;
+        display: inline-block;
+        animation: sk-bouncedelay @duration infinite ease-in-out both;
+
+        &.spinner__circle--first {
+            animation-delay: -0.32s;
+        }
+        &.spinner__circle--second {
+            animation-delay: -0.16s;
+       }
+    }
 }
+
+  
+
+  @keyframes sk-bouncedelay {
+    0%, 40%, 100% { 
+      transform: scale(0);
+    } 70% { 
+      transform: scale(1);
+    }
+  }
