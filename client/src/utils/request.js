@@ -8,6 +8,8 @@ export default {
                     return response.json();
                 case 401:
                     throw 'user unauthorised on server';
+                case 403:
+                    throw 'service is restrivted';
                 default:
                     throw 'server error';
             }

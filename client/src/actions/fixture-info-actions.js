@@ -30,6 +30,14 @@ export function fetchFixtureInfo(fixture) {
                 data.odds, 
                 data.stat, 
                 data.head2head
-            )));
+            )))
+            .catch(err => {
+                dispatch(receiveFixtureInfo(
+                    fixture,
+                    null,
+                    null,
+                    []
+                ));
+            });
     };
 }
