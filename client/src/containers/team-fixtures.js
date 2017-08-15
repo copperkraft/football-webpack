@@ -48,8 +48,14 @@ class TeamFixtures extends Component {
     }
 
     componentWillMount() {
-        const {pagination, teamId, dispatch} = this.props;
-        dispatch(fetchTeamFixtures(teamId, pagination.page, pagination.pageSize));
+        const {pagination, filters, teamId, dispatch} = this.props;
+        dispatch(fetchTeamFixtures(
+            teamId, 
+            pagination.page, 
+            pagination.pageSize,
+            filters.startDate,
+            filters.endDate
+        ));
     }
 
     componentWillReceiveProps(nextProps) {
@@ -69,7 +75,7 @@ class TeamFixtures extends Component {
     }
 
     componentWillUnmount() {
-        const {dispatch, pagination} = this.props;
+        const {dispatch, pagination, fixtures} = this.props;
         dispatch(changeFixturesPagination(initialPage, pagination.pageSize));
     }
 

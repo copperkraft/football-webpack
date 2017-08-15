@@ -49,6 +49,9 @@ export default class Paginator extends Component {
 
     render() {
         const {page, maxPage, pageSize} = this.props;
+        if (!maxPage) {
+            return null;
+        }
         return (
             <div className="pagination">
                 <label className="pagination__item">
