@@ -50,7 +50,8 @@ class TeamPlayers extends Component {
     render() {
         const {players, pagination} = this.props;
         return (
-            <div>
+            (players.isFetching || players.pageCount) 
+            ? <div>
                 <Title text="Players"/>
                 <Paginator
                     page={pagination.page}
@@ -61,6 +62,7 @@ class TeamPlayers extends Component {
                 />
                 <PlayerList playerList={players.items}/>
             </div>
+            : <Title text='No players info provided'></Title>>
         );
     }
 }
