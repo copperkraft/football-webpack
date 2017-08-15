@@ -31,6 +31,8 @@ export default class DateRangeSelect extends Component {
                     <DatePicker
                         className='date-input'
                         selectsStart
+                        minDate={minDate}
+                        maxDate={endDate}
                         selected={startDate}
                         startDate={startDate}
                         endDate={endDate}
@@ -40,6 +42,8 @@ export default class DateRangeSelect extends Component {
                 <div className="player-card__info">
                     <DatePicker
                         className='date-input'
+                        minDate={startDate}
+                        maxDate={maxDate}
                         selectsEnd
                         selected={endDate}
                         startDate={startDate}
