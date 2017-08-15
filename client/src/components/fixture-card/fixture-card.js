@@ -10,7 +10,7 @@ export default function FixtureCard(props) {
     return (
         <div className={'fixture-card ' + (isSelected ? 'fixture-card--selected' : '')} onClick={props.onClick}>
             <div className="fixture-card__info">
-                {fixture.awayTeamName} - {fixture.homeTeamName}
+                {fixture.awayTeamName} - {fixture.homeTeamName} &#160;
                 {fixture.isFinished && <span>{fixture.goalsAwayTeam} - {fixture.goalsHomeTeam}</span>}
             </div>
             <div className="fixture-card__info">
@@ -19,12 +19,20 @@ export default function FixtureCard(props) {
             {odds &&
                 <div className="fixture-card__info-block">
                     <div className="fixture-card__info">
-                        Odds
+                        Odds: 
+                    </div>
+                    <div className="fixture-card__info">
+                        {fixture.awayTeamName} win: {odds.awayWin} <br/>
+                        {fixture.homeTeamName} win: {odds.homeWin} <br/>   
+                        Draw: {odds.draw}
                     </div>
                 </div>
             }
             {stat &&
                 <div className="fixture-card__info-block">
+                    <div className="fixture-card__info">
+                        Statistics: 
+                    </div>
                     <div className="fixture-card__info">
                         {fixture.awayTeamName} wins: {stat.awayTeamWins} <br/>
                         {fixture.homeTeamName} wins: {stat.homeTeamWins} <br/>   
