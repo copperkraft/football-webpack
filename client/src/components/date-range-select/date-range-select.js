@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment, {Moment} from 'moment';
 
-import 'react-datepicker/dist/react-datepicker.css';
+import './date-range-select.less';
 
 export default class DateRangeSelect extends Component {
     constructor() {
@@ -29,6 +29,7 @@ export default class DateRangeSelect extends Component {
             <div className="player-card">
                 <div className="player-card__info">
                     <DatePicker
+                        className='date-input'
                         selectsStart
                         selected={startDate}
                         startDate={startDate}
@@ -38,6 +39,7 @@ export default class DateRangeSelect extends Component {
                 </div>
                 <div className="player-card__info">
                     <DatePicker
+                        className='date-input'
                         selectsEnd
                         selected={endDate}
                         startDate={startDate}
