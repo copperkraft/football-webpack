@@ -50,19 +50,19 @@ class TeamPlayers extends Component {
     render() {
         const {players, pagination} = this.props;
         return (
-            (players.isFetching || players.pageCount) 
-            ? <div>
-                <Title text="Players"/>
-                <Paginator
-                    page={pagination.page}
-                    pageSize={pagination.pageSize}
-                    maxPage={players.pageCount}
-                    onSizeChange={this.changePageSize}
-                    onPageChange={this.changePage}
-                />
-                <PlayerList playerList={players.items}/>
-            </div>
-            : <Title text='No players info provided'></Title>>
+            players.isFetching || players.pageCount 
+                ? <div>
+                    <Title text="Players"/>
+                    <Paginator
+                        page={pagination.page}
+                        pageSize={pagination.pageSize}
+                        maxPage={players.pageCount}
+                        onSizeChange={this.changePageSize}
+                        onPageChange={this.changePage}
+                    />
+                    <PlayerList playerList={players.items}/>
+                </div>
+                : <Title text='No players info provided'></Title>
         );
     }
 }
