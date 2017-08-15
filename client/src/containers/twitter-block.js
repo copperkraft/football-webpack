@@ -20,7 +20,7 @@ class TwitterBlock extends Component {
                 <Title text={'Tweets for tag #' + tag}/>
                 {tweets.isFetching
                     ? <Spin/>
-                    : tweets.items.map(tweet => <TweetCard key={tweet.text} tweet={tweet}/>)
+                    : tweets.items.map(tweet => <TweetCard key={tweet.id} tweet={tweet}/>)
                 }
             </div>
         );

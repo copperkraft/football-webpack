@@ -9,7 +9,8 @@ module.exports = {
             return {
                 text: tweet.text,
                 user: tweet.user.screen_name,
-                time: new Date(tweet.created_at)
+                time: new Date(tweet.created_at),
+                id: tweet.id
             };
         });
     }

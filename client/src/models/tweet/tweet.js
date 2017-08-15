@@ -3,5 +3,6 @@ export default class Tweet {
         this.text = params.text;
         this.user = params.user;
         this.time = params.time;
+        this.id = params.id;
     }
 }
