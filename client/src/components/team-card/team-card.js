@@ -8,7 +8,7 @@ import Spin from 'components/spinner/spinner';
 import Team from 'models/team/team';
 
 export default function TeamCard(props) {
-    const team = props.team;
+    const {team, favoritable, isFavorite, onToggleFavorite} = props;
     if (team) {
         return (
             <div className="team-card">
@@ -29,6 +29,12 @@ export default function TeamCard(props) {
                 <div className="team-card__actions">
                     {props.children}
                 </div>
+                {favoritable && (
+                    isFavorite
+                        ? <button onClick={onToggleFavorite}>Remove from favorites</button>
+                        : <button onClick={onToggleFavorite}>Add team to favorites</button>
+                )}
+
             </div>);
     } else {
         return <Spin/>;
@@ -36,5 +42,8 @@ export default function TeamCard(props) {
 }
 
 TeamCard.propTypes = {
-    team: PropTypes.instanceOf(Team)
+    team: PropTypes.instanceOf(Team),
+    favoritable: PropTypes.bool,
+    isFavorite: PropTypes.bool,
+    onToggleFavorite: PropTypes.func
 };

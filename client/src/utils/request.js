@@ -6,12 +6,14 @@ export default {
             switch (response.status) {
                 case 200:
                     return response.json();
+                case 202:
+                    return;
                 case 401:
                     throw 'user unauthorised on server';
                 case 403:
                     throw 'service is restrivted';
                 default:
-                    throw 'server error';
+                    throw 'server error' + response.status;
             }
         });
     },
@@ -28,10 +30,12 @@ export default {
             switch (response.status) {
                 case 200:
                     return response.json();
+                case 202:
+                    return;
                 case 406:
                     throw 'wrong credentials';
                 default:
-                    throw 'server error';
+                    throw 'server error' + response.status;
             }
         }).catch(error => console.error(error));
     }

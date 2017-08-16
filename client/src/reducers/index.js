@@ -1,14 +1,15 @@
 import {combineReducers} from 'redux';
 
-import {selectedLeague} from './selected-league';
-import {leagueTable} from './league-table';
-import {leagueTeams} from './league-teams';
-import {teamInfo} from './team-info';
-import teamPlayers from './team-players';
-import teamFixtures from './team-fixtures';
-import {tweets} from './tweets';
-import {user} from './user';
-import {fixtureInfo} from './fixture-info';
+import {selectedLeague} from 'reducers/selected-league';
+import {leagueTable} from 'reducers/league-table';
+import {leagueTeams} from 'reducers/league-teams';
+import {teamInfo} from 'reducers/team-info';
+import teamPlayers from 'reducers/team-players';
+import teamFixtures from 'reducers/team-fixtures';
+import {tweets} from 'reducers/tweets';
+import {user} from 'reducers/user';
+import {fixtureInfo} from 'reducers/fixture-info';
+import {favorites} from 'reducers/favorites';
 
 export default combineReducers({
     selectedLeague,
@@ -19,5 +20,6 @@ export default combineReducers({
     teamFixtures,
     tweets,
     user,
-    fixtureInfo
+    fixtureInfo,
+    favorites
 });

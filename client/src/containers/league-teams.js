@@ -10,17 +10,24 @@ import {leaguesList} from '../constants/leagues-list';
 
 import {selectLeague} from '../actions/league-actions';
 import {TeamList} from '../components/team-list/team-list';
+import {
+    addFavorite, fetchFavorites,
+    removeFavorite
+} from 'actions/favorite-actions';
 
 class LeagueTeams extends Component {
     constructor() {
         super();
 
         this.onLeagueChange = this.onLeagueChange.bind(this);
+        this.onAddFavorite = this.onAddFavorite.bind(this);
+        this.onRemoveFavorite = this.onRemoveFavorite.bind(this);
     }
 
     componentWillMount() {
         const {dispatch, selectedLeague} = this.props;
         dispatch(fetchLeagueTeams(selectedLeague));
+        dispatch(fetchFavorites(selectedLeague));
     }
 
     componentWillReceiveProps(nextProps) {
@@ -35,15 +42,32 @@ class LeagueTeams extends Component {
         dispatch(selectLeague(league));
     }
 
+    onAddFavorite(team) {
+        const {dispatch} = this.props;
+        dispatch(addFavorite(team));
+    }
+
+    onRemoveFavorite(team) {
+        const {dispatch} = this.props;
+        dispatch(removeFavorite(team));
+    }
+
     render() {
+        const {leagueTeams, favorites, selectedLeague, favoritable} = this.props;
         return (
             <div className="container">
-                <Title text={this.props.selectedLeague}/>
+                <Title text={selectedLeague}/>
                 <Select values={leaguesList}
                     onChange={this.onLeagueChange}
-                    initial={this.props.selectedLeague}
+                    initial={selectedLeague}
                 />
-                <TeamList teamList={this.props.leagueTeams.items}/>
+                <TeamList
+                    teamList={leagueTeams.items}
+                    favorites={favorites.items}
+                    favoritable={favoritable && favorites.items !== null}
+                    onAddFavorite={this.onAddFavorite}
+                    onRemoveFavorite={this.onRemoveFavorite}
+                />
             </div>
         );
     }
@@ -52,7 +76,9 @@ class LeagueTeams extends Component {
 function mapStateToProps(state) {
     return {
         leagueTeams: state.leagueTeams, 
-        selectedLeague: state.selectedLeague
+        selectedLeague: state.selectedLeague,
+        favorites: state.favorites,
+        favoritable: state.user.signed
     };
 }
 
