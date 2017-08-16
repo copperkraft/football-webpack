@@ -9,12 +9,12 @@
   },
   "scripts": {
     "precommit": "npm run lint",
-    "lint": "eslint server/**/*.js client/src/**/*.js",
+    "lint": "eslint server/**/*.js client/src/**/*.js webpack.config.js",
     "lint-fix": "eslint server/**/*.js client/src/**/*.js --fix",
     "dev": "webpack -d -w",
     "start": "node server/app.js",
     "heroku-postbuild": "webpack -d",
-    "dev-server": "start npm start && start npm run dev"
+    "dev-server": "start npm start && npm run dev"
   },
   "author": "",
   "license": "MIT",

@@ -3,9 +3,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-    entry: path.resolve(__dirname + '/client/src/index.js'),
+    entry: path.join(__dirname, '/client/src/index.js'),
     output: {
-        path: path.resolve(__dirname + '/client/dist'),
+        path: path.join(__dirname, '/client/dist'),
         filename: 'app.bundle.js',
         publicPath: '/'
     },
@@ -61,7 +61,8 @@ module.exports = {
             providers: path.resolve(__dirname, 'client/src/providers/'),
             constants: path.resolve(__dirname, 'client/src/constants/'),
             utils: path.resolve(__dirname, 'client/src/utils/'),
-            containers: path.resolve(__dirname, 'client/src/containers/')
+            containers: path.resolve(__dirname, 'client/src/containers/'),
+            reducers: path.resolve(__dirname, 'client/src/reducers/')
         }
     }
 };
