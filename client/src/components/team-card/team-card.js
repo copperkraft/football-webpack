@@ -12,7 +12,9 @@ export default function TeamCard(props) {
     if (team) {
         return (
             <div className="team-card">
-                <img className="team-card__image" src={team.imageUrl}/>
+                <div className="team-card__image-container">
+                    <img className="team-card__image" src={team.imageUrl}/>
+                </div>
                 <InternalLink
                     route="team"
                     className="team-card__full-name"
