@@ -1,4 +1,4 @@
-const user = require('../../services/favorite-service');
+const favorites = require('../../services/favorite-service');
 
 module.exports = (app, url) => {
     app.get(url, (request, response) => {
@@ -6,7 +6,7 @@ module.exports = (app, url) => {
             response.sendStatus(401);
             return;
         }
-        user.getFavorites(request.session.userId)
+        favorites.getFavorites(request.session.userId)
             .then(favorites => response.send(favorites))
             .catch(error => {
                 console.error('an error occur in favorite handler. ' + error);
@@ -19,18 +19,18 @@ module.exports = (app, url) => {
             return;
         }
         if (request.body.isFavorite) {
-            user.addFavorite(request.session.userId, {
+            favorites.addFavorite(request.session.userId, {
                 teamName: request.body.name,
                 teamId: request.body.id
             })
-                .then(() => response.sendStatus(202))
+                .then(favorites => response.send(favorites))
                 .catch(() => response.sendStatus(500));
         } else {
-            user.removeFavorite(request.session.userId, {
+            favorites.removeFavorite(request.session.userId, {
                 teamName: request.body.name,
                 teamId: request.body.id
             })
-                .then(() => response.sendStatus(202))
+                .then(favorites => response.send(favorites))
                 .catch(() => response.sendStatus(500));
         }
     });

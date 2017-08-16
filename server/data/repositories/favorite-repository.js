@@ -34,9 +34,11 @@ module.exports = {
                     },
                     include: database.user
                 })
-                .then(teams => {
-                    user.addFavorite(teams[0]);
-                });
+                .then(teams =>
+                    user.addFavorite(teams[0])
+                        .then(() => user.getFavorites())
+                        .then(values => values.map(mapper))
+                );
         });
     },
     remove(id, teamData) {
@@ -59,9 +61,11 @@ module.exports = {
                     },
                     include: database.user
                 })
-                .then(team => {
-                    user.removeFavorite(team);
-                });
+                .then(team =>
+                    user.removeFavorite(team)
+                        .then(() => user.getFavorites())
+                        .then(values => values.map(mapper))
+                );
         });
     }
 };
