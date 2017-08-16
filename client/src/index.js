@@ -10,6 +10,7 @@ import Header from './components/header/header';
 
 import configureStore from './store/configureStore';
 import {defaultRoute, routedComponents} from './routed-components';
+import Footer from 'components/footer/footer';
 
 const store = configureStore();
 
@@ -24,6 +25,7 @@ render(
                     )}
                     <Redirect from="/" to={defaultRoute}/>
                 </Switch>
+                <Footer/>
             </div>
         </Router>
     </Provider>,
