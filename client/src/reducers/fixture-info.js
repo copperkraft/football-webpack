@@ -14,7 +14,6 @@ const initialState = {
 export function fixtureInfo(state = initialState, action) {
     switch (action.type) {
         case REQUEST_FIXTURE_INFO:
-            console.log(action.payload);
             return {
                 isFetching: true,
                 fixture: action.payload,
