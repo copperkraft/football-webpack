@@ -62,7 +62,8 @@ module.exports = {
             constants: path.resolve(__dirname, 'client/src/constants/'),
             utils: path.resolve(__dirname, 'client/src/utils/'),
             containers: path.resolve(__dirname, 'client/src/containers/'),
-            reducers: path.resolve(__dirname, 'client/src/reducers/')
+            reducers: path.resolve(__dirname, 'client/src/reducers/'),
+            actions: path.resolve(__dirname, 'client/src/actions/')
         }
     }
 };
