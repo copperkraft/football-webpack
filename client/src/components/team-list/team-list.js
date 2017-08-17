@@ -44,7 +44,12 @@ export function TeamList(props) {
 }
 
 TeamList.propTypes = {
-    teamList: PropTypes.arrayOf(PropTypes.instanceOf(Team)),
+    teamList: PropTypes.arrayOf(
+        PropTypes.oneOfType([
+            PropTypes.instanceOf(Team),
+            PropTypes.instanceOf(Favorite)
+        ])
+    ),
     favorites: PropTypes.arrayOf(PropTypes.instanceOf(Favorite)),
     favoritable: PropTypes.bool,
     onAddFavorite: PropTypes.func,

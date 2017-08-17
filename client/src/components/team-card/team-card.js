@@ -6,25 +6,30 @@ import './team-card.less';
 import InternalLink from 'components/internal-link/internal-link';
 import Spin from 'components/spinner/spinner';
 import Team from 'models/team/team';
+import Favorite from 'models/favorite/favorite';
 
 export default function TeamCard(props) {
     const {team, favoritable, isFavorite, onToggleFavorite} = props;
     if (team) {
         return (
             <div className="team-card">
-                <div className="team-card__image-container">
-                    <img className="team-card__image" src={team.imageUrl}/>
-                </div>
+                {team.imageUrl &&
+                    <div className="team-card__image-container">
+                        <img className="team-card__image" src={team.imageUrl}/>
+                    </div>
+                }
                 <InternalLink
                     route="team"
                     className="team-card__full-name"
                     activeClassName="team-card__full-name--current"
                     parameters={{id: team.id}}>
-                    {team.fullName}
+                    {team.fullName || team.name}
                 </InternalLink>
-                <div className="team-card__info">
-                    short name: {team.name}
-                </div>
+                {team.fullName &&
+                    <div className="team-card__info">
+                        short name: {team.name}
+                    </div>
+                }
                 {team.squadMarketValue && <div className="team-card__info">
                     squad Market Value: {team.squadMarketValue}
                 </div>}
@@ -44,7 +49,10 @@ export default function TeamCard(props) {
 }
 
 TeamCard.propTypes = {
-    team: PropTypes.instanceOf(Team),
+    team: PropTypes.oneOfType([
+        PropTypes.instanceOf(Team),
+        PropTypes.instanceOf(Favorite)
+    ]),
     favoritable: PropTypes.bool,
     isFavorite: PropTypes.bool,
     onToggleFavorite: PropTypes.func
