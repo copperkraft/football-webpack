@@ -33,10 +33,6 @@
             "error",
             "never"
         ],
-        "array-element-newline": [
-            "warn",
-            {"multiline": true}
-        ],
         "brace-style": [
             "error",
             "1tbs",
